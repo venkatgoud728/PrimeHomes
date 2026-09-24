@@ -1,0 +1,45 @@
+<div class="container mt-4">
+
+  <h2>My Inquiries</h2>
+
+  <div *ngIf="isLoading" class="alert alert-info">
+    Loading inquiries...
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && inquiries.length === 0"
+       class="alert alert-warning">
+    No inquiries found.
+  </div>
+
+  <table *ngIf="!isLoading && inquiries.length > 0"
+         class="table table-bordered table-striped">
+
+    <thead>
+      <tr>
+        <th>Inquiry ID</th>
+        <th>Property Title</th>
+        <th>Property ID</th>
+        <th>Message</th>
+        <th>Status</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let inquiry of inquiries">
+        <td>{{ inquiry.inquiryId }}</td>
+        <td>{{ inquiry.propertyTitle }}</td>
+        <td>{{ inquiry.propertyId }}</td>
+        <td>{{ inquiry.message }}</td>
+        <td>{{ inquiry.status }}</td>
+        <td>{{ inquiry.createdDate | date:'medium' }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>

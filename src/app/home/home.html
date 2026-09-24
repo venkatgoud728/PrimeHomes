@@ -1,0 +1,317 @@
+<div class="container mt-5">
+
+  
+
+  <!-- Hero Banner Section -->
+
+<div class="hero-banner text-center text-white">
+
+  <div class="hero-overlay">
+
+    <h1 class="display-4 fw-bold">
+      Find Your Dream Home
+    </h1>
+
+    <p class="lead">
+      Buy, sell and discover properties with Prime Homes
+    </p>
+
+  </div>
+
+</div>
+
+
+  <!-- Search Section -->
+
+  <div class="card shadow p-4 mt-4">
+
+    <h4 class="mb-3">
+      Search Properties
+    </h4>
+
+    <div class="row g-3">
+
+      <!-- Location -->
+
+      <div class="col-md-4">
+
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="searchLocation"
+          placeholder="Enter location">
+
+      </div>
+
+
+      <!-- Property Type -->
+
+      <div class="col-md-3">
+
+        <select
+          class="form-select"
+          [(ngModel)]="selectedPropertyType">
+
+          <option value="">Property Type</option>
+          <option value="Apartment">Apartment</option>
+          <option value="House">House</option>
+          <option value="Villa">Villa</option>
+          <option value="Plot">Plot</option>
+
+        </select>
+
+      </div>
+
+
+      <!-- BHK -->
+
+      <div class="col-md-2">
+
+        <select
+          class="form-select"
+          [(ngModel)]="selectedBhk">
+
+          <option [ngValue]="0">BHK</option>
+          <option [ngValue]="1">1 BHK</option>
+          <option [ngValue]="2">2 BHK</option>
+          <option [ngValue]="3">3 BHK</option>
+          <option [ngValue]="4">4 BHK</option>
+          <option [ngValue]="5">5 BHK</option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Search Button -->
+
+      <div class="col-md-3">
+
+        <button
+          class="btn btn-primary w-100"
+          (click)="searchProperties()">
+
+          🔍 Search
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Browse Properties Button -->
+
+  <div class="text-center mt-4">
+
+    <a
+      routerLink="/properties"
+      class="btn btn-outline-primary">
+
+      Browse All Properties
+
+    </a>
+
+  </div>
+
+<!-- Property Statistics Section -->
+
+<div class="row text-center mt-5 mb-5">
+
+  <!-- Total Properties -->
+
+  <div class="col-md-4 mb-3">
+
+    <div class="card shadow-sm border-0 h-100">
+
+      <div class="card-body">
+
+        <h2 class="text-primary">
+          {{ totalProperties }}+
+        </h2>
+
+        <p class="mb-0 text-muted">
+          Total Properties
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Approved Properties -->
+
+  <div class="col-md-4 mb-3">
+
+    <div class="card shadow-sm border-0 h-100">
+
+      <div class="card-body">
+
+        <h2 class="text-success">
+          {{ approvedProperties }}+
+        </h2>
+
+        <p class="mb-0 text-muted">
+          Approved Properties
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Cities Covered -->
+
+  <div class="col-md-4 mb-3">
+
+    <div class="card shadow-sm border-0 h-100">
+
+      <div class="card-body">
+
+        <h2 class="text-warning">
+          {{ citiesCovered }}+
+        </h2>
+
+        <p class="mb-0 text-muted">
+          Cities Covered
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+  <!-- Featured Properties Section -->
+
+  <div class="mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+      <h2>Featured Properties</h2>
+
+      <a
+        routerLink="/properties"
+        class="btn btn-outline-primary">
+
+        View All
+
+      </a>
+
+    </div>
+
+
+    <div class="row">
+
+      <div
+        class="col-md-4 mb-4"
+        *ngFor="let property of featuredProperties">
+
+        <div class="card h-100 shadow-sm">
+
+          <img
+            [src]="property.imageUrl || 'https://via.placeholder.com/400x250'"
+            class="card-img-top"
+            alt="Property Image"
+            style="height: 220px; object-fit: cover;">
+
+          <div class="card-body">
+
+            <h5 class="card-title">
+              {{ property.title }}
+            </h5>
+
+            <p class="card-text">
+              📍 {{ property.location }}, {{ property.city }}
+            </p>
+
+            <p class="card-text">
+              🏠 {{ property.propertyType }}
+              &nbsp; | &nbsp;
+              🛏️ {{ property.bhk }} BHK
+            </p>
+
+            <h5 class="text-primary">
+              ₹{{ property.price | number }}
+            </h5>
+
+            <p class="card-text">
+              {{ property.area }} sq.ft
+            </p>
+
+            <a
+              class="btn btn-primary w-100"
+              [routerLink]="['/properties', property.propertyId]">
+
+              View Details
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- No Featured Properties -->
+
+    <div
+      *ngIf="featuredProperties.length === 0"
+      class="text-center text-muted">
+
+      <p>No featured properties available.</p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Footer -->
+<footer class="footer-section mt-5">
+  <div class="container py-4">
+    <div class="row">
+
+      <div class="col-md-6">
+        <h4>Prime Homes</h4>
+        <p>
+          Find your dream home with Prime Homes.
+          Buy, sell and discover properties easily.
+        </p>
+      </div>
+
+      <div class="col-md-3">
+        <h5>Quick Links</h5>
+        <a routerLink="/">Home</a>
+        <a routerLink="/properties">Properties</a>
+      </div>
+
+      <div class="col-md-3">
+        <h5>Contact</h5>
+        <p>Email: info@primehomes.com</p>
+        <p>Hyderabad, India</p>
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="text-center">
+      <small>© 2026 Prime Homes. All Rights Reserved.</small>
+    </div>
+  </div>
+</footer>

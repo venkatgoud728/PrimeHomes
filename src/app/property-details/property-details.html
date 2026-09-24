@@ -1,0 +1,132 @@
+<div class="container mt-5 mb-5" *ngIf="property">
+
+  <div class="row g-4">
+
+    <!-- Left Side: Property Image -->
+    <div class="col-lg-7">
+
+      <div class="property-image-wrapper">
+        <img
+          [src]="property.imageUrl || 'https://via.placeholder.com/800x500?text=Prime+Homes'"
+          class="property-main-image"
+          alt="Property Image">
+      </div>
+
+    </div>
+
+    <!-- Right Side: Property Information -->
+    <div class="col-lg-5">
+
+      <div class="property-info-card">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="badge bg-success">Approved</span>
+
+          <span class="text-muted">
+            {{ property.propertyType }}
+          </span>
+        </div>
+
+        <h2 class="property-title">
+          {{ property.title }}
+        </h2>
+
+        <p class="property-location">
+          📍 {{ property.location }}, {{ property.city }}
+        </p>
+
+        <h3 class="property-price">
+          ₹{{ property.price | number }}
+        </h3>
+
+        <hr>
+
+        <!-- Property Features -->
+        <div class="row text-center property-features">
+
+          <div class="col-4">
+            <div class="feature-box">
+              <h5>🛏</h5>
+              <strong>{{ property.bhk }} BHK</strong>
+              <small>Bedrooms</small>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="feature-box">
+              <h5>📐</h5>
+              <strong>{{ property.area }}</strong>
+              <small>Sq.ft Area</small>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="feature-box">
+              <h5>🏠</h5>
+              <strong>{{ property.propertyType }}</strong>
+              <small>Property Type</small>
+            </div>
+          </div>
+
+        </div>
+
+        <hr>
+
+        <!-- Description -->
+        <h5 class="section-title">About This Property</h5>
+
+        <p class="description">
+          {{ property.description }}
+        </p>
+
+        <!-- Buyer Inquiry -->
+        <div *ngIf="isLoggedIn && userRole === 'Buyer'" class="inquiry-section">
+
+          <h5 class="section-title">Interested in this property?</h5>
+
+          <p class="text-muted">
+            Send a message to the property owner.
+          </p>
+
+          <textarea
+            class="form-control mb-3"
+            rows="4"
+            placeholder="Enter your message..."
+            [(ngModel)]="inquiryMessage">
+          </textarea>
+
+          <button
+            class="btn btn-primary w-100"
+            (click)="sendInquiry()">
+
+            Send Inquiry to Owner
+
+          </button>
+
+        </div>
+
+        <!-- Non-Buyer Message -->
+        <div
+          *ngIf="!isLoggedIn || userRole !== 'Buyer'"
+          class="alert alert-info mt-4">
+
+          Login as a Buyer to send an inquiry to the property owner.
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Loading / Not Found -->
+<div class="container mt-5" *ngIf="!property">
+
+  <div class="alert alert-warning">
+    Loading property details...
+  </div>
+
+</div>

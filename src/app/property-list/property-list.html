@@ -1,0 +1,157 @@
+ <div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="fw-bold">Available Properties</h2>
+      <p class="text-muted">Find a property that matches your requirements.</p>
+    </div>
+
+    <span class="badge bg-primary fs-6">
+      {{ filteredProperties.length }} Properties Found
+    </span>
+  </div>
+
+  <!-- Search and Filters -->
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body">
+      <div class="row g-3">
+
+        <div class="col-md-4">
+          <label class="form-label">Search Location</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter city or location"
+            [(ngModel)]="searchText"
+            (input)="applyFilters()">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Property Type</label>
+          <select
+            class="form-select"
+            [(ngModel)]="selectedPropertyType"
+            (change)="applyFilters()">
+
+            <option value="">All Types</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Villa">Villa</option>
+            <option value="Independent House">Independent House</option>
+            <option value="Plot">Plot</option>
+
+          </select>
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">BHK</label>
+          <select
+            class="form-select"
+            [(ngModel)]="selectedBhk"
+            (change)="applyFilters()">
+
+            <option [ngValue]="0">All</option>
+            <option [ngValue]="1">1 BHK</option>
+            <option [ngValue]="2">2 BHK</option>
+            <option [ngValue]="3">3 BHK</option>
+            <option [ngValue]="4">4 BHK</option>
+
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Maximum Price</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Enter maximum price"
+            [(ngModel)]="maxPrice"
+            (input)="applyFilters()">
+        </div>
+
+      </div>
+
+      <div class="text-end mt-3">
+        <button class="btn btn-outline-secondary" (click)="clearFilters()">
+          Clear Filters
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Property Cards -->
+  <div class="row g-4">
+
+    <div
+      class="col-lg-4 col-md-6"
+      *ngFor="let property of filteredProperties">
+
+      <div class="card property-card h-100 shadow-sm border-0">
+
+        <img
+          [src]="property.imageUrl || 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6'"
+          class="card-img-top property-image"
+          alt="Property Image">
+
+        <div class="card-body">
+
+          <div class="d-flex justify-content-between mb-2">
+            <span class="badge bg-success">
+              {{ property.status }}
+            </span>
+
+            <span class="text-muted">
+              {{ property.propertyType }}
+            </span>
+          </div>
+
+          <h5 class="card-title">
+            {{ property.title }}
+          </h5>
+
+          <p class="text-muted mb-2">
+            📍 {{ property.city }}
+          </p>
+
+          <p class="property-description">
+            {{ property.description }}
+          </p>
+
+          <div class="property-details">
+            <span>🛏 {{ property.bhk }} BHK</span>
+            <span>📐 {{ property.area }} sq.ft</span>
+          </div>
+
+          <h5 class="text-primary mt-3">
+            ₹{{ property.price | number }}
+          </h5>
+
+        </div>
+
+        <div class="card-footer bg-white border-0 pb-3 px-3">
+          <button
+            class="btn btn-primary w-100"
+            [routerLink]="['/property-details', property.propertyId]">
+
+            View Details
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- No Properties -->
+  <div
+    *ngIf="filteredProperties.length === 0"
+    class="text-center py-5">
+
+    <h4>No properties found</h4>
+    <p class="text-muted">
+      Try changing your search filters.
+    </p>
+
+  </div>
+
+</div>

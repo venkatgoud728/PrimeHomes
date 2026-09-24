@@ -1,0 +1,200 @@
+<div class="container py-5">
+
+  <div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+      <div class="card shadow border-0">
+
+        <div class="card-body p-4">
+
+          <h2 class="mb-4 text-center">
+            {{ isEditMode ? 'Edit Property' : 'Add New Property' }}
+          </h2>
+
+          <form (ngSubmit)="uploadSelectedImage()" #propertyForm="ngForm">
+
+            <!-- Property Title -->
+            <div class="mb-3">
+              <label class="form-label">Property Title</label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="title"
+                [(ngModel)]="property.title"
+                placeholder="Enter property title"
+                required>
+            </div>
+
+
+            <!-- Description -->
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+
+              <textarea
+                class="form-control"
+                name="description"
+                [(ngModel)]="property.description"
+                rows="4"
+                placeholder="Enter property description"
+                required>
+              </textarea>
+            </div>
+
+
+            <!-- Property Type -->
+            <div class="mb-3">
+              <label class="form-label">Property Type</label>
+
+              <select
+                class="form-select"
+                name="propertyType"
+                [(ngModel)]="property.propertyType"
+                required>
+
+                <option value="">Select Property Type</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Villa">Villa</option>
+                <option value="House">House</option>
+                <option value="Plot">Plot</option>
+                <option value="Commercial">Commercial</option>
+
+              </select>
+            </div>
+
+
+            <!-- BHK and Area -->
+            <div class="row">
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">BHK</label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  name="bhk"
+                  [(ngModel)]="property.bhk"
+                  min="0"
+                  placeholder="Enter BHK">
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Area (Sq. Ft.)</label>
+
+                <input
+                  type="number"
+                  class="form-control"
+                  name="area"
+                  [(ngModel)]="property.area"
+                  min="0"
+                  placeholder="Enter area">
+              </div>
+
+            </div>
+
+
+            <!-- Price -->
+            <div class="mb-3">
+              <label class="form-label">Price</label>
+
+              <input
+                type="number"
+                class="form-control"
+                name="price"
+                [(ngModel)]="property.price"
+                min="0"
+                placeholder="Enter property price"
+                required>
+            </div>
+
+
+            <!-- Location -->
+            <div class="mb-3">
+              <label class="form-label">Location</label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="location"
+                [(ngModel)]="property.location"
+                placeholder="Enter location"
+                required>
+            </div>
+
+
+            <!-- City -->
+            <div class="mb-3">
+              <label class="form-label">City</label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                [(ngModel)]="property.city"
+                placeholder="Enter city"
+                required>
+            </div>
+
+
+            <!-- Image Upload -->
+            <div class="mb-3">
+
+              <label class="form-label">Property Image</label>
+
+              <input
+                type="file"
+                class="form-control"
+                accept="image/*"
+                (change)="onFileSelected($event)">
+
+              <small class="text-muted">
+                Select a JPG, JPEG, or PNG image.
+              </small>
+
+            </div>
+
+
+            <!-- Image Preview -->
+            <div
+              class="mb-4 text-center"
+              *ngIf="imagePreview">
+
+              <label class="form-label d-block">
+                Image Preview
+              </label>
+
+              <img
+                [src]="imagePreview"
+                alt="Property Preview"
+                class="img-fluid rounded shadow"
+                style="max-height: 300px; object-fit: cover;">
+
+            </div>
+
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg"
+                [disabled]="propertyForm.invalid">
+
+                {{ isEditMode ? 'Update Property' : 'Add Property' }}
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

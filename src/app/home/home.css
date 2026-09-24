@@ -1,0 +1,199 @@
+/* Home Page */
+
+/* Hero Section */
+
+/* Hero Banner */
+
+.hero-banner {
+  background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6');
+  background-size: cover;
+  background-position: center;
+  min-height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  width: 100%;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.hero-overlay h1 {
+  color: white;
+  font-size: 3rem;
+}
+
+.hero-overlay .lead {
+  color: white;
+}
+
+
+
+
+
+.container {
+  max-width: 1200px;
+}
+
+h1 {
+  color: #1f2937;
+}
+
+.lead {
+  color: #6b7280;
+}
+
+
+/* Search Section */
+
+.card {
+  border-radius: 15px;
+}
+
+.card-body {
+  border-radius: 15px;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+  min-height: 42px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+
+/* Buttons */
+
+.btn {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+
+/* Statistics Cards */
+
+.row.text-center .card {
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.row.text-center .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+.row.text-center h2 {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+
+/* Featured Properties */
+
+.card-img-top {
+  border-radius: 15px 15px 0 0;
+}
+
+.mt-5 .card {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mt-5 .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.text-primary {
+  font-weight: 700;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  .search-section {
+    padding: 20px;
+  }
+
+  .row.text-center {
+    margin-top: 30px !important;
+  }
+
+  .featured-properties {
+    margin-top: 30px !important;
+  }
+
+}
+
+
+.footer-section {
+  background: #1f2937;
+  color: white;
+}
+
+.footer-section h4,
+.footer-section h5 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.footer-section p {
+  color: #d1d5db;
+  margin-bottom: 8px;
+}
+
+.footer-section a {
+  display: block;
+  color: #d1d5db;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.footer-section a:hover {
+  color: white;
+}
+
+.footer-section hr {
+  border-color: #4b5563;
+}
+
+.footer-section small {
+  color: #9ca3af;
+}

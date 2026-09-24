@@ -1,0 +1,98 @@
+<div class="container mt-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+      <h2>My Properties</h2>
+
+      <p class="text-muted">
+        Properties listed by you
+      </p>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div
+      class="col-md-4 mb-4"
+      *ngFor="let property of properties">
+
+      <div class="card h-100 shadow-sm">
+
+        <img
+          [src]="property.imageUrl || 'https://via.placeholder.com/400x250'"
+          class="card-img-top"
+          alt="Property Image"
+          style="height: 220px; object-fit: cover;"
+        >
+
+        <div class="card-body">
+
+          <h5 class="card-title">
+            {{ property.title }}
+          </h5>
+
+          <p class="text-muted">
+            📍 {{ property.location }}, {{ property.city }}
+          </p>
+
+          <p>
+            🏠 {{ property.propertyType }}
+            &nbsp; | &nbsp;
+            🛏️ {{ property.bhk }} BHK
+          </p>
+
+          <h5 class="text-primary">
+            ₹{{ property.price | number }}
+          </h5>
+
+          <p>
+            📐 {{ property.area }} sq.ft
+          </p>
+
+          <p>
+            <strong>Status:</strong>
+
+            <span class="badge bg-warning text-dark">
+              {{ property.status }}
+            </span>
+          </p>
+
+         <div class="d-flex gap-2 mt-3">
+
+  <button
+    class="btn btn-primary flex-fill"
+    (click)="editProperty(property)">
+    Edit
+  </button>
+
+  <button
+    class="btn btn-danger flex-fill"
+    (click)="deleteProperty(property)">
+    Delete
+  </button>
+
+</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div
+    *ngIf="properties.length === 0"
+    class="text-center text-muted mt-5">
+
+    <h5>No properties found.</h5>
+
+    <p>Add your first property to get started.</p>
+
+  </div>
+
+</div>

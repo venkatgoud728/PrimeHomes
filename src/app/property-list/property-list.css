@@ -1,0 +1,55 @@
+.property-card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.property-image {
+  height: 220px;
+  object-fit: cover;
+}
+
+.property-card .card-title {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.property-description {
+  color: #6b7280;
+  font-size: 14px;
+  min-height: 45px;
+}
+
+.property-details {
+  display: flex;
+  justify-content: space-between;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.property-card .card-footer {
+  margin-top: auto;
+}
+
+.property-card .btn {
+  border-radius: 8px;
+}
+
+.badge {
+  border-radius: 20px;
+  padding: 7px 10px;
+}
+
+@media (max-width: 768px) {
+  .property-image {
+    height: 200px;
+  }
+}

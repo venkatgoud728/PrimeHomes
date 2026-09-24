@@ -1,0 +1,106 @@
+<div class="container mt-5">
+
+  <div class="mb-4">
+    <h2>My Inquiries</h2>
+
+    <p class="text-muted">
+      View and manage inquiries received for your properties.
+    </p>
+  </div>
+
+  <div *ngIf="inquiries.length === 0"
+       class="text-center text-muted mt-5">
+
+    <h5>No inquiries found.</h5>
+
+    <p>Buyer inquiries for your properties will appear here.</p>
+
+  </div>
+
+  <div class="table-responsive"
+       *ngIf="inquiries.length > 0">
+
+    <table class="table table-bordered table-hover align-middle">
+
+      <thead class="table-primary">
+
+        <tr>
+          <th>Inquiry ID</th>
+          <th>Property Title</th>
+          <th>Property ID</th>
+          <th>Buyer ID</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Created Date</th>
+          <th>Action</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let inquiry of inquiries">
+
+          <td>{{ inquiry.inquiryId }}</td>
+
+          <td>{{ inquiry.propertyTitle }}</td>
+
+          <td>{{ inquiry.propertyId }}</td>
+
+          <td>{{ inquiry.buyerId }}</td>
+
+          <td>{{ inquiry.message }}</td>
+
+          <td>
+
+            <span
+              class="badge"
+              [ngClass]="{
+                'bg-warning text-dark': inquiry.status === 'New',
+                'bg-info text-dark': inquiry.status === 'Contacted',
+                'bg-success': inquiry.status === 'Closed'
+              }">
+
+              {{ inquiry.status }}
+
+            </span>
+
+          </td>
+
+          <td>
+            {{ inquiry.createdDate | date:'dd-MM-yyyy hh:mm a' }}
+          </td>
+
+          <td>
+
+            <div class="d-flex gap-2">
+
+              <button
+                class="btn btn-sm btn-info"
+                (click)="updateStatus(inquiry, 'Contacted')">
+
+                Contacted
+
+              </button>
+
+              <button
+                class="btn btn-sm btn-success"
+                (click)="updateStatus(inquiry, 'Closed')">
+
+                Closed
+
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
