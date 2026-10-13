@@ -50,7 +50,7 @@ export class Login {
   window.location.href = '/owner-dashboard';
 }
 else if (response.role === 'Buyer') {
-  window.location.href = '/properties';
+  window.location.href = '/buyer-dashboard';
 }
 else if (response.role === 'Admin') {
   window.location.href = '/admin-dashboard';

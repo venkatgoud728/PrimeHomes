@@ -1,1 +1,306 @@
 /* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   PRIME HOMES - LUXURY REAL ESTATE THEME
+   ========================================================= */
+
+:root {
+  --ph-dark: #050A18;
+  --ph-dark-secondary: #0B1326;
+  --ph-card: #111A2E;
+
+  --ph-gold: #D4AF5A;
+  --ph-gold-light: #E6C978;
+  --ph-gold-dark: #A77B2E;
+
+  --ph-white: #FFFFFF;
+  --ph-text-light: #D7D9E0;
+  --ph-text-muted: #9FA6B5;
+
+  --ph-border: rgba(212, 175, 90, 0.30);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      #17243D 0%,
+      #0B1326 35%,
+      #050A18 75%
+    );
+
+  background-attachment: fixed;
+
+  color: var(--ph-white);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+  background: rgba(5, 10, 24, 0.97) !important;
+
+  border-bottom: 1px solid var(--ph-border);
+
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.navbar-brand {
+  color: var(--ph-gold) !important;
+
+  font-weight: 700;
+}
+
+.navbar-brand:hover {
+  color: var(--ph-gold-light) !important;
+}
+
+.navbar .nav-link {
+  color: var(--ph-text-light) !important;
+
+  transition: all 0.25s ease;
+}
+
+.navbar .nav-link:hover {
+  color: var(--ph-gold-light) !important;
+}
+
+.navbar .nav-link.active {
+  color: var(--ph-gold-light) !important;
+
+  font-weight: 600;
+
+  border-bottom: 2px solid var(--ph-gold);
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn-primary {
+  background:
+    linear-gradient(
+      135deg,
+      var(--ph-gold),
+      var(--ph-gold-dark)
+    ) !important;
+
+  border: none !important;
+
+  color: var(--ph-dark) !important;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 4px 12px rgba(212, 175, 90, 0.20);
+}
+
+.btn-primary:hover {
+  background:
+    linear-gradient(
+      135deg,
+      var(--ph-gold-light),
+      var(--ph-gold)
+    ) !important;
+
+  color: var(--ph-dark) !important;
+
+  transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+  color: var(--ph-gold) !important;
+
+  border-color: var(--ph-gold) !important;
+}
+
+.btn-outline-primary:hover {
+  background: var(--ph-gold) !important;
+
+  color: var(--ph-dark) !important;
+}
+
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+  background: var(--ph-card);
+
+  color: var(--ph-white);
+
+  border: 1px solid var(--ph-border);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.card-title {
+  color: var(--ph-white);
+}
+
+.card-text {
+  color: var(--ph-text-light);
+}
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--ph-white);
+}
+
+.text-primary {
+  color: var(--ph-gold) !important;
+}
+
+
+/* =========================================================
+   MUTED TEXT
+   ========================================================= */
+
+.text-muted {
+  color: var(--ph-text-muted) !important;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.form-control,
+.form-select {
+  background: #0B1326;
+
+  color: var(--ph-white);
+
+  border: 1px solid rgba(212, 175, 90, 0.25);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background: #0B1326;
+
+  color: var(--ph-white);
+
+  border-color: var(--ph-gold);
+
+  box-shadow:
+    0 0 0 0.2rem rgba(212, 175, 90, 0.15);
+}
+
+.form-control::placeholder {
+  color: #8F96A5;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.table {
+  color: var(--ph-text-light);
+}
+
+.table th {
+  background: #17243D;
+
+  color: var(--ph-gold-light);
+
+  border-color: var(--ph-border);
+}
+
+.table td {
+  background: var(--ph-card);
+
+  color: var(--ph-text-light);
+
+  border-color: rgba(212, 175, 90, 0.15);
+}
+
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.alert {
+  background: var(--ph-card);
+
+  color: var(--ph-text-light);
+
+  border-color: var(--ph-border);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color: var(--ph-gold);
+}
+
+a:hover {
+  color: var(--ph-gold-light);
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge {
+  border-radius: 6px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ph-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ph-gold-dark);
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ph-gold);
+}

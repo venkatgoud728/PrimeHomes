@@ -1,0 +1,319 @@
+<p>compare-properties works!</p>
+<div class="container mt-5 mb-5">
+
+  <!-- Page Header -->
+
+  <div class="compare-header">
+
+    <div>
+      <h2 class="fw-bold mb-2">
+        ⚖ Compare Properties
+      </h2>
+
+      <p class="text-muted mb-0">
+        Compare your selected properties side by side.
+      </p>
+    </div>
+
+    <div
+      *ngIf="compareProperties.length > 0"
+      class="compare-count">
+
+      {{ compareProperties.length }} / 3 Selected
+
+    </div>
+
+  </div>
+
+
+  <!-- Empty Comparison -->
+
+  <div
+    *ngIf="compareProperties.length === 0"
+    class="empty-compare">
+
+    <div class="empty-icon">
+      ⚖
+    </div>
+
+    <h3>
+      No Properties to Compare
+    </h3>
+
+    <p class="text-muted">
+      Select up to 3 properties from the Properties page
+      to compare them side by side.
+    </p>
+
+    <a
+      routerLink="/properties"
+      class="btn btn-primary">
+
+      Browse Properties
+
+    </a>
+
+  </div>
+
+
+  <!-- Comparison Content -->
+
+  <div
+    *ngIf="compareProperties.length > 0"
+    class="comparison-wrapper">
+
+    <!-- Toolbar -->
+
+    <div class="comparison-toolbar">
+
+      <span class="text-muted">
+        Comparing {{ compareProperties.length }} properties
+      </span>
+
+      <button
+        type="button"
+        class="btn btn-outline-danger btn-sm"
+        (click)="clearComparison()">
+
+        Clear Comparison
+
+      </button>
+
+    </div>
+
+
+    <!-- Comparison Table -->
+
+    <div class="table-responsive">
+
+      <table class="table comparison-table">
+
+        <!-- Property Header -->
+
+        <thead>
+
+          <tr>
+
+            <th class="feature-column">
+              Property Details
+            </th>
+
+            <th
+              *ngFor="let property of compareProperties"
+              class="property-column">
+
+              <div class="property-image-container">
+
+                <img
+                  [src]="property.imageUrl || 'https://via.placeholder.com/600x400?text=Prime+Homes'"
+                  [alt]="property.title"
+                  class="property-image">
+
+              </div>
+
+              <h4 class="property-title">
+                {{ property.title }}
+              </h4>
+
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <!-- Comparison Details -->
+
+        <tbody>
+
+          <!-- Price -->
+
+          <tr>
+
+            <td class="feature-name">
+              💰 Price
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              <strong class="property-price">
+                ₹{{ property.price | number }}
+              </strong>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Property Type -->
+
+          <tr>
+
+            <td class="feature-name">
+              🏠 Property Type
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              {{ property.propertyType }}
+
+            </td>
+
+          </tr>
+
+
+          <!-- BHK -->
+
+          <tr>
+
+            <td class="feature-name">
+              🛏 BHK
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              {{ property.bhk }} BHK
+
+            </td>
+
+          </tr>
+
+
+          <!-- Area -->
+
+          <tr>
+
+            <td class="feature-name">
+              📐 Area
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              {{ property.area }} Sq.ft
+
+            </td>
+
+          </tr>
+
+
+          <!-- Location -->
+
+          <tr>
+
+            <td class="feature-name">
+              📍 Location
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              {{ property.location }}
+
+            </td>
+
+          </tr>
+
+
+          <!-- City -->
+
+          <tr>
+
+            <td class="feature-name">
+              🌆 City
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              {{ property.city }}
+
+            </td>
+
+          </tr>
+
+
+          <!-- Status -->
+
+          <tr>
+
+            <td class="feature-name">
+              ✓ Status
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              <span class="property-status">
+                {{ property.status }}
+              </span>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Description -->
+
+          <tr>
+
+            <td class="feature-name">
+              📝 Description
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              <div class="description">
+
+                {{ property.description }}
+
+              </div>
+
+            </td>
+
+          </tr>
+
+
+          <!-- Actions -->
+
+          <tr>
+
+            <td class="feature-name">
+              Actions
+            </td>
+
+            <td *ngFor="let property of compareProperties">
+
+              <div class="property-actions">
+
+                <a
+                  [routerLink]="[
+                    '/properties',
+                    property.propertyId
+                  ]"
+                  class="btn btn-primary btn-sm">
+
+                  View Details
+
+                </a>
+
+                <button
+                  type="button"
+                  class="btn btn-outline-danger btn-sm"
+                  (click)="removeFromCompare(property.propertyId)">
+
+                  Remove
+
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,27 +1,29 @@
 <div class="container mt-5">
 
-  
+  <!-- =========================================================
+       HERO BANNER SECTION
+       ========================================================= -->
 
-  <!-- Hero Banner Section -->
+  <div class="hero-banner text-center text-white">
 
-<div class="hero-banner text-center text-white">
+    <div class="hero-overlay">
 
-  <div class="hero-overlay">
+      <h1 class="display-4 fw-bold">
+        Find Your Dream Home
+      </h1>
 
-    <h1 class="display-4 fw-bold">
-      Find Your Dream Home
-    </h1>
+      <p class="lead">
+        Buy, sell and discover properties with Prime Homes
+      </p>
 
-    <p class="lead">
-      Buy, sell and discover properties with Prime Homes
-    </p>
+    </div>
 
   </div>
 
-</div>
 
-
-  <!-- Search Section -->
+  <!-- =========================================================
+       SEARCH SECTION
+       ========================================================= -->
 
   <div class="card shadow p-4 mt-4">
 
@@ -52,11 +54,25 @@
           class="form-select"
           [(ngModel)]="selectedPropertyType">
 
-          <option value="">Property Type</option>
-          <option value="Apartment">Apartment</option>
-          <option value="House">House</option>
-          <option value="Villa">Villa</option>
-          <option value="Plot">Plot</option>
+          <option value="">
+            Property Type
+          </option>
+
+          <option value="Apartment">
+            Apartment
+          </option>
+
+          <option value="House">
+            House
+          </option>
+
+          <option value="Villa">
+            Villa
+          </option>
+
+          <option value="Plot">
+            Plot
+          </option>
 
         </select>
 
@@ -71,12 +87,29 @@
           class="form-select"
           [(ngModel)]="selectedBhk">
 
-          <option [ngValue]="0">BHK</option>
-          <option [ngValue]="1">1 BHK</option>
-          <option [ngValue]="2">2 BHK</option>
-          <option [ngValue]="3">3 BHK</option>
-          <option [ngValue]="4">4 BHK</option>
-          <option [ngValue]="5">5 BHK</option>
+          <option [ngValue]="0">
+            BHK
+          </option>
+
+          <option [ngValue]="1">
+            1 BHK
+          </option>
+
+          <option [ngValue]="2">
+            2 BHK
+          </option>
+
+          <option [ngValue]="3">
+            3 BHK
+          </option>
+
+          <option [ngValue]="4">
+            4 BHK
+          </option>
+
+          <option [ngValue]="5">
+            5 BHK
+          </option>
 
         </select>
 
@@ -102,7 +135,9 @@
   </div>
 
 
-  <!-- Browse Properties Button -->
+  <!-- =========================================================
+       BROWSE PROPERTIES BUTTON
+       ========================================================= -->
 
   <div class="text-center mt-4">
 
@@ -116,25 +151,76 @@
 
   </div>
 
-<!-- Property Statistics Section -->
 
-<div class="row text-center mt-5 mb-5">
+  <!-- =========================================================
+       PROPERTY STATISTICS SECTION
+       ========================================================= -->
 
-  <!-- Total Properties -->
+  <div class="row text-center mt-5 mb-5">
 
-  <div class="col-md-4 mb-3">
+    <!-- Total Properties -->
 
-    <div class="card shadow-sm border-0 h-100">
+    <div class="col-md-4 mb-3">
 
-      <div class="card-body">
+      <div class="card shadow-sm border-0 h-100">
 
-        <h2 class="text-primary">
-          {{ totalProperties }}+
-        </h2>
+        <div class="card-body">
 
-        <p class="mb-0 text-muted">
-          Total Properties
-        </p>
+          <h2 class="text-primary">
+            {{ totalProperties }}+
+          </h2>
+
+          <p class="mb-0 text-muted">
+            Total Properties
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Approved Properties -->
+
+    <div class="col-md-4 mb-3">
+
+      <div class="card shadow-sm border-0 h-100">
+
+        <div class="card-body">
+
+          <h2 class="text-success">
+            {{ approvedProperties }}+
+          </h2>
+
+          <p class="mb-0 text-muted">
+            Approved Properties
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Cities Covered -->
+
+    <div class="col-md-4 mb-3">
+
+      <div class="card shadow-sm border-0 h-100">
+
+        <div class="card-body">
+
+          <h2 class="text-warning">
+            {{ citiesCovered }}+
+          </h2>
+
+          <p class="mb-0 text-muted">
+            Cities Covered
+          </p>
+
+        </div>
 
       </div>
 
@@ -143,62 +229,17 @@
   </div>
 
 
-  <!-- Approved Properties -->
-
-  <div class="col-md-4 mb-3">
-
-    <div class="card shadow-sm border-0 h-100">
-
-      <div class="card-body">
-
-        <h2 class="text-success">
-          {{ approvedProperties }}+
-        </h2>
-
-        <p class="mb-0 text-muted">
-          Approved Properties
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- Cities Covered -->
-
-  <div class="col-md-4 mb-3">
-
-    <div class="card shadow-sm border-0 h-100">
-
-      <div class="card-body">
-
-        <h2 class="text-warning">
-          {{ citiesCovered }}+
-        </h2>
-
-        <p class="mb-0 text-muted">
-          Cities Covered
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-  <!-- Featured Properties Section -->
+  <!-- =========================================================
+       FEATURED PROPERTIES SECTION
+       ========================================================= -->
 
   <div class="mt-5">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
 
-      <h2>Featured Properties</h2>
+      <h2>
+        Featured Properties
+      </h2>
 
       <a
         routerLink="/properties"
@@ -225,29 +266,46 @@
             alt="Property Image"
             style="height: 220px; object-fit: cover;">
 
+
           <div class="card-body">
 
             <h5 class="card-title">
               {{ property.title }}
             </h5>
 
-            <p class="card-text">
-              📍 {{ property.location }}, {{ property.city }}
-            </p>
 
             <p class="card-text">
-              🏠 {{ property.propertyType }}
-              &nbsp; | &nbsp;
-              🛏️ {{ property.bhk }} BHK
+
+              📍 {{ property.location }},
+              {{ property.city }}
+
             </p>
+
+
+            <p class="card-text">
+
+              🏠 {{ property.propertyType }}
+
+              &nbsp; | &nbsp;
+
+              🛏️ {{ property.bhk }} BHK
+
+            </p>
+
 
             <h5 class="text-primary">
+
               ₹{{ property.price | number }}
+
             </h5>
 
+
             <p class="card-text">
+
               {{ property.area }} sq.ft
+
             </p>
+
 
             <a
               class="btn btn-primary w-100"
@@ -272,7 +330,9 @@
       *ngIf="featuredProperties.length === 0"
       class="text-center text-muted">
 
-      <p>No featured properties available.</p>
+      <p>
+        No featured properties available.
+      </p>
 
     </div>
 
@@ -281,37 +341,257 @@
 </div>
 
 
-<!-- Footer -->
-<footer class="footer-section mt-5">
-  <div class="container py-4">
-    <div class="row">
+<!-- =========================================================
+     ABOUT PRIME HOMES
+     ========================================================= -->
 
-      <div class="col-md-6">
-        <h4>Prime Homes</h4>
-        <p>
-          Find your dream home with Prime Homes.
-          Buy, sell and discover properties easily.
-        </p>
+<section class="about-primehomes">
+
+  <div class="about-primehomes-container">
+
+
+    <!-- LEFT SIDE - CONTENT -->
+
+    <div class="about-primehomes-content">
+
+      <div class="about-label">
+        ABOUT PRIME HOMES 🏘️
       </div>
 
-      <div class="col-md-3">
-        <h5>Quick Links</h5>
-        <a routerLink="/">Home</a>
-        <a routerLink="/properties">Properties</a>
+
+      <h2>
+        Your Dream Begins Here
+      </h2>
+
+
+      <p>
+
+        <strong>PrimeHomes</strong> is your trusted destination for
+        discovering beautiful homes, premium apartments, luxury villas,
+        and investment properties in desirable locations.
+
+      </p>
+
+
+      <p>
+
+        We bring together carefully selected properties with modern
+        features, attractive locations, and comfortable living spaces
+        to help you find a home that truly fits your lifestyle.
+
+      </p>
+
+
+      <p>
+
+        Whether you are looking to
+        <strong>buy your dream home</strong>,
+        find the perfect property, or explore a valuable investment,
+        PrimeHomes makes your property journey simple and convenient.
+
+      </p>
+
+
+      <!-- About Highlights -->
+
+      <div class="about-highlights">
+
+
+        <div class="about-highlight">
+
+          <span class="highlight-icon">
+            🏠
+          </span>
+
+          <div>
+
+            <strong>
+              Premium Homes
+            </strong>
+
+            <small>
+              Quality properties
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-highlight">
+
+          <span class="highlight-icon">
+            📍
+          </span>
+
+          <div>
+
+            <strong>
+              Prime Locations
+            </strong>
+
+            <small>
+              Desirable addresses
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="about-highlight">
+
+          <span class="highlight-icon">
+            ✨
+          </span>
+
+          <div>
+
+            <strong>
+              Better Living
+            </strong>
+
+            <small>
+              Designed for you
+            </small>
+
+          </div>
+
+        </div>
+
+
       </div>
 
-      <div class="col-md-3">
-        <h5>Contact</h5>
-        <p>Email: info@primehomes.com</p>
-        <p>Hyderabad, India</p>
+
+      <!-- Explore Properties -->
+
+      <a
+        routerLink="/properties"
+        class="about-explore-button">
+
+        Explore Properties
+
+      </a>
+
+    </div>
+
+
+    <!-- RIGHT SIDE - IMAGE -->
+
+    <div class="about-primehomes-image">
+
+      <img
+        src="/images/villa.jpg"
+        alt="Luxury Villa - PrimeHomes"
+      >
+
+      <div class="image-overlay"></div>
+
+      <div class="image-caption">
+
       </div>
 
     </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     REQUEST A CALL BACK
+     ========================================================= -->
+
+<app-contact-request></app-contact-request>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="footer-section mt-5">
+
+  <div class="container py-4">
+
+    <div class="row">
+
+
+      <!-- Prime Homes -->
+
+      <div class="col-md-6">
+
+        <h5>
+          🏠 Prime Homes
+        </h5>
+
+        <p>
+
+          Find your dream home with Prime Homes.
+          Buy, sell and discover properties easily.
+
+        </p>
+
+      </div>
+
+
+      <!-- Quick Links -->
+
+      <div class="col-md-3">
+
+        <h5>
+          Quick Links
+        </h5>
+
+        <a routerLink="/">
+          Home
+        </a>
+
+        <a routerLink="/properties">
+          Properties
+        </a>
+
+      </div>
+
+
+      <!-- Contact -->
+
+      <div class="col-md-3">
+
+        <h5>
+          Contact
+        </h5>
+
+        <p>
+          Email: info@primehomes.com
+        </p>
+
+        <p>
+          Hyderabad, India
+        </p>
+
+      </div>
+
+    </div>
+
 
     <hr>
 
+
     <div class="text-center">
-      <small>© 2026 Prime Homes. All Rights Reserved.</small>
+
+      <small>
+        © 2026 Prime Homes. All Rights Reserved.
+      </small>
+
     </div>
+
   </div>
+
 </footer>
+
+
+<!-- =========================================================
+     CHATBOT
+     ========================================================= -->
+
+<app-chatbot></app-chatbot>

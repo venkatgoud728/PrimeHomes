@@ -1,0 +1,230 @@
+.compare-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.compare-header h2 {
+  color: var(--ph-white);
+}
+
+.compare-count {
+  padding: 8px 16px;
+  border: 1px solid var(--ph-gold);
+  border-radius: 20px;
+  color: var(--ph-gold-light);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+
+/* ==========================================
+   Empty Comparison
+========================================== */
+
+.empty-compare {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--ph-card);
+  border: 1px solid var(--ph-border);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .35);
+}
+
+.empty-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  color: var(--ph-gold);
+}
+
+.empty-compare h3 {
+  color: var(--ph-white);
+  margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   Comparison Toolbar
+========================================== */
+
+.comparison-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+
+/* ==========================================
+   Comparison Table
+========================================== */
+
+.table-responsive {
+  border-radius: 14px;
+  overflow-x: auto;
+  border: 1px solid var(--ph-border);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .35);
+}
+
+.comparison-table {
+  min-width: 850px;
+  margin-bottom: 0;
+  background: var(--ph-card);
+  color: var(--ph-white);
+  vertical-align: middle;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 18px;
+  border-color: var(--ph-border);
+  background: var(--ph-card);
+  color: var(--ph-text-light);
+}
+
+.comparison-table thead th {
+  background: var(--ph-dark-secondary);
+  color: var(--ph-white);
+  text-align: center;
+  vertical-align: top;
+}
+
+.feature-column {
+  width: 180px;
+  min-width: 180px;
+  text-align: left !important;
+}
+
+.property-column {
+  min-width: 250px;
+  width: 280px;
+}
+
+
+/* ==========================================
+   Property Image
+========================================== */
+
+.property-image-container {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: var(--ph-dark);
+}
+
+.property-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ==========================================
+   Property Title
+========================================== */
+
+.property-title {
+  color: var(--ph-gold-light);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+
+/* ==========================================
+   Feature Names
+========================================== */
+
+.feature-name {
+  color: var(--ph-gold-light) !important;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+
+/* ==========================================
+   Property Price
+========================================== */
+
+.property-price {
+  color: var(--ph-gold-light);
+  font-size: 18px;
+}
+
+
+/* ==========================================
+   Property Status
+========================================== */
+
+.property-status {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 15px;
+  background: rgba(40, 167, 69, 0.20);
+  border: 1px solid #66D17A;
+  color: #66D17A;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* ==========================================
+   Description
+========================================== */
+
+.description {
+  max-width: 250px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+
+/* ==========================================
+   Property Actions
+========================================== */
+
+.property-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+
+  .compare-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .compare-count {
+    align-self: flex-start;
+  }
+
+  .comparison-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .comparison-table {
+    min-width: 800px;
+  }
+
+  .property-image-container,
+  .property-image {
+    height: 160px;
+  }
+
+}

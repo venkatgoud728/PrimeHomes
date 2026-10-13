@@ -1,0 +1,203 @@
+/* ==========================================
+   Prime Homes - User Profile
+========================================== */
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-header h2 {
+  color: var(--ph-gold-light);
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 7px 16px;
+  border: 1px solid var(--ph-gold);
+  border-radius: 20px;
+  color: var(--ph-gold-light);
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(212, 175, 90, 0.10);
+}
+
+
+/* ==========================================
+   Profile Cards
+========================================== */
+
+.profile-card {
+  background: var(--ph-card) !important;
+  border: 1px solid var(--ph-border) !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .35);
+}
+
+.profile-card .card-body {
+  padding: 28px;
+}
+
+
+/* ==========================================
+   Section Titles
+========================================== */
+
+.section-title {
+  color: var(--ph-gold-light);
+  font-weight: 700;
+  border-bottom: 1px solid var(--ph-border);
+  padding-bottom: 12px;
+}
+
+
+/* ==========================================
+   Profile Image
+========================================== */
+
+.profile-image-section {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--ph-border);
+}
+
+.profile-image-wrapper {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--ph-gold);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .45);
+  background: var(--ph-dark-secondary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-image-placeholder {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 65px;
+  color: var(--ph-gold-light);
+  background: var(--ph-dark-secondary);
+}
+
+.profile-image-section .form-control {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.profile-image-section .btn-outline-primary {
+  color: var(--ph-gold-light);
+  border-color: var(--ph-gold);
+  background: transparent;
+}
+
+.profile-image-section .btn-outline-primary:hover {
+  color: #111;
+  background: var(--ph-gold);
+  border-color: var(--ph-gold);
+}
+
+.profile-image-section .btn-outline-primary:disabled {
+  opacity: 0.55;
+}
+
+
+/* ==========================================
+   Form Controls
+========================================== */
+
+.profile-card .form-label {
+  color: var(--ph-text-light);
+  font-weight: 600;
+}
+
+.profile-card .form-control,
+.profile-card .form-select {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+  border: 1px solid var(--ph-border);
+  border-radius: 8px;
+}
+
+.profile-card .form-control::placeholder {
+  color: var(--ph-text-muted);
+}
+
+.profile-card .form-control:focus,
+.profile-card .form-select:focus {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+  border-color: var(--ph-gold);
+  box-shadow: 0 0 0 0.2rem rgba(212, 175, 90, 0.15);
+}
+
+.profile-card .form-select option {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+}
+
+
+/* ==========================================
+   Readonly Fields
+========================================== */
+
+.profile-card input[readonly] {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+
+/* ==========================================
+   Save Button
+========================================== */
+
+.profile-card .btn-primary {
+  min-width: 150px;
+}
+
+
+/* ==========================================
+   Mobile Responsive
+========================================== */
+
+@media (max-width: 768px) {
+
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-card .card-body {
+    padding: 20px;
+  }
+
+  .role-badge {
+    align-self: flex-start;
+  }
+
+  .profile-image-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-image-section .form-control {
+    max-width: 100%;
+  }
+
+}

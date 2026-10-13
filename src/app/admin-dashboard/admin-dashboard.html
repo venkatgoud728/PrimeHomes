@@ -1,66 +1,246 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
+
+  <!-- ========================================= -->
+  <!-- ADMIN DASHBOARD HEADER -->
+  <!-- ========================================= -->
 
   <div class="mb-4">
-    <h2>Admin Dashboard</h2>
+
+    <h2>
+      Admin Dashboard
+    </h2>
+
     <p class="text-muted">
       Review and manage all property listings.
     </p>
+
   </div>
 
-  <div *ngIf="properties.length === 0" class="text-center text-muted mt-5">
-    <h5>No properties found.</h5>
+
+  <!-- ========================================= -->
+  <!-- NO PROPERTIES -->
+  <!-- ========================================= -->
+
+  <div
+    *ngIf="properties.length === 0"
+    class="text-center text-muted mt-5">
+
+    <h5>
+      No properties found.
+    </h5>
+
   </div>
 
-  <div class="table-responsive" *ngIf="properties.length > 0">
+
+  <!-- ========================================= -->
+  <!-- PROPERTIES TABLE -->
+  <!-- ========================================= -->
+
+  <div
+    class="table-responsive"
+    *ngIf="properties.length > 0">
 
     <table class="table table-bordered table-hover align-middle">
 
       <thead class="table-dark">
+
         <tr>
+
           <th>Property ID</th>
+
           <th>Title</th>
+
           <th>Type</th>
+
           <th>Price</th>
+
           <th>City</th>
+
           <th>Owner ID</th>
+
           <th>Status</th>
+
+          <th>Badge</th>
+
           <th>Action</th>
+
         </tr>
+
       </thead>
+
 
       <tbody>
 
-        <tr *ngFor="let property of properties">
+        <tr
+          *ngFor="let property of properties">
 
-          <td>{{ property.propertyId }}</td>
 
-          <td>{{ property.title }}</td>
-
-          <td>{{ property.propertyType }}</td>
-
-          <td>₹{{ property.price | number }}</td>
-
-          <td>{{ property.city }}</td>
-
-          <td>{{ property.ownerId }}</td>
+          <!-- Property ID -->
 
           <td>
+
+            {{ property.propertyId }}
+
+          </td>
+
+
+          <!-- Title -->
+
+          <td>
+
+            <strong>
+
+              {{ property.title }}
+
+            </strong>
+
+          </td>
+
+
+          <!-- Type -->
+
+          <td>
+
+            {{ property.propertyType }}
+
+          </td>
+
+
+          <!-- Price -->
+
+          <td>
+
+            ₹{{ property.price | number }}
+
+          </td>
+
+
+          <!-- City -->
+
+          <td>
+
+            {{ property.city }}
+
+          </td>
+
+
+          <!-- Owner -->
+
+          <td>
+
+            {{ property.ownerId }}
+
+          </td>
+
+
+          <!-- Status -->
+
+          <td>
+
             <span
               class="badge"
               [ngClass]="{
-                'bg-warning text-dark': property.status === 'Pending',
-                'bg-success': property.status === 'Approved',
-                'bg-danger': property.status === 'Rejected'
+
+                'bg-warning text-dark':
+                  property.status === 'Pending',
+
+                'bg-success':
+                  property.status === 'Approved',
+
+                'bg-danger':
+                  property.status === 'Rejected'
+
               }">
 
               {{ property.status }}
 
             </span>
+
           </td>
+
+
+          <!-- ================================= -->
+          <!-- BADGE MANAGEMENT -->
+          <!-- ================================= -->
 
           <td>
 
-            <div class="d-flex gap-2">
+            <div class="badge-management">
+
+              <div class="mb-2">
+
+                <span
+                  *ngIf="property.badge"
+                  class="badge property-admin-badge">
+
+                  {{ property.badge }}
+
+                </span>
+
+
+                <span
+                  *ngIf="!property.badge"
+                  class="text-muted small">
+
+                  No Badge
+
+                </span>
+
+              </div>
+
+
+              <select
+                class="form-select form-select-sm"
+                [value]="property.badge || ''"
+                (change)="
+                  updateBadge(
+                    property,
+                    $any($event.target).value || null
+                  )
+                ">
+
+                <option value="">
+                  No Badge
+                </option>
+
+                <option value="NEW">
+                  NEW
+                </option>
+
+                <option value="FEATURED">
+                  FEATURED
+                </option>
+
+                <option value="HOT PROPERTY">
+                  HOT PROPERTY
+                </option>
+
+                <option value="PRICE DROP">
+                  PRICE DROP
+                </option>
+
+                <option value="PREMIUM">
+                  PREMIUM
+                </option>
+
+                <option value="VERIFIED">
+                  VERIFIED
+                </option>
+
+              </select>
+
+            </div>
+
+          </td>
+
+
+          <!-- ================================= -->
+          <!-- PROPERTY ACTIONS -->
+          <!-- ================================= -->
+
+          <td>
+
+            <div class="d-flex gap-2 flex-wrap">
 
               <button
                 class="btn btn-sm btn-success"
@@ -70,6 +250,7 @@
                 Approve
 
               </button>
+
 
               <button
                 class="btn btn-sm btn-danger"
@@ -84,6 +265,7 @@
 
           </td>
 
+
         </tr>
 
       </tbody>
@@ -91,5 +273,658 @@
     </table>
 
   </div>
+
+
+
+  <!-- ====================================================== -->
+  <!-- PREMIUM CALLBACK REQUESTS SECTION -->
+  <!-- ====================================================== -->
+
+  <section class="callback-section">
+
+
+    <!-- ========================================= -->
+    <!-- CALLBACK HEADER -->
+    <!-- ========================================= -->
+
+    <div class="callback-section-header">
+
+      <div class="callback-title-area">
+
+        <div class="callback-eyebrow">
+
+         🏘️ PRIMEHOMES CUSTOMER SUPPORT
+
+        </div>
+
+
+        <h3 class="callback-section-title">
+
+          Callback Requests
+
+        </h3>
+
+
+        <p class="callback-section-description">
+
+          View and manage callback requests submitted by
+          PrimeHomes visitors and customers.
+
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ========================================= -->
+    <!-- CALLBACK SUMMARY CARDS -->
+    <!-- ========================================= -->
+
+    <div class="row g-4 callback-summary-row">
+
+
+      <!-- TOTAL -->
+
+      <div class="col-xl-3 col-md-6">
+
+        <div class="callback-summary-card">
+
+          <div class="callback-summary-card-content">
+
+            <div class="callback-summary-label">
+
+              TOTAL REQUESTS
+
+            </div>
+
+            <div class="callback-summary-number">
+
+              {{ totalContactRequests }}
+
+            </div>
+
+            <div class="callback-summary-subtitle">
+
+              All customer requests
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- NEW -->
+
+      <div class="col-xl-3 col-md-6">
+
+        <div class="callback-summary-card callback-card-new">
+
+          <div class="callback-summary-card-content">
+
+            <div class="callback-summary-label">
+
+              NEW REQUESTS
+
+            </div>
+
+            <div class="callback-summary-number new">
+
+              {{ newContactRequests }}
+
+            </div>
+
+            <div class="callback-summary-subtitle">
+
+              Waiting for contact
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CONTACTED -->
+
+      <div class="col-xl-3 col-md-6">
+
+        <div class="callback-summary-card callback-card-contacted">
+
+          <div class="callback-summary-card-content">
+
+            <div class="callback-summary-label">
+
+              CONTACTED
+
+            </div>
+
+            <div class="callback-summary-number contacted">
+
+              {{ contactedContactRequests }}
+
+            </div>
+
+            <div class="callback-summary-subtitle">
+
+              Customer contacted
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CLOSED -->
+
+      <div class="col-xl-3 col-md-6">
+
+        <div class="callback-summary-card callback-card-closed">
+
+          <div class="callback-summary-card-content">
+
+            <div class="callback-summary-label">
+
+              CLOSED
+
+            </div>
+
+            <div class="callback-summary-number closed">
+
+              {{ closedContactRequests }}
+
+            </div>
+
+            <div class="callback-summary-subtitle">
+
+              Requests completed
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ====================================================== -->
+    <!-- CALLBACK SEARCH & FILTERS -->
+    <!-- ====================================================== -->
+
+    <div class="callback-filters">
+
+      <!-- SEARCH -->
+
+      <div class="callback-filter-group callback-search-filter">
+
+        <label>
+          Search
+        </label>
+
+        <input
+          type="text"
+          class="callback-filter-input"
+          [(ngModel)]="callbackSearchText"
+          (input)="filterContactRequests()"
+          placeholder="Search name, email or phone...">
+
+      </div>
+
+
+      <!-- STATUS -->
+
+      <div class="callback-filter-group">
+
+        <label>
+          Status
+        </label>
+
+        <select
+          class="callback-filter-input"
+          [(ngModel)]="callbackStatusFilter"
+          (change)="filterContactRequests()">
+
+          <option value="">
+            All Status
+          </option>
+
+          <option value="New">
+            New
+          </option>
+
+          <option value="Contacted">
+            Contacted
+          </option>
+
+          <option value="Closed">
+            Closed
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- INTERESTED IN -->
+
+      <div class="callback-filter-group">
+
+        <label>
+          Interested In
+        </label>
+
+        <select
+          class="callback-filter-input"
+          [(ngModel)]="callbackInterestFilter"
+          (change)="filterContactRequests()">
+
+          <option value="">
+            All Interests
+          </option>
+
+          <option value="buy">
+            Buy a Property
+          </option>
+
+          <option value="rent">
+            Rent a Property
+          </option>
+
+          <option value="sell">
+            Sell a Property
+          </option>
+
+          <option value="property">
+            Know More About a Property
+          </option>
+
+          <option value="owner">
+            Talk to an Owner
+          </option>
+
+          <option value="expert">
+            Talk to a PrimeHomes Expert
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- DATE -->
+
+      <div class="callback-filter-group">
+
+        <label>
+          Date
+        </label>
+
+        <input
+          type="date"
+          class="callback-filter-input"
+          [(ngModel)]="callbackDateFilter"
+          (change)="filterContactRequests()">
+
+      </div>
+
+
+      <!-- CLEAR FILTERS -->
+
+      <div class="callback-filter-actions">
+
+        <button
+          type="button"
+          class="clear-callback-filters"
+          (click)="clearContactRequestFilters()">
+
+          Clear Filters
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ========================================= -->
+    <!-- CALLBACK TABLE WRAPPER -->
+    <!-- ========================================= -->
+
+    <div class="callback-table-wrapper">
+
+
+      <!-- TABLE HEADER -->
+
+      <div class="callback-table-header">
+
+        <div>
+
+          <h4>
+
+            Customer Callback Requests
+
+          </h4>
+
+          <span>
+
+            Manage customer follow-ups and request status
+
+          </span>
+
+        </div>
+
+
+        <div class="callback-request-count">
+
+          {{ filteredContactRequests.length }}
+
+          <span>
+
+            Requests
+
+          </span>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ========================================= -->
+      <!-- NO CALLBACK REQUESTS -->
+      <!-- ========================================= -->
+
+      <div
+        *ngIf="contactRequests.length === 0"
+        class="callback-empty-state">
+
+        <div class="callback-empty-icon">
+
+          📞
+
+        </div>
+
+        <h5>
+
+          No Callback Requests
+
+        </h5>
+
+        <p>
+
+          New customer callback requests will appear here.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- ========================================= -->
+      <!-- NO FILTER RESULTS -->
+      <!-- ========================================= -->
+
+      <div
+        *ngIf="
+          contactRequests.length > 0 &&
+          filteredContactRequests.length === 0
+        "
+        class="callback-empty-state">
+
+        <div class="callback-empty-icon">
+
+          🔎
+
+        </div>
+
+        <h5>
+
+          No Matching Requests
+
+        </h5>
+
+        <p>
+
+          No callback requests match your current filters.
+
+        </p>
+
+      </div>
+
+
+
+      <!-- ========================================= -->
+      <!-- CALLBACK TABLE -->
+      <!-- ========================================= -->
+
+      <div
+        class="callback-requests-table"
+        *ngIf="filteredContactRequests.length > 0">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                ID
+              </th>
+
+              <th>
+                Customer
+              </th>
+
+              <th>
+                Email
+              </th>
+
+              <th>
+                Phone
+              </th>
+
+              <th>
+                Interested In
+              </th>
+
+              <th>
+                Message
+              </th>
+
+              <th>
+                Status
+              </th>
+
+              <th>
+                Date
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            <tr
+              *ngFor="let request of filteredContactRequests">
+
+
+              <!-- REQUEST ID -->
+
+              <td class="callback-id">
+
+                #{{ request.contactRequestId }}
+
+              </td>
+
+
+              <!-- CUSTOMER -->
+
+              <td>
+
+                <div class="callback-customer">
+
+                  <div class="callback-customer-icon">
+
+                    {{ request.fullName.charAt(0).toUpperCase() }}
+
+                  </div>
+
+
+                  <div>
+
+                    <strong>
+
+                      {{ request.fullName }}
+
+                    </strong>
+
+                    <small>
+
+                      Customer
+
+                    </small>
+
+                  </div>
+
+                </div>
+
+              </td>
+
+
+              <!-- EMAIL -->
+
+              <td>
+
+                <a
+                  class="callback-contact-link"
+                  [href]="'mailto:' + request.email">
+
+                  {{ request.email }}
+
+                </a>
+
+              </td>
+
+
+              <!-- PHONE -->
+
+              <td>
+
+                <a
+                  class="callback-contact-link"
+                  [href]="'tel:' + request.phoneNumber">
+
+                  {{ request.phoneNumber }}
+
+                </a>
+
+              </td>
+
+
+              <!-- INTERESTED IN -->
+
+              <td>
+
+                <span class="callback-interest-badge">
+
+                  {{ request.interestedIn }}
+
+                </span>
+
+              </td>
+
+
+              <!-- MESSAGE -->
+
+              <td>
+
+                <div class="callback-message">
+
+                  {{ request.message || 'No message provided.' }}
+
+                </div>
+
+              </td>
+
+
+              <!-- STATUS -->
+
+              <td>
+
+                <select
+                  class="callback-status-select"
+                  [value]="request.status"
+                  (change)="
+                    updateContactRequestStatus(
+                      request,
+                      $any($event.target).value
+                    )
+                  ">
+
+                  <option value="New">
+                    New
+                  </option>
+
+                  <option value="Contacted">
+                    Contacted
+                  </option>
+
+                  <option value="Closed">
+                    Closed
+                  </option>
+
+                </select>
+
+              </td>
+
+
+              <!-- DATE -->
+
+              <td>
+
+                <div class="callback-date">
+
+                  {{ request.createdDate | date:'dd MMM yyyy' }}
+
+                  <small>
+
+                    {{ request.createdDate | date:'hh:mm a' }}
+
+                  </small>
+
+                </div>
+
+              </td>
+
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+    </div>
+
+  </section>
 
 </div>

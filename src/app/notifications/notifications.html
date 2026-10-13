@@ -1,0 +1,146 @@
+<div class="notifications-page">
+
+  <div class="container">
+
+    <!-- Header -->
+
+    <div class="notifications-header">
+
+      <h2>
+        🔔 Notifications
+      </h2>
+
+      <p>
+        Stay updated with your PrimeHomes activities.
+      </p>
+
+    </div>
+
+
+    <!-- Loading -->
+
+    <div
+      *ngIf="isLoading"
+      class="notifications-message">
+
+      Loading notifications...
+
+    </div>
+
+
+    <!-- Notifications -->
+
+    <div
+      *ngIf="!isLoading && notifications.length > 0"
+      class="notification-list">
+
+
+      <div
+        *ngFor="let notification of notifications"
+        class="notification-card"
+        [class.unread]="!notification.isRead"
+        (click)="markAsRead(notification)">
+
+
+        <!-- Icon -->
+
+        <div class="notification-icon">
+
+          <span
+            *ngIf="notification.type === 'Inquiry'">
+
+            💬
+
+          </span>
+
+
+          <span
+            *ngIf="notification.type === 'PropertyApproved'">
+
+            ✅
+
+          </span>
+
+
+          <span
+            *ngIf="notification.type === 'PropertyRejected'">
+
+            ❌
+
+          </span>
+
+
+          <span
+            *ngIf="
+              notification.type !== 'Inquiry' &&
+              notification.type !== 'PropertyApproved' &&
+              notification.type !== 'PropertyRejected'
+            ">
+
+            🔔
+
+          </span>
+
+        </div>
+
+
+        <!-- Content -->
+
+        <div class="notification-content">
+
+          <h5>
+            {{ notification.title }}
+          </h5>
+
+
+          <p>
+            {{ notification.message }}
+          </p>
+
+
+          <small>
+            {{ getNotificationTime(notification.createdDate) }}
+          </small>
+
+        </div>
+
+
+        <!-- Unread -->
+
+        <div
+          *ngIf="!notification.isRead"
+          class="unread-dot">
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- Empty -->
+
+    <div
+      *ngIf="
+        !isLoading &&
+        notifications.length === 0
+      "
+      class="notifications-empty">
+
+      <div class="empty-icon">
+        🔔
+      </div>
+
+      <h4>
+        No Notifications
+      </h4>
+
+      <p>
+        You don't have any notifications yet.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

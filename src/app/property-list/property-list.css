@@ -15,14 +15,17 @@
 }
 
 .property-card .card-title {
-  font-weight: 600;
-  color: #1f2937;
+  font-weight: 700;
+  color: var(--ph-gold-light) !important;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .property-description {
-  color: #6b7280;
+  color: var(--ph-text-light);
   font-size: 14px;
   min-height: 45px;
+  line-height: 1.6;
 }
 
 .property-details {
@@ -52,4 +55,197 @@
   .property-image {
     height: 200px;
   }
+}
+
+
+.favorite-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  transition: all 0.2s ease;
+
+  z-index: 5;
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+}
+
+.property-image-container {
+  position: relative;
+}
+
+
+.favorite-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  transition: all 0.2s ease;
+
+  z-index: 5;
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+}
+
+.favorite-button.favorite-active {
+  background: #fff;
+}
+
+.property-image-container {
+  position: relative;
+}
+
+/* ==========================================
+   Advanced Property Search
+========================================== */
+
+.advanced-filter-card {
+  background: var(--ph-card) !important;
+  border: 1px solid var(--ph-border) !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .35);
+}
+
+.advanced-filter-card h5 {
+  color: var(--ph-gold-light);
+}
+
+.advanced-filter-card .form-label {
+  color: var(--ph-text-light);
+}
+
+.advanced-filter-card .form-control,
+.advanced-filter-card .form-select {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+  border: 1px solid var(--ph-border);
+  border-radius: 8px;
+}
+
+.advanced-filter-card .form-control::placeholder {
+  color: var(--ph-text-muted);
+}
+
+.advanced-filter-card .form-control:focus,
+.advanced-filter-card .form-select:focus {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+  border-color: var(--ph-gold);
+  box-shadow: 0 0 0 0.2rem rgba(212, 175, 90, 0.15);
+}
+
+.advanced-filter-card .form-select option {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+}
+
+.advanced-filter-card .btn-outline-secondary {
+  border-color: var(--ph-border);
+  color: var(--ph-text-light);
+}
+
+.advanced-filter-card .btn-outline-secondary:hover {
+  background-color: var(--ph-gold);
+  border-color: var(--ph-gold);
+  color: var(--ph-dark);
+}
+
+
+/* ==========================================
+   Filter Result Count
+========================================== */
+
+.property-result-count {
+  color: var(--ph-text-muted);
+}
+
+.property-result-count strong {
+  color: var(--ph-gold-light);
+}
+
+
+/* ==========================================
+   Mobile Responsive
+========================================== */
+
+@media (max-width: 768px) {
+
+  .advanced-filter-card {
+    border-radius: 12px;
+  }
+
+  .advanced-filter-card .card-body {
+    padding: 18px;
+  }
+
+}
+
+
+/* ==========================================
+   Property Listing Badge
+========================================== */
+
+.property-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 5;
+
+  padding: 6px 12px;
+
+  background: linear-gradient(
+    135deg,
+    var(--ph-gold),
+    var(--ph-gold-dark)
+  );
+
+  color: var(--ph-dark);
+
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }

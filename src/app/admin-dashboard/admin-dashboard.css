@@ -1,0 +1,1312 @@
+/* ==========================================
+   PRIME HOMES - ADMIN DASHBOARD
+========================================== */
+
+.container {
+  color: var(--ph-white);
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+
+/* ==========================================
+   ADMIN DASHBOARD HEADER
+========================================== */
+
+h2 {
+  color: var(--ph-gold-light);
+  font-weight: 700;
+}
+
+.text-muted {
+  color: var(--ph-text-muted) !important;
+}
+
+
+/* ==========================================
+   ADMIN PROPERTIES TABLE
+========================================== */
+
+.table-responsive {
+  border: 1px solid var(--ph-border);
+  border-radius: 14px;
+  overflow-x: auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.table {
+  margin-bottom: 0;
+  color: var(--ph-text-light);
+  background: var(--ph-card);
+}
+
+.table thead th {
+  background: var(--ph-dark-secondary);
+  color: var(--ph-gold-light);
+  border-color: var(--ph-border);
+  padding: 15px;
+  white-space: nowrap;
+}
+
+.table tbody td {
+  background: var(--ph-card);
+  color: var(--ph-text-light);
+  border-color: var(--ph-border);
+  padding: 14px;
+}
+
+.table-hover tbody tr:hover td {
+  background: #17233d;
+  color: var(--ph-white);
+}
+
+
+/* ==========================================
+   PROPERTY STATUS BADGES
+========================================== */
+
+.table .badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 15px;
+}
+
+
+/* ==========================================
+   PROPERTY BADGE MANAGEMENT
+========================================== */
+
+.badge-management {
+  min-width: 150px;
+}
+
+.badge-management .form-select {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+  border: 1px solid var(--ph-border);
+  border-radius: 7px;
+}
+
+.badge-management .form-select:focus {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+  border-color: var(--ph-gold);
+  box-shadow: 0 0 0 0.2rem rgba(212, 175, 90, 0.15);
+}
+
+.badge-management .form-select option {
+  background-color: var(--ph-dark-secondary);
+  color: var(--ph-white);
+}
+
+
+/* ==========================================
+   ADMIN PROPERTY BADGES
+========================================== */
+
+.property-admin-badge {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    var(--ph-gold),
+    var(--ph-gold-dark)
+  );
+
+  color: var(--ph-dark);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==========================================
+   ACTION BUTTONS
+========================================== */
+
+.table .btn {
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 7px;
+}
+
+.table .btn-success {
+  border: none;
+}
+
+.table .btn-danger {
+  border: none;
+}
+
+
+/* ==========================================================
+   PREMIUM CALLBACK REQUESTS SECTION
+========================================================== */
+
+.callback-section {
+
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 65px;
+  margin-bottom: 55px;
+
+  padding: 45px;
+
+  border: 1px solid rgba(212, 175, 90, 0.35);
+
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(212, 175, 90, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(50, 90, 150, 0.10),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #070e1c 0%,
+      #0b1428 50%,
+      #050b17 100%
+    );
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  overflow: hidden;
+}
+
+
+/* ==========================================
+   GOLD TOP LINE
+========================================== */
+
+.callback-section::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 7%;
+
+  width: 86%;
+  height: 4px;
+
+  border-radius: 0 0 10px 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #a77b2e,
+      #d4af5a,
+      #f0d98a,
+      #d4af5a,
+      #a77b2e,
+      transparent
+    );
+}
+
+
+/* ==========================================
+   CALLBACK HEADER
+========================================== */
+
+.callback-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-bottom: 32px;
+}
+
+.callback-title-area {
+  max-width: 900px;
+}
+
+
+/* Small heading */
+
+.callback-eyebrow {
+
+  margin-bottom: 9px;
+
+  color: #d4af5a;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+
+  text-transform: uppercase;
+}
+
+
+/* Main heading */
+
+.callback-section-title {
+
+  margin: 0 0 12px;
+
+  color: #228B22 !important;
+
+  font-family:
+    "Inter",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 34px !important;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* Description */
+
+.callback-section-description {
+
+  margin: 0;
+
+  color: #DA70D6 !important;
+
+  font-family:
+    "Inter",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  font-size: 17px !important;
+
+  font-weight: 500;
+
+  line-height: 1.7;
+
+  letter-spacing: 0.2px;
+}
+
+
+/* ==========================================================
+   CALLBACK SUMMARY ROW
+========================================================== */
+
+.callback-summary-row {
+  margin-bottom: 35px;
+}
+
+
+/* ==========================================================
+   CALLBACK SUMMARY CARD
+========================================================== */
+
+.callback-summary-card {
+
+  position: relative;
+
+  height: 100%;
+  min-height: 160px;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(212, 175, 90, 0.28);
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111d35,
+      #0b1428
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.32);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* Gold top line */
+
+.callback-summary-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a77b2e,
+      #d4af5a,
+      #e6c978
+    );
+}
+
+
+/* Hover */
+
+.callback-summary-card:hover {
+
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(212, 175, 90, 0.70);
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.42),
+    0 0 25px rgba(212, 175, 90, 0.08);
+}
+
+
+/* Card content */
+
+.callback-summary-card-content {
+  padding: 25px;
+}
+
+
+/* Label */
+
+.callback-summary-label {
+
+  color: #aeb8c8;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+
+/* Number */
+
+.callback-summary-number {
+
+  margin-top: 12px;
+  margin-bottom: 0;
+
+  color: #e6c978;
+
+  font-size: 38px;
+
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+
+/* New */
+
+.callback-summary-number.new {
+  color: #ff6868;
+}
+
+
+/* Contacted */
+
+.callback-summary-number.contacted {
+  color: #63a7ff;
+}
+
+
+/* Closed */
+
+.callback-summary-number.closed {
+  color: #4fd1a5;
+}
+
+
+/* Subtitle */
+
+.callback-summary-subtitle {
+
+  margin-top: 12px;
+
+  color: #7f8ba0;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+
+/* ==========================================================
+   CALLBACK TABLE WRAPPER
+========================================================== */
+
+.callback-table-wrapper {
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(212, 175, 90, 0.30);
+
+  border-radius: 18px;
+
+  background: #080f1e;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.40);
+}
+
+
+/* ==========================================================
+   CALLBACK TABLE HEADER
+========================================================== */
+
+.callback-table-header {
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 23px 26px;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  background:
+    linear-gradient(
+      135deg,
+      #111d35,
+      #0b1428
+    );
+}
+
+
+.callback-table-header h4 {
+
+  margin: 0 0 5px;
+
+  color: #ffffff;
+
+  font-size: 19px;
+
+  font-weight: 700;
+}
+
+
+.callback-table-header span {
+
+  color: #8f9aae;
+
+  font-size: 12px;
+}
+
+
+/* Request count */
+
+.callback-request-count {
+
+  min-width: 95px;
+
+  padding: 9px 15px;
+
+  border:
+    1px solid rgba(212, 175, 90, 0.35);
+
+  border-radius: 20px;
+
+  color: #e6c978;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  background:
+    rgba(212, 175, 90, 0.06);
+}
+
+
+.callback-request-count span {
+
+  margin-left: 4px;
+
+  color: #8f9aae;
+
+  font-size: 11px;
+}
+
+
+/* ==========================================================
+   CALLBACK REQUESTS TABLE
+========================================================== */
+
+.callback-requests-table {
+
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+
+.callback-requests-table table {
+
+  width: 100%;
+
+  min-width: 1150px;
+
+  margin: 0;
+
+  border-collapse: separate;
+
+  border-spacing: 0;
+}
+
+
+/* Header */
+
+.callback-requests-table thead th {
+
+  padding: 16px 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #14213a,
+      #0c1629
+    );
+
+  color: #e6c978 !important;
+
+  border:
+    1px solid rgba(212, 175, 90, 0.14);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+/* Body */
+
+.callback-requests-table tbody td {
+
+  padding: 17px 15px;
+
+  background: #0b1428;
+
+  color: #e8ecf2 !important;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  vertical-align: middle;
+}
+
+
+/* Row */
+
+.callback-requests-table tbody tr {
+
+  transition:
+    background 0.2s ease;
+}
+
+
+.callback-requests-table tbody tr:hover td {
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(212, 175, 90, 0.07),
+      rgba(212, 175, 90, 0.025)
+    );
+
+  color: #ffffff !important;
+}
+
+
+/* ==========================================================
+   CALLBACK ID
+========================================================== */
+
+.callback-id {
+
+  color: #e6c978 !important;
+
+  font-size: 14px !important;
+
+  font-weight: 700 !important;
+}
+
+
+/* ==========================================================
+   CUSTOMER
+========================================================== */
+
+.callback-customer {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.callback-customer-icon {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e6c978,
+      #a77b2e
+    );
+
+  color: #111827;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 4px 12px rgba(212, 175, 90, 0.18);
+}
+
+
+.callback-customer strong {
+
+  display: block;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+.callback-customer small {
+
+  display: block;
+
+  margin-top: 3px;
+
+  color: #758198;
+
+  font-size: 10px;
+}
+
+
+/* ==========================================================
+   EMAIL / PHONE
+========================================================== */
+
+.callback-contact-link {
+
+  color: #dce2eb !important;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+.callback-contact-link:hover {
+
+  color: #e6c978 !important;
+
+  text-decoration: none;
+}
+
+
+/* ==========================================================
+   INTEREST BADGE
+========================================================== */
+
+.callback-interest-badge {
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 65px;
+
+  padding: 7px 13px;
+
+  border:
+    1px solid rgba(98, 168, 255, 0.35);
+
+  border-radius: 20px;
+
+  background:
+    rgba(44, 124, 255, 0.12);
+
+  color: #71b0ff;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+
+/* ==========================================================
+   MESSAGE
+========================================================== */
+
+.callback-message {
+
+  min-width: 230px;
+
+  max-width: 340px;
+
+  color: #e4e8ef;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  white-space: normal;
+
+  word-break: break-word;
+}
+
+
+/* ==========================================================
+   STATUS SELECT
+========================================================== */
+
+.callback-status-select {
+
+  min-width: 125px;
+
+  padding: 9px 32px 9px 11px;
+
+  border:
+    1px solid rgba(212, 175, 90, 0.28);
+
+  border-radius: 7px;
+
+  background: #111d35;
+
+  color: #ffffff !important;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.callback-status-select:hover {
+
+  border-color:
+    rgba(212, 175, 90, 0.65);
+
+  background: #14213a;
+}
+
+
+.callback-status-select:focus {
+
+  border-color: #d4af5a;
+
+  background: #101a2d;
+
+  color: #ffffff !important;
+
+  box-shadow:
+    0 0 0 3px rgba(212, 175, 90, 0.12);
+
+  outline: none;
+}
+
+
+.callback-status-select option {
+
+  background: #101a2d;
+
+  color: #ffffff;
+}
+
+
+/* ==========================================================
+   DATE
+========================================================== */
+
+.callback-date {
+
+  color: #d8dee8;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+
+.callback-date small {
+
+  display: block;
+
+  margin-top: 4px;
+
+  color: #718097;
+
+  font-size: 10px;
+}
+
+
+/* ==========================================================
+   EMPTY STATE
+========================================================== */
+
+.callback-empty-state {
+
+  padding: 60px 20px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0b1428,
+      #080f1e
+    );
+}
+
+
+.callback-empty-icon {
+
+  margin-bottom: 15px;
+
+  font-size: 38px;
+}
+
+
+.callback-empty-state h5 {
+
+  margin-bottom: 8px;
+
+  color: #e6c978;
+
+  font-size: 18px;
+}
+
+
+.callback-empty-state p {
+
+  margin: 0;
+
+  color: #7f8ba0;
+
+  font-size: 13px;
+}
+
+
+/* ==========================================================
+   MOBILE RESPONSIVE
+========================================================== */
+
+@media (max-width: 992px) {
+
+  .callback-section {
+
+    padding: 35px;
+  }
+
+  .callback-section-title {
+
+    font-size: 30px !important;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .callback-section {
+
+    margin-top: 45px;
+
+    padding: 25px 18px;
+
+    border-radius: 18px;
+  }
+
+
+  .callback-section-header {
+
+    margin-bottom: 25px;
+  }
+
+
+  .callback-section-title {
+
+    font-size: 27px  !important;
+     
+  }
+
+
+  .callback-section-description {
+
+    font-size: 15px !important;
+  }
+
+
+  .callback-summary-card {
+
+    min-height: 135px;
+  }
+
+
+  .callback-summary-card-content {
+
+    padding: 20px;
+  }
+
+
+  .callback-summary-number {
+
+    font-size: 32px;
+  }
+
+
+  .callback-table-header {
+
+    padding: 18px;
+  }
+
+
+  .callback-table-header h4 {
+
+    font-size: 16px;
+  }
+
+
+  .callback-request-count {
+
+    display: none;
+  }
+
+
+  .callback-requests-table table {
+
+    min-width: 1150px;
+  }
+
+}
+
+
+/* ======================================================
+   CALLBACK SEARCH & FILTERS
+====================================================== */
+
+.callback-filters {
+  display: grid;
+  grid-template-columns: minmax(240px, 1.6fr) minmax(160px, 1fr) minmax(190px, 1.2fr) minmax(160px, 1fr) auto;
+  gap: 14px;
+  align-items: end;
+
+  margin-top: 28px;
+  margin-bottom: 22px;
+  padding: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #07101f,
+    #0b1629
+  );
+
+  border: 1px solid rgba(212, 175, 90, 0.22);
+  border-radius: 14px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.16);
+}
+
+
+/* ======================================================
+   FILTER GROUP
+====================================================== */
+
+.callback-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+
+.callback-filter-group label {
+  color: #e6c978;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+
+/* ======================================================
+   INPUTS & SELECTS
+====================================================== */
+
+.callback-filter-input {
+  width: 100%;
+  height: 42px;
+
+  padding: 0 13px;
+
+  background: #101c31;
+  color: #f5f5f5;
+
+  border: 1px solid rgba(212, 175, 90, 0.28);
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.callback-filter-input::placeholder {
+  color: #8d98a8;
+}
+
+
+.callback-filter-input:hover {
+  border-color: rgba(212, 175, 90, 0.50);
+}
+
+
+.callback-filter-input:focus {
+  background: #121f36;
+
+  border-color: #d4af5a;
+
+  box-shadow:
+    0 0 0 3px rgba(212, 175, 90, 0.10);
+}
+
+
+/* ======================================================
+   SELECT
+====================================================== */
+
+select.callback-filter-input {
+  cursor: pointer;
+}
+
+
+select.callback-filter-input option {
+  background: #101c31;
+  color: #ffffff;
+}
+
+
+/* ======================================================
+   DATE INPUT
+====================================================== */
+
+.callback-filter-input[type="date"] {
+  color-scheme: dark;
+}
+
+
+/* ======================================================
+   CLEAR FILTER BUTTON
+====================================================== */
+
+.callback-filter-actions {
+  display: flex;
+  align-items: flex-end;
+}
+
+
+.clear-callback-filters {
+  height: 42px;
+
+  padding: 0 18px;
+
+  background: transparent;
+
+  color: #e6c978;
+
+  border: 1px solid rgba(212, 175, 90, 0.55);
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.clear-callback-filters:hover {
+  background: #d4af5a;
+  color: #07101f;
+
+  border-color: #d4af5a;
+
+  transform: translateY(-1px);
+}
+
+
+.clear-callback-filters:active {
+  transform: translateY(0);
+}
+
+
+/* ======================================================
+   FILTER RESULT / EMPTY MESSAGE
+====================================================== */
+
+.callback-empty-state {
+  margin-top: 15px;
+}
+
+
+/* ======================================================
+   RESPONSIVE — TABLET
+====================================================== */
+
+@media (max-width: 1200px) {
+
+  .callback-filters {
+    grid-template-columns:
+      repeat(2, minmax(200px, 1fr));
+  }
+
+
+  .callback-search-filter {
+    grid-column: span 2;
+  }
+
+
+  .callback-filter-actions {
+    align-items: stretch;
+  }
+
+
+  .clear-callback-filters {
+    width: 100%;
+  }
+
+}
+
+
+/* ======================================================
+   RESPONSIVE — MOBILE
+====================================================== */
+
+@media (max-width: 768px) {
+
+  .callback-filters {
+    grid-template-columns: 1fr;
+
+    padding: 16px;
+
+    gap: 13px;
+
+    border-radius: 12px;
+  }
+
+
+  .callback-search-filter {
+    grid-column: auto;
+  }
+
+
+  .callback-filter-input {
+    height: 44px;
+  }
+
+
+  .clear-callback-filters {
+    height: 44px;
+  }
+
+}
+
+
+

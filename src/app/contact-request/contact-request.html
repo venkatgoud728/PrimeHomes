@@ -1,0 +1,213 @@
+<section class="contact-request-section">
+
+  <div class="contact-request-container">
+
+    <!-- LEFT: PROPERTY IMAGE -->
+    <div class="contact-request-image-space">
+
+      <img
+        src="/images/callback.png"
+        alt="PrimeHomes Luxury Property">
+
+    </div>
+
+
+    <!-- RIGHT: CALLBACK FORM -->
+    <div class="contact-request-form-section">
+
+      <div class="contact-request-header">
+
+        <div class="section-label">
+          LET'S FIND YOUR PERFECT HOME
+        </div>
+
+        <h2>
+          REQUEST A CALL BACK
+        </h2>
+
+        <p>
+          Have questions about a property?
+          Our PrimeHomes team is here to help you with
+          property details, pricing, availability and more.
+        </p>
+
+      </div>
+
+
+      <!-- SUCCESS MESSAGE -->
+      <div
+        *ngIf="successMessage"
+        class="success-message">
+
+        {{ successMessage }}
+
+      </div>
+
+
+      <!-- ERROR MESSAGE -->
+      <div
+        *ngIf="errorMessage"
+        class="error-message">
+
+        {{ errorMessage }}
+
+      </div>
+
+
+      <!-- FORM -->
+      <form
+        class="contact-request-form"
+        (ngSubmit)="submitRequest()">
+
+        <!-- FULL NAME -->
+        <div class="form-group">
+
+          <input
+            type="text"
+            class="form-control"
+            name="fullName"
+            [(ngModel)]="contactRequest.fullName"
+            placeholder="Full Name"
+            required>
+
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="form-group">
+
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            [(ngModel)]="contactRequest.email"
+            placeholder="Email Address"
+            required>
+
+        </div>
+
+
+        <!-- PHONE -->
+        <div class="form-group">
+
+          <input
+            type="tel"
+            class="form-control"
+            name="phoneNumber"
+            [(ngModel)]="contactRequest.phoneNumber"
+            placeholder="Phone Number"
+            required>
+
+        </div>
+
+
+        <!-- INTEREST -->
+        <div class="form-group">
+
+          <select
+            class="form-control"
+            name="interestedIn"
+            [(ngModel)]="contactRequest.interestedIn"
+            required>
+
+            <option value="">
+              I'm interested in
+            </option>
+
+            <option value="buy">
+              Buy a Property
+            </option>
+
+            <option value="rent">
+              Rent a Property
+            </option>
+
+            <option value="sell">
+              Sell a Property
+            </option>
+
+            <option value="property">
+              Know More About a Property
+            </option>
+
+            <option value="owner">
+              Talk to an Owner
+            </option>
+
+            <option value="expert">
+              Talk to a PrimeHomes Expert
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+        <div class="form-group">
+
+          <textarea
+            class="form-control message-box"
+            name="message"
+            [(ngModel)]="contactRequest.message"
+            rows="4"
+            placeholder="Tell us what you're looking for...">
+          </textarea>
+
+        </div>
+
+
+        <!-- SUBMIT BUTTON -->
+        <div class="submit-container">
+
+          <button
+            type="submit"
+            class="request-button"
+            [disabled]="isSubmitting">
+
+            <span *ngIf="!isSubmitting">
+              REQUEST A CALL
+            </span>
+
+            <span *ngIf="isSubmitting">
+              SUBMITTING...
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <!-- DIRECT CONTACT -->
+        <div class="direct-contact">
+
+          <span>
+            Need immediate assistance?
+          </span>
+
+          <a href="tel:+919032794534">
+            📞 Call Us
+          </a>
+
+          <span class="separator">
+            |
+          </span>
+
+          <a
+            href="https://wa.me/919032794534"
+            target="_blank"
+            rel="noopener">
+
+            💬 WhatsApp
+
+          </a>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,279 @@
+/* =========================================================
+   BUYER DASHBOARD
+   ========================================================= */
+
+
+/* =========================================================
+   STATISTICS CARDS
+   ========================================================= */
+
+.buyer-stat-card {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.buyer-stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.buyer-stat-card h2 {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   GENERAL CARDS
+   ========================================================= */
+
+.card {
+  border-radius: 12px;
+}
+
+.card-title {
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   INQUIRY STATUS
+   ========================================================= */
+
+.inquiry-status {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 80px;
+
+  padding: 6px 14px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   NEW
+   ========================================================= */
+
+.status-new {
+  background: rgba(80, 140, 255, 0.20);
+
+  color: #75A7FF;
+
+  border: 1px solid #75A7FF;
+}
+
+
+/* =========================================================
+   PENDING
+   ========================================================= */
+
+.status-pending {
+  background: rgba(212, 175, 90, 0.20);
+
+  color: #E6C978;
+
+  border: 1px solid #E6C978;
+}
+
+
+/* =========================================================
+   RESPONDED
+   ========================================================= */
+
+.status-responded {
+  background: rgba(40, 167, 69, 0.20);
+
+  color: #66D17A;
+
+  border: 1px solid #66D17A;
+}
+
+
+/* =========================================================
+   REJECTED
+   ========================================================= */
+
+.status-rejected {
+  background: rgba(220, 53, 69, 0.20);
+
+  color: #FF7B87;
+
+  border: 1px solid #FF7B87;
+}
+
+
+/* =========================================================
+   FAVORITE PROPERTY CARD
+   ========================================================= */
+
+.favorite-property-card {
+  height: 100%;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.favorite-property-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.35) !important;
+}
+
+
+/* =========================================================
+   FAVORITE PROPERTY IMAGE CONTAINER
+   ========================================================= */
+
+.favorite-property-image-container {
+  width: 100%;
+
+  height: 220px;
+
+  overflow: hidden;
+
+  background: #0B1326;
+}
+
+
+/* =========================================================
+   FAVORITE PROPERTY IMAGE
+   ========================================================= */
+
+.favorite-property-card img,
+.favorite-property-image {
+  width: 100%;
+
+  height: 220px;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  display: block;
+
+  transition: transform 0.4s ease;
+}
+
+
+/* =========================================================
+   IMAGE HOVER
+   ========================================================= */
+
+.favorite-property-card:hover .favorite-property-image {
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   PROPERTY CARD BODY
+   ========================================================= */
+
+.favorite-property-card .card-body {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* Keep buttons at bottom */
+
+.favorite-property-card .card-body > div:last-child {
+  margin-top: auto;
+}
+
+
+/* =========================================================
+   INQUIRY TABLE
+   ========================================================= */
+
+.table-responsive {
+  border-radius: 8px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   TABLE STATUS COLUMN
+   ========================================================= */
+
+.table th:last-child,
+.table td:last-child {
+  width: 120px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+  .favorite-property-image-container {
+    height: 210px;
+  }
+
+  .favorite-property-card img,
+  .favorite-property-image {
+    height: 210px;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+  .buyer-stat-card {
+    margin-bottom: 10px;
+  }
+
+  .favorite-property-image-container {
+    height: 200px;
+  }
+
+  .favorite-property-card img,
+  .favorite-property-image {
+    height: 200px;
+  }
+
+  .inquiry-status {
+    min-width: 70px;
+
+    padding: 5px 9px;
+
+    font-size: 11px;
+  }
+
+}

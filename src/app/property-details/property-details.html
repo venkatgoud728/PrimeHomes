@@ -1,132 +1,386 @@
-<div class="container mt-5 mb-5" *ngIf="property">
 
+<div class="container my-5" *ngIf="property as p">
+
+  <!-- PROPERTY DETAILS -->
   <div class="row g-4">
 
-    <!-- Left Side: Property Image -->
-    <div class="col-lg-7">
+    <!-- PROPERTY IMAGE GALLERY -->
+    <div class="col-lg-6">
 
-      <div class="property-image-wrapper">
+      <div class="main-image-container mb-3">
         <img
-          [src]="property.imageUrl || 'https://via.placeholder.com/800x500?text=Prime+Homes'"
-          class="property-main-image"
-          alt="Property Image">
+          [src]="selectedImageUrl || p.imageUrl || 'assets/images/property-placeholder.jpg'"
+          [alt]="p.title"
+          class="img-fluid rounded shadow-sm main-property-image"
+        />
+      </div>
+
+      <!-- GALLERY IMAGES -->
+      <div
+        class="row g-2"
+        *ngIf="galleryImages && galleryImages.length > 0"
+      >
+        <div
+          class="col-4 col-md-3"
+          *ngFor="let image of galleryImages"
+        >
+          <div class="gallery-image-container">
+
+            <img
+              [src]="image.imageUrl"
+              [alt]="p.title"
+              class="img-fluid rounded gallery-thumbnail"
+              (click)="selectedImageUrl = image.imageUrl"
+              [class.active-thumbnail]="selectedImageUrl === image.imageUrl"
+            />
+
+            <!-- OWNER DELETE IMAGE BUTTON -->
+            <button
+              *ngIf="userRole === 'Owner'"
+              type="button"
+              class="btn btn-danger btn-sm delete-gallery-image"
+              (click)="deleteGalleryImage(image)"
+              title="Delete image"
+            >
+              &times;
+            </button>
+
+          </div>
+        </div>
       </div>
 
     </div>
 
-    <!-- Right Side: Property Information -->
-    <div class="col-lg-5">
+    <!-- PROPERTY INFORMATION -->
+    <div class="col-lg-6">
 
-      <div class="property-info-card">
+      <div class="property-details-card">
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <span class="badge bg-success">Approved</span>
-
-          <span class="text-muted">
-            {{ property.propertyType }}
-          </span>
-        </div>
+        <span class="badge bg-warning text-dark mb-2">
+          {{ p.propertyType || 'Property' }}
+        </span>
 
         <h2 class="property-title">
-          {{ property.title }}
+          {{ p.title }}
         </h2>
 
-        <p class="property-location">
-          📍 {{ property.location }}, {{ property.city }}
+        <p class="text-muted mb-3">
+          <i class="bi bi-geo-alt"></i>
+          {{ p.location }}
         </p>
 
-        <h3 class="property-price">
-          ₹{{ property.price | number }}
+        <h3 class="property-price mb-3">
+          {{ p.price | currency:'INR':'symbol':'1.0-0':'en-IN' }}
         </h3>
 
-        <hr>
+        <hr />
 
-        <!-- Property Features -->
-        <div class="row text-center property-features">
+        <!-- PROPERTY FEATURES -->
+        <div class="row g-3 mb-4">
 
-          <div class="col-4">
-            <div class="feature-box">
-              <h5>🛏</h5>
-              <strong>{{ property.bhk }} BHK</strong>
-              <small>Bedrooms</small>
+          <div class="col-6">
+            <div class="property-feature">
+              <strong>Bedrooms</strong>
+              <div>{{ p.bedrooms ?? p.bhk ?? 'N/A' }}</div>
             </div>
           </div>
 
-          <div class="col-4">
-            <div class="feature-box">
-              <h5>📐</h5>
-              <strong>{{ property.area }}</strong>
-              <small>Sq.ft Area</small>
+          <div class="col-6">
+            <div class="property-feature">
+              <strong>Bathrooms</strong>
+              <div>{{ p.bathrooms ?? 'N/A' }}</div>
             </div>
           </div>
 
-          <div class="col-4">
-            <div class="feature-box">
-              <h5>🏠</h5>
-              <strong>{{ property.propertyType }}</strong>
-              <small>Property Type</small>
+          <div class="col-6">
+            <div class="property-feature">
+              <strong>Area</strong>
+              <div>
+                {{ p.area ?? 'N/A' }}
+                <span *ngIf="p.area">sq. ft.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="property-feature">
+              <strong>Property ID</strong>
+              <div>{{ p.propertyId ?? p.id ?? 'N/A' }}</div>
             </div>
           </div>
 
         </div>
 
-        <hr>
+        <!-- DESCRIPTION -->
+        <h5 class="section-title">Property Description</h5>
 
-        <!-- Description -->
-        <h5 class="section-title">About This Property</h5>
-
-        <p class="description">
-          {{ property.description }}
+        <p class="property-description">
+          {{ p.description || 'No description available for this property.' }}
         </p>
 
-        <!-- Buyer Inquiry -->
-        <div *ngIf="isLoggedIn && userRole === 'Buyer'" class="inquiry-section">
-
-          <h5 class="section-title">Interested in this property?</h5>
-
-          <p class="text-muted">
-            Send a message to the property owner.
-          </p>
-
-          <textarea
-            class="form-control mb-3"
-            rows="4"
-            placeholder="Enter your message..."
-            [(ngModel)]="inquiryMessage">
-          </textarea>
-
-          <button
-            class="btn btn-primary w-100"
-            (click)="sendInquiry()">
-
-            Send Inquiry to Owner
-
-          </button>
-
-        </div>
-
-        <!-- Non-Buyer Message -->
+        <!-- BUYER INQUIRY -->
         <div
-          *ngIf="!isLoggedIn || userRole !== 'Buyer'"
-          class="alert alert-info mt-4">
+          class="inquiry-section mt-4"
+          *ngIf="userRole !== 'Owner'"
+        >
 
-          Login as a Buyer to send an inquiry to the property owner.
+          <h5 class="section-title">Interested in this Property?</h5>
+
+          <div *ngIf="!isLoggedIn" class="alert alert-info">
+            Please login as a Buyer to contact the owner.
+          </div>
+
+          <div *ngIf="isLoggedIn && userRole === 'Buyer'">
+
+            <label for="inquiryMessage" class="form-label">
+              Your Message
+            </label>
+
+            <textarea
+              id="inquiryMessage"
+              class="form-control mb-3"
+              rows="4"
+              name="inquiryMessage"
+              [(ngModel)]="inquiryMessage"
+              placeholder="Write your inquiry to the property owner..."
+            ></textarea>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="sendInquiry()"
+              [disabled]="!inquiryMessage.trim()"
+            >
+              Send Inquiry
+            </button>
+
+          </div>
 
         </div>
 
       </div>
+    </div>
+  </div>
+
+  
+<!-- PROPERTY LOCATION AND NEARBY AMENITIES -->
+<div
+  class="property-map-section mt-5"
+  *ngIf="p.latitude != null && p.longitude != null"
+>
+  <div class="row g-4">
+
+    <!-- LEFT SIDE: ROUTE PLANNER AND MAP -->
+    <div class="col-lg-7">
+
+      <h4 class="section-title">
+        📍 Property Location & Directions
+      </h4>
+
+      <p class="text-muted">
+        Enter your starting location to find a driving route to this property.
+      </p>
+
+      <div class="mb-3">
+        <label for="routeStartLocation" class="form-label">
+          Starting Location
+        </label>
+
+        <input
+          id="routeStartLocation"
+          type="text"
+          class="form-control"
+          name="routeStartLocation"
+          [(ngModel)]="routeStartLocation"
+          placeholder="Example: HITEC City, Hyderabad"
+          (keyup.enter)="showRouteToProperty()"
+        />
+
+        <small class="text-muted">
+          Enter a locality, landmark, city, or address.
+        </small>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-primary mb-3"
+        (click)="showRouteToProperty()"
+        [disabled]="isRouteLoading || !routeStartLocation.trim()"
+      >
+        <span *ngIf="!isRouteLoading">Show Route to Property</span>
+        <span *ngIf="isRouteLoading">Finding Route...</span>
+      </button>
+
+      <div
+        *ngIf="routeMessage"
+        class="alert alert-info py-2"
+        role="status"
+      >
+        {{ routeMessage }}
+      </div>
+
+      <div
+        *ngIf="routeDistance || routeDuration"
+        class="row g-3 mb-3"
+      >
+        <div class="col-6" *ngIf="routeDistance">
+          <div class="route-info-card">
+            <strong>📏 Distance</strong>
+            <div>{{ routeDistance }}</div>
+          </div>
+        </div>
+
+        <div class="col-6" *ngIf="routeDuration">
+          <div class="route-info-card">
+            <strong>🕒 Driving Time</strong>
+            <div>{{ routeDuration }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXISTING LEAFLET MAP -->
+      <div
+        id="property-map"
+        class="property-map"
+        role="application"
+        aria-label="Interactive property location and driving route map"
+      ></div>
+
+      <p class="text-muted small mt-2">
+        Enter your starting location and select Show Route to Property.
+        Travel estimates may vary with traffic conditions.
+      </p>
+
+      <div class="d-flex flex-wrap gap-2">
+        <a
+          class="btn btn-outline-primary btn-sm"
+          [href]="getOpenStreetMapDirectionsUrl()"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          OpenStreetMap Directions
+        </a>
+
+        <a
+          class="btn btn-success btn-sm"
+          [href]="getGoogleMapsDirectionsUrl()"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="bi bi-geo-alt-fill"></i>
+          Google Maps Navigation
+        </a>
+      </div>
 
     </div>
 
+    
+<!-- RIGHT SIDE: NEARBY AMENITIES -->
+<div class="col-lg-5">
+  <div class="nearby-amenities-panel">
+
+    <div class="amenities-heading">
+      <span class="amenities-heading-icon">
+        <i class="bi bi-geo-alt-fill"></i>
+      </span>
+
+      <div>
+        <h4>Nearby Amenities</h4>
+        <p>Explore places around {{ p.location }}</p>
+      </div>
+    </div>
+
+    <div class="amenities-image-grid">
+
+      <a
+        class="amenity-image-card school-card"
+        [href]="getNearbySearchUrl('schools')"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/amenities/school.jpg" alt="School campus" />
+        <span class="amenity-image-overlay">
+          <i class="bi bi-mortarboard-fill"></i>
+          <strong>Schools & Colleges</strong>
+          <small>Explore nearby education</small>
+        </span>
+      </a>
+
+      <a
+        class="amenity-image-card mall-card"
+        [href]="getNearbySearchUrl('shopping malls')"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/amenities/mall.jpg" alt="Shopping mall" />
+        <span class="amenity-image-overlay">
+          <i class="bi bi-bag-fill"></i>
+          <strong>Shopping Malls</strong>
+          <small>Shopping and leisure</small>
+        </span>
+      </a>
+
+      <a
+        class="amenity-image-card hospital-card"
+        [href]="getNearbySearchUrl('hospitals')"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="/amenities/hospital.jpg" alt="Hospital building" />
+        <span class="amenity-image-overlay">
+          <i class="bi bi-hospital-fill"></i>
+          <strong>Hospitals</strong>
+          <small>Healthcare facilities</small>
+        </span>
+      </a>
+
+      <a
+        class="amenity-image-card park-card"
+        [href]="getNearbySearchUrl('parks')"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+       <img src="/amenities/park.jpeg" alt="Green public park" />
+        <span class="amenity-image-overlay">
+          <i class="bi bi-tree-fill"></i>
+          <strong>Parks & Recreation</strong>
+          <small>Green spaces nearby</small>
+        </span>
+      </a>
+
+    </div>
+
+    <div class="amenities-footer">
+      <i class="bi bi-info-circle"></i>
+      Select a card to explore places on Google Maps.
+    </div>
+
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+  <!-- PROPERTY COORDINATES NOT AVAILABLE -->
+  <div
+    class="alert alert-light mt-4"
+    *ngIf="p.latitude == null || p.longitude == null"
+  >
+    <strong>📍 Map location unavailable</strong>
+    <p class="mb-0">
+      The owner has not added the property's map coordinates yet.
+    </p>
   </div>
 
 </div>
 
-<!-- Loading / Not Found -->
-<div class="container mt-5" *ngIf="!property">
-
-  <div class="alert alert-warning">
-    Loading property details...
+<!-- PROPERTY LOADING / NOT FOUND -->
+<div
+  class="container my-5"
+  *ngIf="!property"
+>
+  <div class="alert alert-light">
+    Property details are loading, or the property could not be found.
   </div>
-
 </div>

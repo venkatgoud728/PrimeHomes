@@ -1,0 +1,327 @@
+ <div class="chatbot-container">
+
+
+  <!-- ==========================================
+       Floating Chat Button
+       ========================================== -->
+
+  <button
+    *ngIf="!isOpen"
+    class="chatbot-button"
+    type="button"
+    (click)="toggleChat()">
+
+    <div class="chatbot-logo">
+      🏠
+    </div>
+
+    <div class="chatbot-button-text">
+
+      <strong>
+        PrimeHomes
+      </strong>
+
+      <small>
+        Assistant
+      </small>
+
+    </div>
+
+    <span class="chatbot-status"></span>
+
+  </button>
+
+
+  <!-- ==========================================
+       Chat Window
+       ========================================== -->
+
+  <div
+    *ngIf="isOpen"
+    class="chatbot-window">
+
+
+    <!-- ========================================
+         Header
+         ======================================== -->
+
+    <div class="chatbot-header">
+
+      <div class="chatbot-header-brand">
+
+        <div class="chatbot-header-logo">
+          🏠
+        </div>
+
+        <div class="chatbot-header-text">
+
+          <h5>
+            PrimeHomes Assistant
+          </h5>
+
+          <small>
+
+            <span class="online-dot"></span>
+
+            Online • Property Assistant
+
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- Close -->
+
+      <button
+        type="button"
+        class="chatbot-close"
+        (click)="toggleChat()">
+
+        ×
+
+      </button>
+
+    </div>
+
+
+    <!-- ========================================
+         Messages
+         ======================================== -->
+
+    <div class="chatbot-messages">
+
+
+      <!-- ======================================
+           Messages Loop
+           ====================================== -->
+
+      <div
+        *ngFor="let message of messages"
+        class="chat-message"
+        [ngClass]="message.sender">
+
+
+        <!-- ====================================
+             Text Message
+             ==================================== -->
+
+        <div
+          *ngIf="message.text"
+          class="message-bubble">
+
+          {{ message.text }}
+
+        </div>
+
+
+        <!-- ====================================
+             Property Results
+             ==================================== -->
+
+        <div
+          *ngIf="message.properties"
+          class="chatbot-property-results">
+
+
+          <!-- ==================================
+               Property Cards
+               ================================== -->
+
+          <div
+            *ngFor="let property of message.properties"
+            class="chatbot-property-card">
+
+
+            <!-- Property Image -->
+
+            <img
+              [src]="
+                property.imageUrl ||
+                '/images/villa.jpg'
+              "
+              [alt]="property.title"
+              class="chatbot-property-image">
+
+
+            <!-- Property Information -->
+
+            <div class="chatbot-property-body">
+
+
+              <!-- Title -->
+
+              <h6>
+                {{ property.title }}
+              </h6>
+
+
+              <!-- Location -->
+
+              <p class="property-location">
+
+                📍
+                {{ property.location }},
+                {{ property.city }}
+
+              </p>
+
+
+              <!-- Type + BHK -->
+
+              <p class="property-info">
+
+                🏠
+                {{ property.propertyType }}
+
+                &nbsp; • &nbsp;
+
+                🛏️
+                {{ property.bhk }}
+                BHK
+
+              </p>
+
+
+              <!-- Area -->
+
+              <p class="property-area">
+
+                📐
+                {{ property.area }}
+                sq.ft
+
+              </p>
+
+
+              <!-- Price -->
+
+              <div class="property-price">
+
+                ₹{{ property.price | number }}
+
+              </div>
+
+
+              <!-- View Details -->
+
+              <button
+                type="button"
+                class="view-property-button"
+                (click)="viewProperty(property.propertyId)">
+
+                View Details
+
+              </button>
+
+
+            </div>
+
+          </div>
+
+
+          <!-- ==================================
+               View All Matching Properties
+               ================================== -->
+
+          <button
+            *ngIf="message.showViewAll"
+            type="button"
+            class="view-all-properties-button"
+            (click)="viewAllProperties()">
+
+            🔎 View All Matching Properties
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- ========================================
+           Quick Suggestions
+           ======================================== -->
+
+      <div
+        *ngIf="messages.length === 1"
+        class="quick-actions">
+
+
+        <!-- Hyderabad -->
+
+        <button
+          type="button"
+          (click)="sendQuickMessage(
+            'Show me properties in Hyderabad'
+          )">
+
+          📍 Hyderabad
+
+        </button>
+
+
+        <!-- 2 BHK -->
+
+        <button
+          type="button"
+          (click)="sendQuickMessage(
+            'Show me 2 BHK properties'
+          )">
+
+          🛏️ 2 BHK
+
+        </button>
+
+
+        <!-- Villas -->
+
+        <button
+          type="button"
+          (click)="sendQuickMessage(
+            'Show me villas'
+          )">
+
+          🏡 Villas
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+    <!-- ========================================
+         Input
+         ======================================== -->
+
+    <div class="chatbot-input">
+
+
+      <input
+        type="text"
+        [(ngModel)]="userMessage"
+        placeholder="Ask about properties..."
+        (keyup.enter)="sendMessage()">
+
+
+      <button
+        type="button"
+        (click)="sendMessage()"
+        [disabled]="!userMessage.trim()">
+
+        ➤
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+</div>

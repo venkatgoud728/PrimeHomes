@@ -1,0 +1,436 @@
+<div class="container mt-5 mb-5">
+
+  <!-- Page Header -->
+  <div class="profile-header mb-4">
+
+    <div>
+      <h2 class="fw-bold">My Profile</h2>
+
+      <p class="text-muted mb-0">
+        Manage your personal information and property preferences.
+      </p>
+    </div>
+
+    <span class="role-badge">
+      {{ role }}
+    </span>
+
+  </div>
+
+
+  <!-- Loading -->
+  <div
+    *ngIf="isLoading"
+    class="text-center py-5">
+
+    <div
+      class="spinner-border"
+      role="status">
+    </div>
+
+    <p class="text-muted mt-3">
+      Loading profile...
+    </p>
+
+  </div>
+
+
+  <!-- Profile -->
+  <div
+    *ngIf="!isLoading"
+    class="row g-4">
+
+
+    <!-- Personal Information -->
+    <div class="col-lg-5">
+
+      <div class="card profile-card h-100">
+
+        <div class="card-body">
+
+          <h4 class="section-title mb-4">
+            👤 Personal Information
+          </h4>
+
+
+          <!-- Profile Image -->
+          <div class="profile-image-section text-center mb-4">
+
+            <div class="profile-image-wrapper mx-auto">
+
+              <!-- Selected Image Preview -->
+<img
+  *ngIf="imagePreviewUrl"
+  [src]="imagePreviewUrl"
+  alt="Selected Profile Image"
+  class="profile-image">
+
+<!-- Existing Uploaded Image -->
+<img
+  *ngIf="!imagePreviewUrl && profile.profileImageUrl"
+  [src]="profile.profileImageUrl"
+  alt="Profile Image"
+  class="profile-image">
+
+<!-- No Image -->
+<div
+  *ngIf="!imagePreviewUrl && !profile.profileImageUrl"
+  class="profile-image-placeholder">
+
+  👤
+
+</div>
+
+            </div>
+
+
+            <div class="mt-3">
+
+              <label class="form-label d-block">
+                Profile Picture
+              </label>
+
+              <input
+                type="file"
+                class="form-control"
+                accept=".jpg,.jpeg,.png,.webp"
+                (change)="onImageSelected($event)">
+
+            </div>
+
+
+            <!-- Selected Image -->
+            <div
+              *ngIf="selectedImage"
+              class="mt-2">
+
+              <small class="text-muted">
+                Selected:
+                {{ selectedImage.name }}
+              </small>
+
+            </div>
+
+
+            <!-- Upload Button -->
+            <button
+              type="button"
+              class="btn btn-outline-primary mt-3"
+              (click)="uploadProfileImage()"
+              [disabled]="!selectedImage || isUploadingImage">
+
+              <span
+                *ngIf="isUploadingImage"
+                class="spinner-border spinner-border-sm me-2">
+              </span>
+
+              {{ isUploadingImage ? 'Uploading...' : 'Upload Image' }}
+
+            </button>
+
+          </div>
+
+
+          <!-- Name -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              [value]="name"
+              readonly>
+
+          </div>
+
+
+          <!-- Email -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              Email
+            </label>
+
+            <input
+              type="email"
+              class="form-control"
+              [value]="email"
+              readonly>
+
+          </div>
+
+
+          <!-- Phone -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              Phone
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              [value]="phone || 'Not provided'"
+              readonly>
+
+          </div>
+
+
+          <!-- Role -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              Account Type
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              [value]="role"
+              readonly>
+
+          </div>
+
+
+          <!-- City -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              City
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your city"
+              [(ngModel)]="profile.city">
+
+          </div>
+
+
+          <!-- State -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              State
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter your state"
+              [(ngModel)]="profile.state">
+
+          </div>
+
+
+          <!-- Company -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              Company / Agency Name
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter company or agency name"
+              [(ngModel)]="profile.companyName">
+
+          </div>
+
+
+          <!-- Bio -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              About Me
+            </label>
+
+            <textarea
+              class="form-control"
+              rows="4"
+              placeholder="Tell us about yourself"
+              [(ngModel)]="profile.bio">
+            </textarea>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Property Preferences -->
+    <div class="col-lg-7">
+
+      <div class="card profile-card h-100">
+
+        <div class="card-body">
+
+          <h4 class="section-title mb-4">
+            🏠 Property Preferences
+          </h4>
+
+
+          <!-- Preferred City -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              Preferred City
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Example: Hyderabad"
+              [(ngModel)]="profile.preferredCity">
+
+          </div>
+
+
+          <!-- Preferred Property Type -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              Preferred Property Type
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="profile.preferredPropertyType">
+
+              <option value="">
+                Select Property Type
+              </option>
+
+              <option value="Apartment">
+                Apartment
+              </option>
+
+              <option value="Villa">
+                Villa
+              </option>
+
+              <option value="House">
+                House
+              </option>
+
+              <option value="Plot">
+                Plot
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- Preferred BHK -->
+          <div class="mb-3">
+
+            <label class="form-label">
+              Preferred BHK
+            </label>
+
+            <select
+              class="form-select"
+              [(ngModel)]="profile.preferredBHK">
+
+              <option [ngValue]="undefined">
+                Select BHK
+              </option>
+
+              <option [ngValue]="1">
+                1 BHK
+              </option>
+
+              <option [ngValue]="2">
+                2 BHK
+              </option>
+
+              <option [ngValue]="3">
+                3 BHK
+              </option>
+
+              <option [ngValue]="4">
+                4 BHK
+              </option>
+
+              <option [ngValue]="5">
+                5 BHK
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- Budget -->
+          <div class="row g-3">
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Minimum Budget
+              </label>
+
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Minimum budget"
+                [(ngModel)]="profile.minBudget">
+
+            </div>
+
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Maximum Budget
+              </label>
+
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Maximum budget"
+                [(ngModel)]="profile.maxBudget">
+
+            </div>
+
+          </div>
+
+
+          <!-- Save -->
+          <div class="d-flex justify-content-end mt-4">
+
+            <button
+              type="button"
+              class="btn btn-primary px-4"
+              (click)="saveProfile()"
+              [disabled]="isSaving">
+
+              <span
+                *ngIf="isSaving"
+                class="spinner-border spinner-border-sm me-2">
+              </span>
+
+              {{ isSaving ? 'Saving...' : 'Save Profile' }}
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

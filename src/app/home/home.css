@@ -4,6 +4,11 @@
 
 /* Hero Banner */
 
+
+/* Prime Homes Luxury Brand Banner */
+
+
+
 .hero-banner {
   background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6');
   background-size: cover;
@@ -37,7 +42,14 @@
 }
 
 
+/* =========================================================
+   PRIMEHOMES HOME PAGE
+   ========================================================= */
 
+:host {
+  display: block;
+  background: var(--ph-background);
+}
 
 
 .container {
@@ -45,11 +57,11 @@
 }
 
 h1 {
-  color: #1f2937;
+  color: var(--ph-navy);
 }
 
 .lead {
-  color: #6b7280;
+  color: var(--ph-muted);
 }
 
 
@@ -122,12 +134,15 @@ h1 {
 }
 
 .card-title {
-  font-weight: 600;
-  color: #1f2937;
+  font-weight: 700;
+  color: var(--ph-gold-light) !important;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .text-primary {
   font-weight: 700;
+  color: var(--ph-gold-light) !important;
 }
 
 
@@ -170,7 +185,7 @@ h1 {
 
 .footer-section h4,
 .footer-section h5 {
-  color: white;
+  color:whitesmoke;
   margin-bottom: 15px;
 }
 
@@ -196,4 +211,429 @@ h1 {
 
 .footer-section small {
   color: #9ca3af;
+}
+
+
+/* =========================================================
+   ABOUT PRIME HOMES SECTION
+   ========================================================= */
+
+.about-primehomes {
+  width: 100%;
+
+  padding: 90px 0;
+
+  background:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(212, 175, 90, 0.08),
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #050A18,
+      #0B1326
+    );
+
+  border-top: 1px solid rgba(212, 175, 90, 0.20);
+  border-bottom: 1px solid rgba(212, 175, 90, 0.20);
+}
+
+
+.about-primehomes-container {
+
+  width: 90%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 0.9fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.about-primehomes-content {
+  padding: 20px 0;
+}
+
+
+.about-label {
+
+  color: #D4AF5A;
+
+  font-size: 38px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  line-height: 1.1;
+
+  margin-bottom: 28px;
+
+  position: relative;
+}
+
+
+.about-label::after {
+
+  content: "";
+
+  display: block;
+
+  width: 90px;
+
+  height: 3px;
+
+  margin-top: 15px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #D4AF5A,
+      #A77B2E
+    );
+}
+
+
+.about-primehomes-content h2 {
+
+  color: #E6C978;
+
+  font-size: 32px;
+
+  font-family:
+    Georgia,
+    'Times New Roman',
+    serif;
+
+  margin-bottom: 25px;
+}
+
+
+.about-primehomes-content p {
+
+  color: #D7D9E0;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+
+  margin-bottom: 18px;
+}
+
+
+.about-primehomes-content strong {
+
+  color: #FFFFFF;
+
+}
+
+
+/* =========================================================
+   HIGHLIGHTS
+   ========================================================= */
+
+.about-highlights {
+
+  display: flex;
+
+  gap: 25px;
+
+  margin-top: 30px;
+
+  margin-bottom: 35px;
+
+  flex-wrap: wrap;
+}
+
+
+.about-highlight {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 150px;
+}
+
+
+.highlight-icon {
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(212, 175, 90, 0.12);
+
+  border: 1px solid rgba(212, 175, 90, 0.35);
+
+  font-size: 20px;
+}
+
+
+.about-highlight strong {
+
+  display: block;
+
+  color: #E6C978;
+
+  font-size: 14px;
+}
+
+
+.about-highlight small {
+
+  display: block;
+
+  color: #9FA6B5;
+
+  font-size: 12px;
+
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   EXPLORE BUTTON
+   ========================================================= */
+
+.about-explore-button {
+
+  display: inline-block;
+
+  padding: 12px 28px;
+
+  border-radius: 4px;
+
+  text-decoration: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #D4AF5A,
+      #A77B2E
+    );
+
+  color: #050A18 !important;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3px;
+
+  transition: all 0.3s ease;
+
+  box-shadow:
+    0 5px 18px rgba(212, 175, 90, 0.20);
+}
+
+
+.about-explore-button:hover {
+
+  transform: translateY(-3px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #E6C978,
+      #D4AF5A
+    );
+
+  color: #050A18 !important;
+
+  box-shadow:
+    0 8px 25px rgba(212, 175, 90, 0.30);
+}
+
+
+/* =========================================================
+   RIGHT IMAGE
+   ========================================================= */
+
+.about-primehomes-image {
+
+  height: 520px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  border: 1px solid rgba(212, 175, 90, 0.35);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.45);
+}
+
+
+.about-primehomes-image img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  display: block;
+
+  transition: transform 0.6s ease;
+}
+
+
+.about-primehomes-image:hover img {
+
+  transform: scale(1.04);
+}
+
+
+/* =========================================================
+   IMAGE DARK OVERLAY
+   ========================================================= */
+
+.image-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(5, 10, 24, 0.85),
+      transparent 55%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   IMAGE CAPTION
+   ========================================================= */
+
+.image-caption {
+
+  position: absolute;
+
+  left: 30px;
+
+  bottom: 28px;
+
+  z-index: 2;
+}
+
+
+.image-caption span {
+
+  display: block;
+
+  color: #E6C978;
+
+  font-size: 25px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+
+.image-caption small {
+
+  display: block;
+
+  color: #FFFFFF;
+
+  font-size: 14px;
+
+  margin-top: 6px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+  .about-primehomes-container {
+
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .about-primehomes-image {
+
+    height: 450px;
+
+    order: -1;
+  }
+
+  .about-label {
+
+    font-size: 40px;
+  }
+
+}
+
+
+@media (max-width: 576px) {
+
+  .about-primehomes {
+
+    padding: 60px 0;
+  }
+
+  .about-primehomes-container {
+
+    width: 92%;
+  }
+
+  .about-label {
+
+    font-size: 32px;
+  }
+
+  .about-primehomes-content h2 {
+
+    font-size: 26px;
+  }
+
+  .about-primehomes-content p {
+
+    font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+  .about-primehomes-image {
+
+    height: 350px;
+  }
+
+  .about-highlights {
+
+    gap: 18px;
+  }
+
 }

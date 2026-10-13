@@ -7,3 +7,21 @@
   transform: translateY(-3px);
   transition: 0.2s;
 }
+
+.dashboard-stat-card {
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.dashboard-stat-card h2 {
+  margin-bottom: 0;
+}

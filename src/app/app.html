@@ -1,152 +1,304 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark primehomes-navbar">
+
   <div class="container">
 
-    <a class="navbar-brand fw-bold" routerLink="/">
-      🏠 Prime Homes
+
+    <!-- ============================= -->
+    <!-- Prime Homes Logo -->
+    <!-- ============================= -->
+
+    <a
+      class="navbar-brand primehomes-logo"
+      routerLink="/">
+
+      <img
+        src="/images/primehomes-logo.png"
+        alt="Prime Homes">
+
     </a>
 
-   <button
-  class="navbar-toggler"
-  type="button"
-  (click)="toggleMenu()">
 
-  <span class="navbar-toggler-icon"></span>
+    <!-- ============================= -->
+    <!-- Mobile Menu Button -->
+    <!-- ============================= -->
 
-</button>
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="toggleMenu()">
 
-<div
-  class="navbar-collapse"
-  [class.show]="menuOpen"
-  id="mainNavbar">
+      <span class="navbar-toggler-icon"></span>
 
-  <div class="navbar-nav ms-auto">
+    </button>
 
-      <a
-  class="nav-link"
-  routerLink="/"
-  routerLinkActive="active"
-  [routerLinkActiveOptions]="{ exact: true }">
 
-  Home
+    <!-- ============================= -->
+    <!-- Navigation -->
+    <!-- ============================= -->
 
-</a>
+    <div
+      class="navbar-collapse"
+      [class.show]="menuOpen"
+      id="mainNavbar">
 
-      <!-- Properties for logged-in users -->
-      <ng-container *ngIf="isLoggedIn()">
 
-        <a
-  class="nav-link"
-  routerLink="/properties"
-  routerLinkActive="active">
+      <div class="navbar-nav ms-auto">
 
-  Properties
 
-</a>
-
-      </ng-container>
-
-      <!-- Show only when logged out -->
-      <ng-container *ngIf="!isLoggedIn()">
+        <!-- ============================= -->
+        <!-- Home -->
+        <!-- ============================= -->
 
         <a
-  class="nav-link"
-  routerLink="/login"
-  routerLinkActive="active">
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
 
-  Login
+          Home
 
-</a>
+        </a>
 
-<a
-  class="nav-link"
-  routerLink="/register"
-  routerLinkActive="active">
 
-  Register
+        <!-- ============================= -->
+        <!-- Properties -->
+        <!-- Logged-in users -->
+        <!-- ============================= -->
 
-</a>
+        <ng-container *ngIf="isLoggedIn()">
 
-      </ng-container>
+          <a
+            class="nav-link"
+            routerLink="/properties"
+            routerLinkActive="active">
 
-      <!-- Show only for Buyer -->
-      <ng-container *ngIf="isLoggedIn() && getUserRole() === 'Buyer'">
+            Properties
 
-        <a
-  class="nav-link"
-  routerLink="/my-inquiries"
-  routerLinkActive="active">
+          </a>
 
-  My Inquiries
+        </ng-container>
 
-</a>
 
-      </ng-container>
+        <!-- ============================= -->
+        <!-- Login / Register -->
+        <!-- Logged-out users -->
+        <!-- ============================= -->
 
-      <!-- Show only for Owner -->
-      <ng-container *ngIf="isLoggedIn() && getUserRole() === 'Owner'">
+        <ng-container *ngIf="!isLoggedIn()">
 
-        <a
-  class="nav-link"
-  routerLink="/owner-dashboard"
-  routerLinkActive="active">
+          <a
+            class="nav-link"
+            routerLink="/login"
+            routerLinkActive="active">
 
-  Dashboard
+            Login
 
-</a>
+          </a>
 
-        <a
-  class="nav-link"
-  routerLink="/my-properties"
-  routerLinkActive="active">
 
-  My Properties
+          <a
+            class="nav-link"
+            routerLink="/register"
+            routerLinkActive="active">
 
-</a>
+            Register
 
-        <a
-  class="nav-link"
-  routerLink="/owner-inquiries"
-  routerLinkActive="active">
+          </a>
 
-  My Inquiries
+        </ng-container>
 
-</a>
 
-      </ng-container>
+        <!-- ============================= -->
+        <!-- Buyer Navigation -->
+        <!-- ============================= -->
 
-      <!-- Show only for Admin -->
-      <ng-container *ngIf="isLoggedIn() && getUserRole() === 'Admin'">
+        <ng-container
+          *ngIf="isLoggedIn() && getUserRole() === 'Buyer'">
 
-        <a
-  class="nav-link"
-  routerLink="/admin-dashboard"
-  routerLinkActive="active">
 
-  Admin Dashboard
+          <a
+            class="nav-link"
+            routerLink="/buyer-dashboard"
+            routerLinkActive="active">
 
-</a>
+            Dashboard
 
-      </ng-container>
+          </a>
 
-      <!-- Logout -->
-      <ng-container *ngIf="isLoggedIn()">
 
-        <button
-          class="btn btn-outline-light btn-sm ms-2"
-          (click)="logout()">
+          <a
+            class="nav-link"
+            routerLink="/my-favorites"
+            routerLinkActive="active">
 
-          Logout
+            ❤️ My Favorites
 
-        </button>
+          </a>
 
-      </ng-container>
+
+          <a
+            class="nav-link"
+            routerLink="/compare-properties"
+            routerLinkActive="active">
+
+            ⚖ Compare
+
+          </a>
+
+
+          <a
+            class="nav-link"
+            routerLink="/my-inquiries"
+            routerLinkActive="active">
+
+            My Inquiries
+
+          </a>
+
+        </ng-container>
+
+
+        <!-- ============================= -->
+        <!-- Owner Navigation -->
+        <!-- ============================= -->
+
+        <ng-container
+          *ngIf="isLoggedIn() && getUserRole() === 'Owner'">
+
+
+          <a
+            class="nav-link"
+            routerLink="/owner-dashboard"
+            routerLinkActive="active">
+
+            Dashboard
+
+          </a>
+
+
+          <a
+            class="nav-link"
+            routerLink="/my-properties"
+            routerLinkActive="active">
+
+            My Properties
+
+          </a>
+
+
+          <a
+            class="nav-link"
+            routerLink="/owner-inquiries"
+            routerLinkActive="active">
+
+            My Inquiries
+
+          </a>
+
+        </ng-container>
+
+
+        <!-- ============================= -->
+        <!-- Admin Navigation -->
+        <!-- ============================= -->
+
+        <ng-container
+          *ngIf="isLoggedIn() && getUserRole() === 'Admin'">
+
+
+          <a
+            class="nav-link"
+            routerLink="/admin-dashboard"
+            routerLinkActive="active">
+
+            Admin Dashboard
+
+          </a>
+
+        </ng-container>
+
+
+        <!-- ======================================== -->
+        <!-- Notifications + Profile + Logout -->
+        <!-- Logged-in users -->
+        <!-- ======================================== -->
+
+        <ng-container *ngIf="isLoggedIn()">
+
+
+          <!-- ============================= -->
+          <!-- Notification Bell -->
+          <!-- ============================= -->
+
+          <a
+            class="nav-link notification-nav-link"
+            routerLink="/notifications"
+            routerLinkActive="active"
+            title="Notifications">
+
+
+            <span class="notification-bell">
+
+              🔔
+
+
+              <!-- Unread Count -->
+
+              <span
+                *ngIf="unreadNotificationCount > 0"
+                class="notification-badge">
+
+                {{ unreadNotificationCount }}
+
+              </span>
+
+            </span>
+
+          </a>
+
+
+          <!-- ============================= -->
+          <!-- Profile -->
+          <!-- ============================= -->
+
+          <a
+            class="nav-link"
+            routerLink="/profile"
+            routerLinkActive="active">
+
+            👤 Profile
+
+          </a>
+
+
+          <!-- ============================= -->
+          <!-- Logout -->
+          <!-- ============================= -->
+
+          <button
+            class="btn btn-outline-light btn-sm ms-2"
+            type="button"
+            (click)="logout()">
+
+            Logout
+
+          </button>
+
+
+        </ng-container>
+
+
+      </div>
 
     </div>
 
   </div>
 
-  </div>
-
 </nav>
+
+
+<!-- ============================= -->
+<!-- Page Content -->
+<!-- ============================= -->
 
 <router-outlet></router-outlet>
