@@ -637,3 +637,267 @@ h1 {
   }
 
 }
+
+
+
+/* ==========================================
+   PRIMEHOMES PREMIUM FOOTER
+========================================== */
+
+.ph-footer {
+  position: relative;
+  margin-top: 60px;
+  padding-top: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #081326 0%, #101d32 55%, #14283a 100%);
+  color: #d6dfdc;
+  border-top: 2px solid #c5a45b;
+}
+
+.ph-footer-main {
+  padding-top: 42px;
+  padding-bottom: 35px;
+}
+
+.ph-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.ph-footer-brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid #c5a45b;
+  border-radius: 10px;
+  color: #e0c77e;
+  font-size: 30px;
+}
+
+.ph-brand-highlight {
+  color: #d8b866;
+}
+
+.ph-footer-description {
+  max-width: 340px;
+  color: #b6c2c4;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.ph-footer-location {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 18px;
+  color: #d1dad5;
+  font-size: 13px;
+}
+
+.ph-footer-heading {
+  position: relative;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  color: #f1d58b;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.ph-footer-heading::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 35px;
+  height: 2px;
+  background: #c5a45b;
+  content: "";
+}
+
+.ph-footer-link {
+  display: block;
+  width: fit-content;
+  margin-bottom: 13px;
+  color: #c0cccb;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.ph-footer-link:hover {
+  color: #f1d58b;
+  transform: translateX(4px);
+}
+
+.ph-footer-contact {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: #c0cccb;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.ph-footer-contact > span:first-child {
+  color: #e0c77e;
+}
+
+.ph-footer-contact a {
+  color: #c0cccb;
+  text-decoration: none;
+}
+
+.ph-footer-contact a:hover {
+  color: #f1d58b;
+}
+
+.ph-footer-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding: 11px 15px;
+  border: 1px solid #c5a45b;
+  border-radius: 7px;
+  background: rgba(197, 164, 91, 0.08);
+  color: #f1d58b;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ph-footer-cta:hover {
+  background: #c5a45b;
+  color: #101d32;
+}
+
+.ph-footer-cta span {
+  font-size: 18px;
+}
+
+.ph-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(220, 220, 220, 0.14);
+}
+
+.ph-footer-bottom p {
+  margin: 0;
+  color: #9eafaf;
+  font-size: 12px;
+}
+
+.ph-footer-tagline {
+  color: #d8c58f !important;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 767px) {
+  .ph-footer {
+    margin-top: 40px;
+  }
+
+  .ph-footer-main {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
+  .ph-footer-heading {
+    margin-bottom: 18px;
+  }
+
+  .ph-footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+
+/* ==========================================
+   PrimeHomes — Distinct Footer Theme
+========================================== */
+
+.ph-footer {
+  background: linear-gradient(
+    135deg,
+    #102c25 0%,
+    #173d32 50%,
+    #204a3a 100%
+  );
+
+  color: #e4ece5;
+  border-top: 3px solid #c5a45b;
+  box-shadow: 0 -8px 30px rgba(16, 44, 37, 0.10);
+}
+
+/* Brand */
+.ph-footer-brand {
+  color: #ffffff;
+}
+
+.ph-footer-brand-icon {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #c5a45b;
+  color: #e5c978;
+}
+
+/* Section headings */
+.ph-footer-heading {
+  color: #e5c978;
+}
+
+/* Links and description */
+.ph-footer-description,
+.ph-footer-location,
+.ph-footer-contact,
+.ph-footer-link,
+.ph-footer-contact a {
+  color: #d0ded5;
+}
+
+.ph-footer-link:hover,
+.ph-footer-contact a:hover {
+  color: #f3d98f;
+}
+
+/* Explore button */
+.ph-footer-cta {
+  border-color: #c5a45b;
+  color: #f3d98f;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ph-footer-cta:hover {
+  background: #c5a45b;
+  color: #173d32;
+}
+
+/* Copyright strip */
+.ph-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.10);
+}
+
+.ph-footer-bottom p {
+  color: #b9cbc0;
+}
+
+.ph-footer-tagline {
+  color: #f3d98f !important;
+}
+

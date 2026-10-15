@@ -1,47 +1,104 @@
-<div class="container mt-5">
 
-  <div class="row justify-content-center">
+<div class="ph-login-page">
+  <div class="ph-login-card">
 
-    <div class="col-md-5">
+    <!-- Left login panel -->
+    <section class="ph-login-form">
 
-      <div class="card shadow">
+      <a routerLink="/" class="ph-brand">
+        <i class="bi bi-house-heart-fill"></i>
+        <span>PrimeHomes🏠</span>
+      </a>
 
-        <div class="card-body p-4">
-
-          <h2 class="text-center mb-4">Login</h2>
-
-          <div class="mb-3">
-            <label class="form-label">Email</label>
-
-            <input
-              type="email"
-              class="form-control"
-              [(ngModel)]="email"
-              placeholder="Enter your email">
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-
-            <input
-              type="password"
-              class="form-control"
-              [(ngModel)]="password"
-              placeholder="Enter your password">
-          </div>
-
-          <button
-            class="btn btn-primary w-100"
-            (click)="login()">
-            Login
-          </button>
-
-        </div>
-
+      <div class="ph-heading">
+        <h1>Welcome Back</h1>
+        <p>Let's login to find your perfect home</p>
       </div>
 
-    </div>
+      <!-- Social buttons: visual only until OAuth is configured -->
+      <button type="button" class="ph-social-button" disabled>
+        <span class="ph-google-icon">G</span>
+        Continue with Google
+      </button>
+
+      <button type="button" class="ph-social-button" disabled>
+        <i class="bi bi-facebook ph-facebook-icon"></i>
+        Continue with Facebook
+      </button>
+
+      <div class="ph-divider">
+        <span></span>
+        <small>Or</small>
+        <span></span>
+      </div>
+
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+
+        <div class="ph-input-group">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            required
+            email
+            placeholder="Enter your email"
+            autocomplete="username">
+        </div>
+
+        <div class="ph-input-group">
+          <label for="password">Password</label>
+          <div class="ph-password-wrapper">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              [(ngModel)]="password"
+              required
+              placeholder="Enter your password"
+              autocomplete="current-password">
+          </div>
+        </div>
+
+        <div class="ph-login-options">
+          <label class="ph-remember">
+            <input type="checkbox" name="rememberMe">
+            <span>Remember me</span>
+          </label>
+
+          <a routerLink="/forgot-password" class="ph-forgot">
+            Forgot Password?
+          </a>
+        </div>
+
+        <button
+          type="submit"
+          class="ph-login-button"
+          [disabled]="loginForm.invalid">
+          Login
+        </button>
+
+      </form>
+
+      <p class="ph-signup">
+        Don't have an account?
+        <a routerLink="/register">Sign Up</a>
+      </p>
+
+      <div class="ph-login-message" aria-live="polite">
+        <!-- Existing login error messages can be displayed here if available. -->
+      </div>
+
+    </section>
+
+    <!-- Right architectural image -->
+    <section class="ph-login-visual">
+      <div class="ph-visual-caption">
+        Browse thousands of properties to buy, sell,<br>
+        or rent with trusted agents.
+      </div>
+    </section>
 
   </div>
-
 </div>

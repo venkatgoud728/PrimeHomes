@@ -1,40 +1,66 @@
-<div class="container mt-5">
 
-  <div class="row justify-content-center">
+<div class="register-page">
+  <div class="register-layout">
 
-    <div class="col-md-6">
+    <!-- Left: Welcome panel -->
+    <div class="register-visual">
+      <div class="visual-overlay"></div>
 
-      <div class="card shadow">
-
-        <div class="card-header bg-primary text-white text-center">
-          <h3>Create Account</h3>
+      <div class="visual-content">
+        <div class="brand-mark">
+          <i class="bi bi-house-heart-fill"></i>
+          <span>PrimeHomes</span>
         </div>
 
-        <div class="card-body">
+        <div class="welcome-copy">
+          <span class="eyebrow">FIND YOUR PLACE</span>
+          <h1>A better way<br>to find your <em>home.</em></h1>
+          <p>
+            Discover properties, explore new possibilities,
+            and take the next step toward your dream home.
+          </p>
+        </div>
 
-            <div
-  *ngIf="message"
-  class="alert alert-success">
+        <div class="visual-footer">
+          <i class="bi bi-check-circle-fill"></i>
+          Your next chapter starts here.
+        </div>
+      </div>
+    </div>
 
-  {{ message }}
+    <!-- Right: Registration form -->
+    <div class="register-form-panel">
+      <div class="form-wrapper">
 
-</div>
+        <div class="mobile-brand">
+          <i class="bi bi-house-heart-fill"></i>
+          PrimeHomes
+        </div>
 
-<div
-  *ngIf="errorMessage"
-  class="alert alert-danger">
+        <div class="form-heading">
+          <span class="form-eyebrow">WELCOME TO PRIMEHOMES</span>
+          <h2>Create your account</h2>
+          <p>Join us to discover your perfect property.</p>
+        </div>
 
-  {{ errorMessage }}
+        <div *ngIf="message" class="register-alert success-alert">
+          <i class="bi bi-check-circle-fill"></i>
+          <span>{{ message }}</span>
+        </div>
 
-</div>
+        <div *ngIf="errorMessage" class="register-alert error-alert">
+          <i class="bi bi-exclamation-circle-fill"></i>
+          <span>{{ errorMessage }}</span>
+        </div>
 
+        <form (ngSubmit)="register()" #registerForm="ngForm">
 
-          <form (ngSubmit)="register()" #registerForm="ngForm">
-
-            <div class="mb-3">
-              <label class="form-label">Full Name</label>
-
+          <div class="form-field">
+            <label for="fullName">Full Name</label>
+            <div class="input-wrapper">
+              <i class="bi bi-person"></i>
               <input
+                id="fullName"
                 type="text"
                 class="form-control"
                 name="fullName"
@@ -42,71 +68,84 @@
                 required
                 placeholder="Enter your full name">
             </div>
+          </div>
 
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <div class="input-wrapper">
+              <i class="bi bi-envelope"></i>
               <input
+                id="email"
                 type="email"
                 class="form-control"
                 name="email"
                 [(ngModel)]="user.email"
                 required
-                placeholder="Enter your email">
+                email
+                placeholder="you@example.com">
             </div>
+          </div>
 
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-
+          <div class="form-field">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <i class="bi bi-lock"></i>
               <input
+                id="password"
                 type="password"
                 class="form-control"
                 name="password"
                 [(ngModel)]="user.password"
                 required
-                placeholder="Enter your password">
+                placeholder="Create a password">
             </div>
+          </div>
 
-            <div class="mb-3">
-              <label class="form-label">Register As</label>
-
+          <div class="form-field">
+            <label for="role">I want to register as</label>
+            <div class="input-wrapper select-wrapper">
+              <i class="bi bi-person-badge"></i>
               <select
+                id="role"
                 class="form-select"
                 name="role"
                 [(ngModel)]="user.role">
-
-                <option value="Buyer">Buyer</option>
-                <option value="Owner">Owner</option>
-
+                <option value="Buyer">Buyer — Find a property</option>
+                <option value="Owner">Owner — List my property</option>
               </select>
             </div>
-
-           <button
-  type="submit"
-  class="btn btn-primary w-100"
-  [disabled]="registerForm.invalid || isLoading">
-
-  <span *ngIf="!isLoading">Register</span>
-
-  <span *ngIf="isLoading">
-    Registering...
-  </span>
-
-</button>
-
-          </form>
-
-          <div class="text-center mt-3">
-            <span>Already have an account?</span>
-            <a routerLink="/login" class="ms-1">Login</a>
           </div>
 
+          <button
+            type="submit"
+            class="register-button"
+            [disabled]="registerForm.invalid || isLoading">
+
+            <span *ngIf="!isLoading">
+              Create Account
+              <i class="bi bi-arrow-right"></i>
+            </span>
+
+            <span *ngIf="isLoading">
+              <span class="spinner-border spinner-border-sm me-2"></span>
+              Registering...
+            </span>
+          </button>
+
+        </form>
+
+        <div class="login-prompt">
+          Already have an account?
+          <a routerLink="/login">Sign in</a>
+        </div>
+
+        <div class="form-bottom-note">
+          <i class="bi bi-shield-check"></i>
+          Your journey to a new home starts securely.
         </div>
 
       </div>
-
     </div>
 
   </div>
-
 </div>

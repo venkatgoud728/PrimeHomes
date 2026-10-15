@@ -56,19 +56,91 @@ export class AddProperty implements OnInit, AfterViewInit, OnDestroy {
   // Property Object
   // ==========================================
 
-  property = {
-    title: '',
-    description: '',
-    propertyType: '',
-    bhk: 0,
-    price: 0,
-    area: 0,
-    location: '',
-    city: '',
-    latitude: null as number | null,
-    longitude: null as number | null,
-    imageUrl: ''
-  };
+ property = {
+  title: '',
+  description: '',
+  propertyType: '',
+  bhk: 0,
+  price: 0,
+  area: 0,
+  location: '',
+  city: '',
+  latitude: null as number | null,
+  longitude: null as number | null,
+  imageUrl: '',
+  lifestyleFeatures: '[]'
+};
+
+
+  
+ availableLifestyleFeatures: string[] = [
+  // Existing facilities
+  'Swimming Pool',
+  'Fitness Centre',
+  'Clubhouse',
+  "Children's Play Area",
+  'Security',
+  'Parking',
+
+  // Security and safety
+  'CCTV Surveillance',
+  '24/7 Security',
+  'Gated Community',
+  'Intercom Facility',
+  'Video Door Phone',
+  'Fire Safety Systems',
+
+  // Building facilities
+  'Lift / Elevator',
+  'Power Backup',
+  '24/7 Water Supply',
+  'Rainwater Harvesting',
+  'Waste Management',
+
+  // Parking and transport
+  'Covered Parking',
+  'Visitor Parking',
+  'EV Charging',
+  'Bicycle Parking',
+
+  // Outdoor and recreation
+  'Landscaped Garden',
+  'Jogging Track',
+  'Indoor Games',
+  'Sports Court',
+  'Yoga / Meditation Room',
+  'Pet-Friendly Area',
+
+  // Smart and eco-friendly
+  'Solar Power',
+  'Smart Home Automation',
+  'Energy-Efficient Lighting',
+  'Water Treatment Plant'
+];
+
+  selectedLifestyleFeatures: string[] = [];
+
+  toggleLifestyleFeature(feature: string, event: Event): void {
+  const checkbox = event.target as HTMLInputElement;
+
+  if (checkbox.checked) {
+    if (!this.selectedLifestyleFeatures.includes(feature)) {
+      this.selectedLifestyleFeatures.push(feature);
+    }
+  } else {
+    this.selectedLifestyleFeatures =
+      this.selectedLifestyleFeatures.filter(item => item !== feature);
+  }
+
+  this.syncLifestyleFeatures();
+}
+
+private syncLifestyleFeatures(): void {
+  this.property.lifestyleFeatures = JSON.stringify(
+    this.selectedLifestyleFeatures
+  );
+}
+
 
   // ==========================================
   // OpenStreetMap
@@ -160,6 +232,27 @@ export class AddProperty implements OnInit, AfterViewInit, OnDestroy {
           this.property.longitude = data.longitude ?? null;
 
           this.property.imageUrl = data.imageUrl || '';
+
+         // Restore saved lifestyle features when editing.
+try {
+  const savedFeatures = JSON.parse(
+    data.lifestyleFeatures || '[]'
+  );
+
+  this.selectedLifestyleFeatures = Array.isArray(savedFeatures)
+    ? savedFeatures.filter(
+        (feature: unknown): feature is string =>
+          typeof feature === 'string' &&
+          this.availableLifestyleFeatures.includes(feature)
+      )
+    : [];
+} catch {
+  this.selectedLifestyleFeatures = [];
+}
+
+this.syncLifestyleFeatures();
+
+
 
           // Show existing main image
           this.imagePreview = this.property.imageUrl || null;
@@ -621,6 +714,8 @@ export class AddProperty implements OnInit, AfterViewInit, OnDestroy {
               'Property added successfully:',
               response
             );
+
+            
 
             // Get newly created Property ID.
             const newPropertyId = response.propertyId;
