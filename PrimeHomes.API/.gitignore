@@ -1,0 +1,20 @@
+# Build output
+bin/
+obj/
+publish/
+TestResults/
+
+# IDE files
+.vs/
+*.user
+*.suo
+
+# Local development settings
+appsettings.Development.json
+appsettings.*.local.json
+wwwroot/uploads/
+
+# Logs and local secrets
+*.log
+*.pfx
+*.p12
