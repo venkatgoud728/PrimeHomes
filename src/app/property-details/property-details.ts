@@ -47,6 +47,9 @@ L.Icon.Default.mergeOptions({
 export class PropertyDetails implements OnInit, OnDestroy {
 
   property?: Property;
+  propertyId = 0;
+  isLoadingProperty = true;
+  propertyError = '';
 
   private propertyMap?: L.Map;
   private propertyMarker?: L.Marker;
@@ -95,11 +98,24 @@ export class PropertyDetails implements OnInit, OnDestroy {
 
     if (!Number.isInteger(id) || id <= 0) {
       console.error('Invalid property ID.');
+      this.isLoadingProperty = false;
+      this.propertyError = 'This property link is invalid.';
       return;
     }
 
-    this.propertyService.getPropertyById(id).subscribe({
+    this.propertyId = id;
+    this.loadProperty();
+    this.loadGalleryImages(id);
+    this.loadPropertyReviews(id);
+  }
+
+  loadProperty(): void {
+    this.isLoadingProperty = true;
+    this.propertyError = '';
+
+    this.propertyService.getPropertyById(this.propertyId).subscribe({
       next: (data: Property) => {
+        this.isLoadingProperty = false;
         this.property = data;
         this.selectedImageUrl = data.imageUrl || null;
         this.cdr.detectChanges();
@@ -110,11 +126,11 @@ export class PropertyDetails implements OnInit, OnDestroy {
       },
       error: (error) => {
         console.error('Error loading property:', error);
+        this.isLoadingProperty = false;
+        this.propertyError = 'This property could not be loaded. Please try again.';
+        this.cdr.detectChanges();
       }
     });
-
-    this.loadGalleryImages(id);
-    this.loadPropertyReviews(id);
   }
 
   ngOnDestroy(): void {

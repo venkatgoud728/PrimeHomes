@@ -1,903 +1,686 @@
-/* Home Page */
-
-/* Hero Section */
-
-/* Hero Banner */
-
-
-/* Prime Homes Luxury Brand Banner */
-
-
-
-.hero-banner {
-  background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6');
-  background-size: cover;
-  background-position: center;
-  min-height: 350px;
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.45);
-  width: 100%;
-  min-height: 350px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-}
-
-.hero-overlay h1 {
-  color: white;
-  font-size: 3rem;
-}
-
-.hero-overlay .lead {
-  color: white;
-}
-
-
-/* =========================================================
-   PRIMEHOMES HOME PAGE
-   ========================================================= */
-
 :host {
   display: block;
   background: var(--ph-background);
 }
 
-
-.container {
-  max-width: 1200px;
-}
-
-h1 {
-  color: var(--ph-navy);
-}
-
-.lead {
-  color: var(--ph-muted);
-}
-
-
-/* Search Section */
-
-.card {
-  border-radius: 15px;
-}
-
-.card-body {
-  border-radius: 15px;
-}
-
-.form-control,
-.form-select {
-  border-radius: 8px;
-  min-height: 42px;
-}
-
-.form-control:focus,
-.form-select:focus {
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
-}
-
-
-/* Buttons */
-
-.btn {
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-
-/* Statistics Cards */
-
-.row.text-center .card {
-  border: none;
-  transition: all 0.3s ease;
-}
-
-.row.text-center .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
-}
-
-.row.text-center h2 {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-
-/* Featured Properties */
-
-.card-img-top {
-  border-radius: 15px 15px 0 0;
-}
-
-.mt-5 .card {
+.home-page {
+  padding: 28px 0 72px;
   overflow: hidden;
-  transition: all 0.3s ease;
 }
 
-.mt-5 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+.home-content {
+  max-width: 1240px;
 }
 
-.card-title {
-  font-weight: 700;
-  color: var(--ph-gold-light) !important;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.text-primary {
-  font-weight: 700;
-  color: var(--ph-gold-light) !important;
-}
-
-
-/* Responsive Design */
-
-@media (max-width: 768px) {
-
-  .container {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  .lead {
-    font-size: 1rem;
-  }
-
-  .search-section {
-    padding: 20px;
-  }
-
-  .row.text-center {
-    margin-top: 30px !important;
-  }
-
-  .featured-properties {
-    margin-top: 30px !important;
-  }
-
-}
-
-
-.footer-section {
-  background: #1f2937;
-  color: white;
-}
-
-.footer-section h4,
-.footer-section h5 {
-  color:whitesmoke;
-  margin-bottom: 15px;
-}
-
-.footer-section p {
-  color: #d1d5db;
-  margin-bottom: 8px;
-}
-
-.footer-section a {
-  display: block;
-  color: #d1d5db;
-  text-decoration: none;
-  margin-bottom: 8px;
-}
-
-.footer-section a:hover {
-  color: white;
-}
-
-.footer-section hr {
-  border-color: #4b5563;
-}
-
-.footer-section small {
-  color: #9ca3af;
-}
-
-
-/* =========================================================
-   ABOUT PRIME HOMES SECTION
-   ========================================================= */
-
-.about-primehomes {
-  width: 100%;
-
-  padding: 90px 0;
-
-  background:
-    radial-gradient(
-      circle at 20% 50%,
-      rgba(212, 175, 90, 0.08),
-      transparent 40%
-    ),
-    linear-gradient(
-      135deg,
-      #050A18,
-      #0B1326
-    );
-
-  border-top: 1px solid rgba(212, 175, 90, 0.20);
-  border-bottom: 1px solid rgba(212, 175, 90, 0.20);
-}
-
-
-.about-primehomes-container {
-
-  width: 90%;
-  max-width: 1400px;
-
-  margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns: 1fr 0.9fr;
-
-  gap: 70px;
-
-  align-items: center;
-}
-
-
-/* =========================================================
-   LEFT CONTENT
-   ========================================================= */
-
-.about-primehomes-content {
-  padding: 20px 0;
-}
-
-
-.about-label {
-
-  color: #D4AF5A;
-
-  font-size: 38px;
-
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  line-height: 1.1;
-
-  margin-bottom: 28px;
-
+.hero-banner {
   position: relative;
+  min-height: 455px;
+  overflow: hidden;
+  border-radius: var(--ph-radius-lg);
+  background-color: #314a43;
+  background-image: url('/images/villa.jpg');
+  background-position: center 55%;
+  background-size: cover;
+  box-shadow: var(--ph-shadow);
 }
 
-
-.about-label::after {
-
-  content: "";
-
-  display: block;
-
-  width: 90px;
-
-  height: 3px;
-
-  margin-top: 15px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #D4AF5A,
-      #A77B2E
-    );
+.hero-banner::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(12, 32, 29, .78), rgba(12, 32, 29, .31) 70%, rgba(12, 32, 29, .1));
+  content: '';
 }
 
-
-.about-primehomes-content h2 {
-
-  color: #E6C978;
-
-  font-size: 32px;
-
-  font-family:
-    Georgia,
-    'Times New Roman',
-    serif;
-
-  margin-bottom: 25px;
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  min-height: 455px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(32px, 7vw, 88px);
+  text-align: left;
 }
 
+.hero-eyebrow,
+.section-eyebrow,
+.search-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--ph-gold-light);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
 
-.about-primehomes-content p {
+.hero-overlay h1 {
+  max-width: 690px;
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: clamp(2.5rem, 5vw, 4.3rem);
+  font-weight: 750;
+  letter-spacing: -.055em;
+  line-height: 1.05;
+}
 
-  color: #D7D9E0;
+.hero-overlay .lead {
+  max-width: 580px;
+  margin: 0;
+  color: rgba(255, 255, 255, .87);
+  font-size: clamp(1rem, 1.7vw, 1.17rem);
+  line-height: 1.65;
+}
 
-  font-size: 17px;
+.hero-browse-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 700;
+}
 
-  line-height: 1.8;
+.hero-browse-link span {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .5);
+  border-radius: 50%;
+  transition: transform var(--ph-transition), background-color var(--ph-transition);
+}
 
+.hero-browse-link:hover {
+  color: #fff;
+}
+
+.hero-browse-link:hover span {
+  transform: translateX(3px);
+  background: rgba(255, 255, 255, .15);
+}
+
+.home-search-card {
+  position: relative;
+  z-index: 2;
+  max-width: 1080px;
+  margin: -36px auto 0 !important;
+  padding: 28px 30px !important;
+  border: 1px solid rgba(227, 233, 229, .9) !important;
+  border-radius: var(--ph-radius) !important;
+  background: #fff !important;
+  box-shadow: var(--ph-shadow) !important;
+}
+
+.search-heading {
   margin-bottom: 18px;
 }
 
-
-.about-primehomes-content strong {
-
-  color: #FFFFFF;
-
+.search-eyebrow,
+.section-eyebrow {
+  margin-bottom: 5px;
+  color: var(--ph-blue-light);
+  font-size: .68rem;
 }
 
-
-/* =========================================================
-   HIGHLIGHTS
-   ========================================================= */
-
-.about-highlights {
-
-  display: flex;
-
-  gap: 25px;
-
-  margin-top: 30px;
-
-  margin-bottom: 35px;
-
-  flex-wrap: wrap;
+.search-heading h2 {
+  margin: 0;
+  color: var(--ph-text);
+  font-size: 1.35rem;
+  font-weight: 750;
 }
 
-
-.about-highlight {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  min-width: 150px;
-}
-
-
-.highlight-icon {
-
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background:
-    rgba(212, 175, 90, 0.12);
-
-  border: 1px solid rgba(212, 175, 90, 0.35);
-
-  font-size: 20px;
-}
-
-
-.about-highlight strong {
-
-  display: block;
-
-  color: #E6C978;
-
-  font-size: 14px;
-}
-
-
-.about-highlight small {
-
-  display: block;
-
-  color: #9FA6B5;
-
-  font-size: 12px;
-
-  margin-top: 3px;
-}
-
-
-/* =========================================================
-   EXPLORE BUTTON
-   ========================================================= */
-
-.about-explore-button {
-
-  display: inline-block;
-
-  padding: 12px 28px;
-
-  border-radius: 4px;
-
-  text-decoration: none;
-
-  background:
-    linear-gradient(
-      135deg,
-      #D4AF5A,
-      #A77B2E
-    );
-
-  color: #050A18 !important;
-
+.home-search-card .form-label {
+  margin-bottom: 7px;
+  color: #53625e;
+  font-size: .78rem;
   font-weight: 700;
-
-  letter-spacing: 0.3px;
-
-  transition: all 0.3s ease;
-
-  box-shadow:
-    0 5px 18px rgba(212, 175, 90, 0.20);
 }
 
-
-.about-explore-button:hover {
-
-  transform: translateY(-3px);
-
-  background:
-    linear-gradient(
-      135deg,
-      #E6C978,
-      #D4AF5A
-    );
-
-  color: #050A18 !important;
-
-  box-shadow:
-    0 8px 25px rgba(212, 175, 90, 0.30);
+.home-search-card .form-control,
+.home-search-card .form-select {
+  min-height: 48px;
 }
 
+.home-search-card .btn {
+  min-height: 48px;
+  margin-top: 27px;
+}
 
-/* =========================================================
-   RIGHT IMAGE
-   ========================================================= */
+.browse-all-row {
+  margin-top: 19px !important;
+}
 
-.about-primehomes-image {
+.home-statistics {
+  margin-top: 60px !important;
+  margin-bottom: 70px !important;
+}
 
-  height: 520px;
+.home-statistics .card {
+  border-radius: var(--ph-radius) !important;
+}
 
-  position: relative;
+.home-statistics .card-body {
+  padding: 24px 18px;
+}
 
+.home-statistics h2 {
+  margin: 0 0 4px;
+  color: var(--ph-navy) !important;
+  font-family: 'Manrope', 'DM Sans', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+}
+
+.home-statistics p {
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.featured-section {
+  margin-top: 0 !important;
+}
+
+.featured-section > .d-flex {
+  align-items: flex-end !important;
+}
+
+.featured-section h2 {
+  margin: 0;
+  color: var(--ph-text);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 750;
+}
+
+.featured-section .card {
+  height: 100%;
   overflow: hidden;
-
-  border-radius: 4px;
-
-  border: 1px solid rgba(212, 175, 90, 0.35);
-
-  box-shadow:
-    0 15px 45px rgba(0, 0, 0, 0.45);
+  border-radius: var(--ph-radius) !important;
 }
 
+.home-property-image {
+  position: relative;
+  display: grid;
+  height: 225px;
+  overflow: hidden;
+  place-items: center;
+  background: #eaf0ec;
+}
 
-.about-primehomes-image img {
-
+.home-property-image img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
-  object-position: center;
-
-  display: block;
-
-  transition: transform 0.6s ease;
+  transition: transform 420ms ease;
 }
 
+.featured-section .card:hover .home-property-image img {
+  transform: scale(1.035);
+}
+
+.image-unavailable {
+  color: var(--ph-muted);
+  font-size: .84rem;
+}
+
+.featured-section .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 21px;
+}
+
+.featured-section .card-title {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-bottom: 8px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.featured-section .card-text {
+  margin-bottom: 9px;
+  font-size: .88rem;
+}
+
+.featured-section .text-primary {
+  margin: 2px 0 7px;
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.featured-section .btn {
+  margin-top: auto;
+}
+
+.home-loading {
+  display: flex;
+  min-height: 160px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--ph-muted);
+}
+
+.home-loading .spinner-border {
+  color: var(--ph-navy);
+}
+
+.featured-section > .text-center {
+  padding: 26px;
+  border: 1px dashed #d3ded7;
+  border-radius: var(--ph-radius);
+  background: #fff;
+}
+
+.featured-section > .text-center p {
+  margin: 0;
+}
+
+.about-primehomes {
+  padding: 84px 24px;
+  background: #eef3ef;
+}
+
+.about-primehomes-container {
+  display: grid;
+  max-width: 1160px;
+  align-items: center;
+  gap: clamp(42px, 7vw, 92px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
+  margin: 0 auto;
+}
+
+.about-primehomes-content {
+  max-width: 610px;
+}
+
+.about-label {
+  display: inline-flex;
+  margin-bottom: 16px;
+  color: var(--ph-blue-light);
+  font-size: .72rem;
+  font-weight: 750;
+  letter-spacing: .13em;
+}
+
+.about-primehomes-content h2 {
+  max-width: 520px;
+  margin: 0 0 18px;
+  color: var(--ph-text);
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 750;
+  letter-spacing: -.045em;
+}
+
+.about-primehomes-content p {
+  margin-bottom: 14px;
+  color: #56645f;
+  font-size: .96rem;
+  line-height: 1.8;
+}
+
+.about-primehomes-content strong {
+  color: var(--ph-text);
+}
+
+.about-highlights {
+  display: grid;
+  gap: 13px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 27px 0;
+}
+
+.about-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px 12px;
+  border: 1px solid rgba(213, 226, 217, .85);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .72);
+}
+
+.highlight-icon {
+  font-size: 1.1rem;
+}
+
+.about-highlight strong,
+.about-highlight small {
+  display: block;
+}
+
+.about-highlight strong {
+  color: var(--ph-text);
+  font-size: .78rem;
+}
+
+.about-highlight small {
+  margin-top: 3px;
+  color: var(--ph-muted);
+  font-size: .68rem;
+  line-height: 1.4;
+}
+
+.about-explore-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 0 20px;
+  background: var(--ph-navy);
+  color: #fff;
+  font-weight: 700;
+  transition: transform var(--ph-transition), background-color var(--ph-transition);
+}
+
+.about-explore-button:hover {
+  transform: translateY(-1px);
+  background: var(--ph-blue-dark);
+  color: #fff;
+}
+
+.about-primehomes-image {
+  position: relative;
+  min-height: 430px;
+  overflow: hidden;
+  border-radius: var(--ph-radius-lg);
+  background: #dbe4de;
+  box-shadow: var(--ph-shadow);
+}
+
+.about-primehomes-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
 
 .about-primehomes-image:hover img {
-
-  transform: scale(1.04);
+  transform: scale(1.025);
 }
 
-
-/* =========================================================
-   IMAGE DARK OVERLAY
-   ========================================================= */
-
-.image-overlay {
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(5, 10, 24, 0.85),
-      transparent 55%
-    );
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   IMAGE CAPTION
-   ========================================================= */
-
+.image-overlay,
 .image-caption {
-
-  position: absolute;
-
-  left: 30px;
-
-  bottom: 28px;
-
-  z-index: 2;
+  display: none;
 }
-
-
-.image-caption span {
-
-  display: block;
-
-  color: #E6C978;
-
-  font-size: 25px;
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-}
-
-
-.image-caption small {
-
-  display: block;
-
-  color: #FFFFFF;
-
-  font-size: 14px;
-
-  margin-top: 6px;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 992px) {
-
-  .about-primehomes-container {
-
-    grid-template-columns: 1fr;
-
-    gap: 40px;
-  }
-
-  .about-primehomes-image {
-
-    height: 450px;
-
-    order: -1;
-  }
-
-  .about-label {
-
-    font-size: 40px;
-  }
-
-}
-
-
-@media (max-width: 576px) {
-
-  .about-primehomes {
-
-    padding: 60px 0;
-  }
-
-  .about-primehomes-container {
-
-    width: 92%;
-  }
-
-  .about-label {
-
-    font-size: 32px;
-  }
-
-  .about-primehomes-content h2 {
-
-    font-size: 26px;
-  }
-
-  .about-primehomes-content p {
-
-    font-size: 15px;
-
-    line-height: 1.7;
-  }
-
-  .about-primehomes-image {
-
-    height: 350px;
-  }
-
-  .about-highlights {
-
-    gap: 18px;
-  }
-
-}
-
-
-
-/* ==========================================
-   PRIMEHOMES PREMIUM FOOTER
-========================================== */
 
 .ph-footer {
-  position: relative;
-  margin-top: 60px;
-  padding-top: 12px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #081326 0%, #101d32 55%, #14283a 100%);
-  color: #d6dfdc;
-  border-top: 2px solid #c5a45b;
+  padding: 64px 0 0;
+  background: #173c39;
+  color: #fff;
 }
 
 .ph-footer-main {
-  padding-top: 42px;
-  padding-bottom: 35px;
+  margin-right: 0;
+  margin-left: 0;
+  padding-bottom: 42px;
 }
 
 .ph-footer-brand {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 18px;
-  color: #ffffff;
-  font-size: 22px;
+  margin-bottom: 15px;
+  color: #fff;
+  font-family: 'Manrope', 'DM Sans', sans-serif;
+  font-size: 1.12rem;
   font-weight: 800;
-  letter-spacing: 1px;
-  text-decoration: none;
+  letter-spacing: .03em;
+}
+
+.ph-footer-brand:hover,
+.ph-footer-link:hover {
+  color: #e7c88f;
 }
 
 .ph-footer-brand-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid #c5a45b;
-  border-radius: 10px;
-  color: #e0c77e;
-  font-size: 30px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, .08);
+  font-size: 1.3rem;
 }
 
 .ph-brand-highlight {
-  color: #d8b866;
+  color: #d3ad73;
+}
+
+.ph-footer-description,
+.ph-footer-location,
+.ph-footer-contact,
+.ph-footer-bottom p {
+  color: rgba(255, 255, 255, .72);
+  font-size: .86rem;
 }
 
 .ph-footer-description {
   max-width: 340px;
-  color: #b6c2c4;
-  font-size: 14px;
-  line-height: 1.9;
+  line-height: 1.8;
 }
 
-.ph-footer-location {
+.ph-footer-location,
+.ph-footer-contact {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 9px;
-  margin-top: 18px;
-  color: #d1dad5;
-  font-size: 13px;
 }
 
 .ph-footer-heading {
   position: relative;
-  margin-bottom: 24px;
-  padding-bottom: 12px;
-  color: #f1d58b;
-  font-size: 15px;
-  font-weight: 750;
+  margin: 5px 0 18px;
+  color: #fff;
+  font-size: .96rem;
+  font-weight: 700;
 }
 
 .ph-footer-heading::after {
   position: absolute;
-  bottom: 0;
+  bottom: -8px;
   left: 0;
-  width: 35px;
+  width: 28px;
   height: 2px;
-  background: #c5a45b;
-  content: "";
+  border-radius: 2px;
+  background: #bd9250;
+  content: '';
 }
 
 .ph-footer-link {
   display: block;
   width: fit-content;
-  margin-bottom: 13px;
-  color: #c0cccb;
-  font-size: 13px;
-  text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
+  margin: 9px 0;
+  color: rgba(255, 255, 255, .72);
+  font-size: .85rem;
+  transition: color var(--ph-transition), transform var(--ph-transition);
 }
 
 .ph-footer-link:hover {
-  color: #f1d58b;
-  transform: translateX(4px);
-}
-
-.ph-footer-contact {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 15px;
-  color: #c0cccb;
-  font-size: 13px;
-  line-height: 1.7;
-  overflow-wrap: anywhere;
-}
-
-.ph-footer-contact > span:first-child {
-  color: #e0c77e;
+  transform: translateX(2px);
 }
 
 .ph-footer-contact a {
-  color: #c0cccb;
-  text-decoration: none;
+  color: rgba(255, 255, 255, .82);
 }
 
 .ph-footer-contact a:hover {
-  color: #f1d58b;
+  color: #e7c88f;
 }
 
 .ph-footer-cta {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin-top: 8px;
-  padding: 11px 15px;
-  border: 1px solid #c5a45b;
-  border-radius: 7px;
-  background: rgba(197, 164, 91, 0.08);
-  color: #f1d58b;
-  font-size: 12px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 10px;
+  padding: 10px 13px;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 650;
+  transition: background-color var(--ph-transition), border-color var(--ph-transition);
 }
 
 .ph-footer-cta:hover {
-  background: #c5a45b;
-  color: #101d32;
-}
-
-.ph-footer-cta span {
-  font-size: 18px;
+  border-color: #d3ad73;
+  background: rgba(255, 255, 255, .08);
+  color: #fff;
 }
 
 .ph-footer-bottom {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  padding: 20px 0;
-  border-top: 1px solid rgba(220, 220, 220, 0.14);
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+  padding: 19px 0;
 }
 
 .ph-footer-bottom p {
   margin: 0;
-  color: #9eafaf;
-  font-size: 12px;
+  font-size: .77rem;
 }
 
 .ph-footer-tagline {
-  color: #d8c58f !important;
-  letter-spacing: 0.3px;
+  color: #e4c58c !important;
 }
 
-@media (max-width: 767px) {
-  .ph-footer {
-    margin-top: 40px;
+@media (max-width: 991.98px) {
+  .about-primehomes-container {
+    gap: 38px;
   }
 
-  .ph-footer-main {
-    padding-top: 30px;
-    padding-bottom: 20px;
+  .about-primehomes-image {
+    min-height: 360px;
   }
 
-  .ph-footer-heading {
-    margin-bottom: 18px;
+  .about-highlights {
+    grid-template-columns: 1fr;
   }
 
-  .ph-footer-bottom {
+  .about-highlight {
+    align-items: center;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .home-page {
+    padding: 16px 0 52px;
+  }
+
+  .hero-banner,
+  .hero-overlay {
+    min-height: 390px;
+  }
+
+  .hero-banner {
+    border-radius: 18px;
+  }
+
+  .hero-overlay {
+    padding: 30px 25px;
+  }
+
+  .hero-overlay h1 {
+    font-size: clamp(2.3rem, 9vw, 3.3rem);
+  }
+
+  .home-search-card {
+    margin-top: -23px !important;
+    padding: 22px !important;
+  }
+
+  .home-search-card .btn {
+    margin-top: 0;
+  }
+
+  .home-statistics {
+    margin-top: 38px !important;
+    margin-bottom: 48px !important;
+  }
+
+  .featured-section > .d-flex {
+    align-items: flex-start !important;
+  }
+
+  .about-primehomes {
+    padding: 55px 20px;
+  }
+
+  .about-primehomes-container {
+    grid-template-columns: 1fr;
+  }
+
+  .about-primehomes-image {
+    min-height: 310px;
+  }
+
+  .about-highlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .about-highlight {
     align-items: flex-start;
     flex-direction: column;
   }
+
+  .ph-footer {
+    padding-top: 46px;
+  }
+
+  .ph-footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+  }
 }
 
+@media (max-width: 480px) {
+  .hero-banner,
+  .hero-overlay {
+    min-height: 350px;
+  }
 
+  .hero-overlay {
+    padding: 24px 20px;
+  }
 
-/* ==========================================
-   PrimeHomes — Distinct Footer Theme
-========================================== */
+  .hero-overlay h1 {
+    font-size: 2.25rem;
+  }
 
-.ph-footer {
-  background: linear-gradient(
-    135deg,
-    #102c25 0%,
-    #173d32 50%,
-    #204a3a 100%
-  );
+  .home-search-card {
+    padding: 19px !important;
+  }
 
-  color: #e4ece5;
-  border-top: 3px solid #c5a45b;
-  box-shadow: 0 -8px 30px rgba(16, 44, 37, 0.10);
+  .featured-section > .d-flex {
+    gap: 12px;
+  }
+
+  .featured-section > .d-flex .btn {
+    min-height: 38px;
+    padding: .5rem .65rem;
+    font-size: .8rem;
+  }
+
+  .about-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .about-highlight {
+    align-items: center;
+    flex-direction: row;
+  }
 }
 
-/* Brand */
-.ph-footer-brand {
-  color: #ffffff;
+@media (prefers-reduced-motion: reduce) {
+  .home-property-image img,
+  .about-primehomes-image img {
+    transition: none;
+  }
 }
-
-.ph-footer-brand-icon {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: #c5a45b;
-  color: #e5c978;
-}
-
-/* Section headings */
-.ph-footer-heading {
-  color: #e5c978;
-}
-
-/* Links and description */
-.ph-footer-description,
-.ph-footer-location,
-.ph-footer-contact,
-.ph-footer-link,
-.ph-footer-contact a {
-  color: #d0ded5;
-}
-
-.ph-footer-link:hover,
-.ph-footer-contact a:hover {
-  color: #f3d98f;
-}
-
-/* Explore button */
-.ph-footer-cta {
-  border-color: #c5a45b;
-  color: #f3d98f;
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.ph-footer-cta:hover {
-  background: #c5a45b;
-  color: #173d32;
-}
-
-/* Copyright strip */
-.ph-footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(0, 0, 0, 0.10);
-}
-
-.ph-footer-bottom p {
-  color: #b9cbc0;
-}
-
-.ph-footer-tagline {
-  color: #f3d98f !important;
-}
-

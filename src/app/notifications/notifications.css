@@ -1,349 +1,208 @@
-/* ==========================================
-   Notifications Page
-   ========================================== */
+:host {
+  display: block;
+  min-height: 70vh;
+  padding: 1px 0 3rem;
+  background:
+    radial-gradient(ellipse at 8% 0, rgba(189, 146, 80, .08), transparent 28rem),
+    var(--ph-background);
+}
 
 .notifications-page {
-  min-height: calc(100vh - 70px);
-  background: #f5f7fb;
-  padding: 40px 0;
+  padding: 2.5rem 0;
 }
 
-
-/* ==========================================
-   Header
-   ========================================== */
+.notifications-page > .container {
+  max-width: 980px;
+}
 
 .notifications-header {
-  background: #ffffff;
-
-  border-radius: 12px;
-
-  padding: 25px;
-
-  margin-bottom: 25px;
-
-  box-shadow:
-    0 3px 15px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  padding: clamp(1.4rem, 4vw, 2.1rem);
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius);
+  background:
+    linear-gradient(120deg, #fff 62%, #f1f6f2 100%);
+  box-shadow: var(--ph-shadow-sm);
 }
 
+.notifications-header::after {
+  position: absolute;
+  top: -2.8rem;
+  right: -1.6rem;
+  width: 10rem;
+  height: 10rem;
+  border: 1px solid rgba(189, 146, 80, .16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5rem rgba(189, 146, 80, .04), 0 0 0 3rem rgba(189, 146, 80, .025);
+  content: '';
+  pointer-events: none;
+}
 
 .notifications-header h2 {
-  margin: 0 0 6px;
-
-  color: #222222;
-
-  font-size: 28px;
-
-  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  margin: 0 0 .4rem;
+  color: var(--ph-text);
+  font-size: clamp(1.55rem, 4vw, 2rem);
 }
-
 
 .notifications-header p {
+  position: relative;
+  z-index: 1;
   margin: 0;
-
-  color: #777777;
-
-  font-size: 15px;
+  color: var(--ph-muted);
 }
-
-
-/* ==========================================
-   Loading / Empty
-   ========================================== */
 
 .notifications-message,
 .notifications-empty {
-  background: #ffffff;
-
-  border-radius: 12px;
-
-  padding: 50px 20px;
-
+  padding: clamp(2.5rem, 7vw, 4rem) 1.25rem;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius);
+  background: var(--ph-card);
+  box-shadow: var(--ph-shadow-sm);
   text-align: center;
-
-  box-shadow:
-    0 3px 15px rgba(0, 0, 0, 0.08);
 }
-
 
 .notifications-message {
-  color: #555555;
-
-  font-size: 15px;
+  color: var(--ph-muted);
 }
 
-
-.empty-icon {
-  font-size: 45px;
-
-  margin-bottom: 15px;
+.notifications-empty .empty-icon {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  place-items: center;
+  margin: 0 auto 1rem;
+  border-radius: 22px;
+  background: #edf4f0;
+  color: var(--ph-navy);
+  font-size: 1.8rem;
 }
-
 
 .notifications-empty h4 {
-  margin: 0 0 8px;
-
-  color: #333333;
-
-  font-size: 20px;
-
-  font-weight: 700;
+  margin: 0 0 .4rem;
+  color: var(--ph-text);
 }
-
 
 .notifications-empty p {
   margin: 0;
-
-  color: #777777;
-
-  font-size: 14px;
+  color: var(--ph-muted);
 }
-
-
-/* ==========================================
-   Notification List
-   ========================================== */
 
 .notification-list {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 12px;
-
-  width: 100%;
+  display: grid;
+  gap: .8rem;
 }
-
-
-/* ==========================================
-   Notification Card
-   ========================================== */
 
 .notification-card {
   position: relative;
-
-  display: flex !important;
-
-  align-items: center;
-
+  display: flex;
   width: 100%;
-
-  min-height: 90px;
-
-  gap: 15px;
-
-  padding: 18px;
-
-  background: #ffffff;
-
-  border-radius: 12px;
-
+  min-height: 96px;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--ph-border);
   border-left: 4px solid transparent;
-
-  box-sizing: border-box;
-
+  border-radius: 14px;
+  background: var(--ph-card);
+  box-shadow: var(--ph-shadow-sm);
   cursor: pointer;
-
-  box-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.07);
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  text-align: left;
+  transition: border-color var(--ph-transition), background-color var(--ph-transition), box-shadow var(--ph-transition), transform var(--ph-transition);
 }
-
-
-/* Hover */
 
 .notification-card:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 6px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+  border-color: #d4dfd8;
+  box-shadow: var(--ph-shadow);
 }
 
-
-/* ==========================================
-   Unread Notification
-   ========================================== */
+.notification-card:focus-visible {
+  outline: 3px solid rgba(189, 146, 80, .72);
+  outline-offset: 3px;
+}
 
 .notification-card.unread {
-  border-left-color: #d4af37;
-
-  background: #fffdf5;
+  border-left-color: var(--ph-gold);
+  background: #fffdf8;
 }
-
-
-/* ==========================================
-   Notification Icon
-   ========================================== */
 
 .notification-icon {
+  display: grid;
   width: 48px;
-
   height: 48px;
-
-  min-width: 48px;
-
-  border-radius: 50%;
-
-  background: #f1f1f1;
-
-  display: flex !important;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-size: 22px;
-
-  line-height: 1;
-
-  flex-shrink: 0;
+  flex: 0 0 48px;
+  place-items: center;
+  border: 1px solid #e3ebe6;
+  border-radius: 15px;
+  background: #f1f6f3;
+  font-size: 1.25rem;
 }
 
-
-/* ==========================================
-   Notification Content
-   ========================================== */
+.notification-card.unread .notification-icon {
+  border-color: #eedfc5;
+  background: #faf3e7;
+}
 
 .notification-content {
-  display: block !important;
-
   flex: 1;
-
   min-width: 0;
-
-  visibility: visible;
-
-  opacity: 1;
 }
-
 
 .notification-content h5 {
-  display: block !important;
-
-  margin: 0 0 5px;
-
-  color: #333333 !important;
-
-  font-size: 16px;
-
-  font-weight: 700;
-
+  margin: 0 0 .25rem;
+  color: var(--ph-text);
+  font-size: 1rem;
+  font-weight: 750;
   line-height: 1.4;
-
-  visibility: visible;
-
-  opacity: 1;
 }
-
 
 .notification-content p {
-  display: block !important;
-
-  margin: 0 0 6px;
-
-  color: #666666 !important;
-
-  font-size: 14px;
-
+  margin: 0 0 .35rem;
+  color: var(--ph-text-light);
   line-height: 1.5;
-
-  visibility: visible;
-
-  opacity: 1;
+  overflow-wrap: anywhere;
 }
-
 
 .notification-content small {
-  display: block !important;
-
-  color: #999999 !important;
-
-  font-size: 12px;
-
-  line-height: 1.4;
-
-  visibility: visible;
-
-  opacity: 1;
+  color: var(--ph-muted);
+  font-size: .78rem;
 }
-
-
-/* ==========================================
-   Unread Dot
-   ========================================== */
 
 .unread-dot {
   width: 10px;
-
   height: 10px;
-
-  min-width: 10px;
-
+  flex: 0 0 10px;
   border-radius: 50%;
-
-  background: #d4af37;
-
-  flex-shrink: 0;
+  background: var(--ph-gold);
+  box-shadow: 0 0 0 4px rgba(189, 146, 80, .13);
 }
 
-
-/* ==========================================
-   Mobile
-   ========================================== */
-
-@media (max-width: 576px) {
-
+@media (max-width: 575.98px) {
   .notifications-page {
-    padding: 20px 0;
+    padding: 1.25rem 0;
   }
-
-
-  .notifications-header {
-    padding: 20px;
-  }
-
-
-  .notifications-header h2 {
-    font-size: 24px;
-  }
-
 
   .notification-card {
-    padding: 14px;
-
-    min-height: 80px;
-
-    gap: 10px;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: .9rem;
   }
-
 
   .notification-icon {
     width: 40px;
-
     height: 40px;
-
-    min-width: 40px;
-
-    font-size: 18px;
+    flex-basis: 40px;
+    border-radius: 12px;
+    font-size: 1.1rem;
   }
+}
 
-
-  .notification-content h5 {
-    font-size: 14px;
+@media (prefers-reduced-motion: reduce) {
+  .notification-card {
+    transition: none;
   }
-
-
-  .notification-content p {
-    font-size: 13px;
-  }
-
-
-  .notification-content small {
-    font-size: 11px;
-  }
-
 }

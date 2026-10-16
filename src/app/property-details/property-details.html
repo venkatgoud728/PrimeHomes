@@ -1,4 +1,22 @@
 
+<div *ngIf="isLoadingProperty" class="container my-5 text-center py-5" role="status" aria-live="polite">
+  <span class="spinner-border text-primary" aria-hidden="true"></span>
+  <p class="text-muted mt-3">Loading property details…</p>
+</div>
+
+<div *ngIf="propertyError" class="container my-5">
+  <div class="alert alert-warning" role="alert">
+    {{ propertyError }}
+    <button
+      *ngIf="propertyId > 0"
+      type="button"
+      class="btn btn-sm btn-outline-primary ms-2"
+      (click)="loadProperty()">
+      Try again
+    </button>
+  </div>
+</div>
+
 <div class="container my-5" *ngIf="property as p">
 
   <!-- PROPERTY DETAILS -->
@@ -8,10 +26,13 @@
     <div class="col-lg-6">
       <div class="main-image-container mb-3">
         <img
-          [src]="selectedImageUrl || p.imageUrl || 'assets/images/property-placeholder.jpg'"
+          *ngIf="selectedImageUrl || p.imageUrl"
+          [src]="selectedImageUrl || p.imageUrl"
           [alt]="p.title"
           class="img-fluid rounded shadow-sm main-property-image"
+          (error)="selectedImageUrl = null; p.imageUrl = ''"
         />
+        <span *ngIf="!selectedImageUrl && !p.imageUrl" class="image-fallback">Property photo unavailable</span>
       </div>
 
       <!-- GALLERY IMAGES -->
@@ -25,10 +46,12 @@
         >
           <div class="gallery-image-container">
             <img
+              *ngIf="image.imageUrl"
               [src]="image.imageUrl"
               [alt]="p.title"
               class="img-fluid rounded gallery-thumbnail"
               (click)="selectedImageUrl = image.imageUrl"
+              (error)="image.imageUrl = ''"
               [class.active-thumbnail]="selectedImageUrl === image.imageUrl"
             />
 

@@ -9,7 +9,9 @@
     *ngIf="!isOpen"
     class="chatbot-button"
     type="button"
-    (click)="toggleChat()">
+    (click)="toggleChat()"
+    aria-label="Open PrimeHomes assistant"
+    title="Open PrimeHomes assistant">
 
     <div class="chatbot-logo">
       🏠
@@ -77,7 +79,8 @@
       <button
         type="button"
         class="chatbot-close"
-        (click)="toggleChat()">
+        (click)="toggleChat()"
+        aria-label="Close PrimeHomes assistant">
 
         ×
 
@@ -137,12 +140,12 @@
             <!-- Property Image -->
 
             <img
-              [src]="
-                property.imageUrl ||
-                '/images/villa.jpg'
-              "
+              *ngIf="property.imageUrl"
+              [src]="property.imageUrl"
               [alt]="property.title"
-              class="chatbot-property-image">
+              class="chatbot-property-image"
+              (error)="property.imageUrl = ''">
+            <span *ngIf="!property.imageUrl" class="image-fallback">Property photo unavailable</span>
 
 
             <!-- Property Information -->

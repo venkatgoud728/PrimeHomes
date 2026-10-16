@@ -1,174 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
-/* =========================================================
-   PRIME HOMES - LUXURY REAL ESTATE THEME
-   ========================================================= */
-
 :root {
-  --ph-dark: #050A18;
-  --ph-dark-secondary: #0B1326;
-  --ph-card: #111A2E;
-
-  --ph-gold: #D4AF5A;
-  --ph-gold-light: #E6C978;
-  --ph-gold-dark: #A77B2E;
-
-  --ph-white: #FFFFFF;
-  --ph-text-light: #D7D9E0;
-  --ph-text-muted: #9FA6B5;
-
-  --ph-border: rgba(212, 175, 90, 0.30);
+  color-scheme: light;
+  --ph-navy: #173c39;
+  --ph-navy-light: #245650;
+  --ph-blue: #245650;
+  --ph-blue-light: #3a776e;
+  --ph-blue-dark: #102e2c;
+  --ph-gold: #bd9250;
+  --ph-gold-light: #d3ad73;
+  --ph-gold-dark: #916d38;
+  --ph-background: #f5f7f5;
+  --ph-background-light: #fafbf9;
+  --ph-white: #fff;
+  --ph-text: #202b29;
+  --ph-text-light: #465451;
+  --ph-muted: #73817d;
+  --ph-text-muted: #73817d;
+  --ph-card: #fff;
+  --ph-border: #e3e9e5;
+  --ph-dark: #202b29;
+  --ph-dark-secondary: #edf2ef;
+  --ph-success: #28765d;
+  --ph-danger: #b74d4d;
+  --ph-warning: #a67a35;
+  --ph-radius-sm: 10px;
+  --ph-radius: 16px;
+  --ph-radius-lg: 24px;
+  --ph-shadow-sm: 0 5px 18px rgba(25, 52, 44, .06);
+  --ph-shadow: 0 14px 40px rgba(25, 52, 44, .09);
+  --ph-shadow-lg: 0 24px 70px rgba(25, 52, 44, .14);
+  --ph-transition: 180ms ease;
 }
 
-/* =========================================================
-   GLOBAL
-   ========================================================= */
+* {
+  box-sizing: border-box;
+}
 
-html,
-body {
-  margin: 0;
-  padding: 0;
+html {
+  min-width: 320px;
   min-height: 100%;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
 body {
+  min-width: 320px;
   min-height: 100vh;
-
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      #17243D 0%,
-      #0B1326 35%,
-      #050A18 75%
-    );
-
-  background-attachment: fixed;
-
-  color: var(--ph-white);
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  margin: 0;
+  overflow-x: clip;
+  background: var(--ph-background);
+  color: var(--ph-text);
+  font-family: 'DM Sans', 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
-
-
-/* =========================================================
-   NAVBAR
-   ========================================================= */
-
-.navbar {
-  background: rgba(5, 10, 24, 0.97) !important;
-
-  border-bottom: 1px solid var(--ph-border);
-
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.35);
-}
-
-.navbar-brand {
-  color: var(--ph-gold) !important;
-
-  font-weight: 700;
-}
-
-.navbar-brand:hover {
-  color: var(--ph-gold-light) !important;
-}
-
-.navbar .nav-link {
-  color: var(--ph-text-light) !important;
-
-  transition: all 0.25s ease;
-}
-
-.navbar .nav-link:hover {
-  color: var(--ph-gold-light) !important;
-}
-
-.navbar .nav-link.active {
-  color: var(--ph-gold-light) !important;
-
-  font-weight: 600;
-
-  border-bottom: 2px solid var(--ph-gold);
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.btn-primary {
-  background:
-    linear-gradient(
-      135deg,
-      var(--ph-gold),
-      var(--ph-gold-dark)
-    ) !important;
-
-  border: none !important;
-
-  color: var(--ph-dark) !important;
-
-  font-weight: 600;
-
-  box-shadow:
-    0 4px 12px rgba(212, 175, 90, 0.20);
-}
-
-.btn-primary:hover {
-  background:
-    linear-gradient(
-      135deg,
-      var(--ph-gold-light),
-      var(--ph-gold)
-    ) !important;
-
-  color: var(--ph-dark) !important;
-
-  transform: translateY(-1px);
-}
-
-.btn-outline-primary {
-  color: var(--ph-gold) !important;
-
-  border-color: var(--ph-gold) !important;
-}
-
-.btn-outline-primary:hover {
-  background: var(--ph-gold) !important;
-
-  color: var(--ph-dark) !important;
-}
-
-
-/* =========================================================
-   CARDS
-   ========================================================= */
-
-.card {
-  background: var(--ph-card);
-
-  color: var(--ph-white);
-
-  border: 1px solid var(--ph-border);
-
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.35);
-}
-
-.card-title {
-  color: var(--ph-white);
-}
-
-.card-text {
-  color: var(--ph-text-light);
-}
-
-
-/* =========================================================
-   HEADINGS
-   ========================================================= */
 
 h1,
 h2,
@@ -176,131 +62,918 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--ph-white);
+  color: var(--ph-text);
+  font-family: 'Manrope', 'DM Sans', sans-serif;
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: 1.25;
 }
 
-.text-primary {
-  color: var(--ph-gold) !important;
-}
-
-
-/* =========================================================
-   MUTED TEXT
-   ========================================================= */
-
-.text-muted {
-  color: var(--ph-text-muted) !important;
-}
-
-
-/* =========================================================
-   FORMS
-   ========================================================= */
-
-.form-control,
-.form-select {
-  background: #0B1326;
-
-  color: var(--ph-white);
-
-  border: 1px solid rgba(212, 175, 90, 0.25);
-}
-
-.form-control:focus,
-.form-select:focus {
-  background: #0B1326;
-
-  color: var(--ph-white);
-
-  border-color: var(--ph-gold);
-
-  box-shadow:
-    0 0 0 0.2rem rgba(212, 175, 90, 0.15);
-}
-
-.form-control::placeholder {
-  color: #8F96A5;
-}
-
-
-/* =========================================================
-   TABLES
-   ========================================================= */
-
-.table {
+p {
   color: var(--ph-text-light);
 }
-
-.table th {
-  background: #17243D;
-
-  color: var(--ph-gold-light);
-
-  border-color: var(--ph-border);
-}
-
-.table td {
-  background: var(--ph-card);
-
-  color: var(--ph-text-light);
-
-  border-color: rgba(212, 175, 90, 0.15);
-}
-
-
-/* =========================================================
-   ALERTS
-   ========================================================= */
-
-.alert {
-  background: var(--ph-card);
-
-  color: var(--ph-text-light);
-
-  border-color: var(--ph-border);
-}
-
-
-/* =========================================================
-   LINKS
-   ========================================================= */
 
 a {
-  color: var(--ph-gold);
+  color: var(--ph-navy);
+  text-decoration: none;
+  transition: color var(--ph-transition);
 }
 
 a:hover {
-  color: var(--ph-gold-light);
+  color: var(--ph-blue-light);
 }
 
-
-/* =========================================================
-   BADGES
-   ========================================================= */
-
-.badge {
-  border-radius: 6px;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid rgba(189, 146, 80, .62);
+  outline-offset: 3px;
 }
 
-
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
-
-::-webkit-scrollbar {
-  width: 8px;
+button,
+input,
+select,
+textarea {
+  font: inherit;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--ph-dark);
+app-root {
+  display: block;
+  min-height: 100vh;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--ph-gold-dark);
+app-root .container {
+  --bs-gutter-x: 2rem;
+  color: var(--ph-text);
+}
 
+app-root .container h2 {
+  color: var(--ph-text);
+}
+
+app-root .card {
+  overflow: hidden;
+  border: 1px solid var(--ph-border) !important;
+  border-radius: var(--ph-radius) !important;
+  background: var(--ph-card) !important;
+  color: var(--ph-text) !important;
+  box-shadow: var(--ph-shadow-sm) !important;
+  transition: border-color var(--ph-transition), box-shadow var(--ph-transition), transform var(--ph-transition);
+}
+
+app-root .card:hover {
+  border-color: #d4dfd8 !important;
+  box-shadow: var(--ph-shadow) !important;
+}
+
+app-root .card-title,
+app-root .card h1,
+app-root .card h2,
+app-root .card h3,
+app-root .card h4,
+app-root .card h5,
+app-root .card h6 {
+  color: var(--ph-text);
+}
+
+app-root .card-text,
+app-root .card p {
+  color: var(--ph-text-light);
+}
+
+app-root .text-muted {
+  color: var(--ph-muted) !important;
+}
+
+app-root .text-primary {
+  color: var(--ph-navy) !important;
+}
+
+app-root .btn {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  border-radius: var(--ph-radius-sm);
+  padding: .62rem 1rem;
+  font-size: .92rem;
+  font-weight: 650;
+  line-height: 1.25;
+  transition: background-color var(--ph-transition), border-color var(--ph-transition), color var(--ph-transition), box-shadow var(--ph-transition), transform var(--ph-transition);
+}
+
+app-root .btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+app-root .btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+app-root .btn:disabled {
+  cursor: not-allowed;
+  opacity: .58;
+  transform: none;
+}
+
+app-root .btn-primary {
+  border-color: var(--ph-navy) !important;
+  background: var(--ph-navy) !important;
+  color: #fff !important;
+  box-shadow: 0 5px 14px rgba(23, 60, 57, .16);
+}
+
+app-root .btn-primary:hover:not(:disabled) {
+  border-color: var(--ph-blue-dark) !important;
+  background: var(--ph-blue-dark) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px rgba(23, 60, 57, .22);
+}
+
+app-root .btn-outline-primary {
+  border-color: #b8cbc4 !important;
+  color: var(--ph-navy) !important;
+}
+
+app-root .btn-outline-primary:hover:not(:disabled) {
+  border-color: var(--ph-navy) !important;
+  background: var(--ph-navy) !important;
+  color: #fff !important;
+}
+
+app-root .btn-outline-warning {
+  border-color: #d4bd97 !important;
+  color: #80632f !important;
+}
+
+app-root .btn-outline-warning:hover:not(:disabled) {
+  border-color: var(--ph-gold) !important;
+  background: var(--ph-gold) !important;
+  color: #fff !important;
+}
+
+app-root .btn-outline-danger {
+  border-color: #e0bebe !important;
+  color: var(--ph-danger) !important;
+}
+
+app-root .form-label,
+app-root label {
+  color: var(--ph-text);
+}
+
+app-root .form-control,
+app-root .form-select {
+  min-height: 46px;
+  border: 1px solid #dbe3de !important;
+  border-radius: 10px !important;
+  background-color: #fff !important;
+  color: var(--ph-text) !important;
+  box-shadow: none;
+  transition: border-color var(--ph-transition), box-shadow var(--ph-transition), background-color var(--ph-transition);
+}
+
+app-root textarea.form-control {
+  min-height: 110px;
+}
+
+app-root .form-control::placeholder {
+  color: #929e99 !important;
+  opacity: 1;
+}
+
+app-root .form-control:focus,
+app-root .form-select:focus {
+  border-color: var(--ph-blue-light) !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 0 4px rgba(58, 119, 110, .12) !important;
+  color: var(--ph-text) !important;
+}
+
+app-root .form-control:disabled,
+app-root .form-control[readonly],
+app-root .form-select:disabled {
+  background-color: #f0f3f1 !important;
+}
+
+app-root .form-check-input:checked {
+  border-color: var(--ph-navy);
+  background-color: var(--ph-navy);
+}
+
+app-root .alert {
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius-sm);
+  color: var(--ph-text);
+}
+
+app-root .alert-info,
+app-root .alert-light {
+  border-color: #dce6e1;
+  background: #f5f8f6;
+  color: var(--ph-text);
+}
+
+app-root .table {
+  --bs-table-color: var(--ph-text-light);
+  --bs-table-bg: #fff;
+  --bs-table-border-color: var(--ph-border);
+  vertical-align: middle;
+}
+
+app-root .table-dark {
+  --bs-table-color: #344540;
+  --bs-table-bg: #f1f5f2;
+  --bs-table-border-color: var(--ph-border);
+}
+
+app-root .table-responsive {
+  border-color: var(--ph-border);
+  box-shadow: var(--ph-shadow-sm);
+}
+
+app-root .table thead th,
+app-root .table th {
+  background: #f1f5f2;
+  color: #344540;
+  font-weight: 700;
+}
+
+app-root .table-responsive .table thead th {
+  background: #f1f5f2 !important;
+  color: #344540 !important;
+}
+
+app-root .table-responsive .table tbody td {
+  background: #fff !important;
+  color: var(--ph-text-light) !important;
+}
+
+app-root .table td {
+  background: #fff;
+  color: var(--ph-text-light);
+}
+
+app-root .badge {
+  border-radius: 999px;
+  padding: .42em .72em;
+  font-weight: 650;
+}
+
+app-root .bg-primary {
+  background-color: var(--ph-navy) !important;
+}
+
+app-root .shadow,
+app-root .shadow-sm {
+  box-shadow: var(--ph-shadow-sm) !important;
+}
+
+app-root .modal-content,
+app-root .dropdown-menu {
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius);
+  background: #fff;
+  box-shadow: var(--ph-shadow);
+}
+
+app-root .modal-header,
+app-root .modal-footer {
+  border-color: var(--ph-border);
+}
+
+app-root .pagination {
+  gap: .3rem;
+}
+
+app-root .page-link {
+  border-color: var(--ph-border);
+  border-radius: 8px !important;
+  color: var(--ph-navy);
+}
+
+app-root .active > .page-link,
+app-root .page-link.active {
+  border-color: var(--ph-navy);
+  background: var(--ph-navy);
+  color: #fff;
+}
+
+app-root .property-image-container,
+app-root .favorite-property-image-container,
+app-root .favorite-image-container {
+  overflow: hidden;
+  background: #e9efeb;
+}
+
+app-root .property-image,
+app-root .favorite-property-image,
+app-root .favorite-image,
+app-root .card-img-top {
+  display: block;
+  object-fit: cover;
+}
+
+app-root img {
+  max-width: 100%;
+}
+
+app-root .leaflet-container {
+  z-index: 0;
+  border-radius: var(--ph-radius);
+}
+
+app-root .empty-state,
+app-root .empty-favorites,
+app-root .notifications-empty {
+  border-radius: var(--ph-radius);
+}
+
+app-root .property-card .card-title {
+  color: var(--ph-text) !important;
+  font-size: 1.08rem;
+}
+
+app-root .property-card .property-details {
+  border: 1px solid var(--ph-border);
   border-radius: 10px;
+  background: #f4f7f5;
+  color: var(--ph-text-light);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ph-gold);
+app-root .advanced-filter-card {
+  border-color: var(--ph-border) !important;
+  border-radius: var(--ph-radius) !important;
+  background: #fff !important;
+  box-shadow: var(--ph-shadow-sm) !important;
+}
+
+app-root .advanced-filter-card h5,
+app-root .property-result-count strong {
+  color: var(--ph-navy) !important;
+}
+
+app-root .advanced-filter-card .form-label {
+  color: var(--ph-text-light) !important;
+}
+
+app-root .advanced-filter-card .form-control,
+app-root .advanced-filter-card .form-select,
+app-root .badge-management .form-select {
+  border-color: #dbe3de !important;
+  background-color: #fff !important;
+  color: var(--ph-text) !important;
+}
+
+app-root .advanced-filter-card .form-control:focus,
+app-root .advanced-filter-card .form-select:focus {
+  border-color: var(--ph-blue-light) !important;
+  box-shadow: 0 0 0 4px rgba(58, 119, 110, .12) !important;
+}
+
+app-root .advanced-filter-card .form-select option {
+  background: #fff;
+  color: var(--ph-text);
+}
+
+app-root .property-info-card {
+  border-color: var(--ph-border) !important;
+  border-radius: var(--ph-radius) !important;
+  background: #fff !important;
+  color: var(--ph-text) !important;
+  box-shadow: var(--ph-shadow-sm) !important;
+}
+
+app-root .property-details-card {
+  height: 100%;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius);
+  padding: clamp(22px, 4vw, 34px);
+  background: #fff;
+  color: var(--ph-text);
+  box-shadow: var(--ph-shadow-sm);
+}
+
+app-root .property-details-card .property-title {
+  color: var(--ph-text) !important;
+}
+
+app-root .property-details-card .property-price {
+  color: var(--ph-navy) !important;
+}
+
+app-root .property-details-card .property-feature {
+  height: 100%;
+  border: 1px solid var(--ph-border);
+  border-radius: 12px;
+  padding: 15px;
+  background: #f5f8f6;
+  color: var(--ph-text);
+}
+
+app-root .property-details-card .property-feature strong {
+  color: var(--ph-muted);
+  font-size: .78rem;
+}
+
+app-root .main-image-container {
+  position: relative;
+  display: grid;
+  min-height: 320px;
+  overflow: hidden;
+  place-items: center;
+  border-radius: var(--ph-radius);
+  background: #e9efeb;
+}
+
+app-root .main-property-image {
+  width: 100%;
+  max-height: 560px;
+  object-fit: cover;
+}
+
+app-root .image-fallback {
+  display: grid;
+  min-height: inherit;
+  width: 100%;
+  min-height: 220px;
+  place-items: center;
+  padding: 20px;
+  color: var(--ph-muted);
+  font-size: .84rem;
+  text-align: center;
+}
+
+app-root .property-image-container .image-fallback,
+app-root .favorite-image-container .image-fallback,
+app-root .favorite-property-image-container .image-fallback,
+app-root .owner-property-image .image-fallback,
+app-root .comparison-table .property-image-container .image-fallback {
+  height: 100%;
+  min-height: 180px;
+  background: #e9efeb;
+}
+
+app-root .owner-property-image {
+  position: relative;
+  display: grid;
+  height: 220px;
+  overflow: hidden;
+  place-items: center;
+  background: #e9efeb;
+}
+
+app-root .owner-property-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+app-root .comparison-table .property-image-container {
+  background: #e9efeb;
+}
+
+app-root .comparison-table .property-title,
+app-root .comparison-table .feature-name {
+  color: var(--ph-navy) !important;
+}
+
+app-root .property-info-card .property-title,
+app-root .property-info-card .feature-box strong,
+app-root .property-info-card h2,
+app-root .property-info-card h3,
+app-root .property-info-card h4,
+app-root .property-info-card h5 {
+  color: var(--ph-text) !important;
+}
+
+app-root .property-info-card .property-location,
+app-root .property-info-card .text-muted {
+  color: var(--ph-muted) !important;
+}
+
+app-root .property-info-card .property-price,
+app-root .property-info-card .feature-box h5 {
+  color: var(--ph-navy) !important;
+}
+
+app-root .property-info-card .feature-box {
+  border-color: var(--ph-border);
+  border-radius: 12px;
+  background: #f5f8f6;
+  box-shadow: none;
+}
+
+app-root .property-info-card .feature-box:hover {
+  border-color: #c8d8ce;
+  background: #eef4f0;
+}
+
+app-root .property-details-card .inquiry-section > p.text-muted,
+app-root .property-details-card .inquiry-section .form-label {
+  color: var(--ph-text-light) !important;
+}
+
+app-root .property-details-card .inquiry-section .form-control,
+app-root .property-details-card .inquiry-section .form-control:focus {
+  border-color: #dbe3de !important;
+  background: #fff !important;
+  color: var(--ph-text) !important;
+}
+
+app-root .property-details-card .inquiry-section .form-control::placeholder {
+  color: #929e99 !important;
+}
+
+app-root .status-new {
+  border-color: #b8cbe5;
+  background: #edf3fb;
+  color: #315b83;
+}
+
+app-root .status-pending {
+  border-color: #e3d2ad;
+  background: #faf5e9;
+  color: #80632f;
+}
+
+app-root .status-responded {
+  border-color: #b8d9c7;
+  background: #eef7f1;
+  color: #286448;
+}
+
+app-root .status-rejected {
+  border-color: #e7c2c2;
+  background: #fbf0f0;
+  color: #963f3f;
+}
+
+app-root .table-hover tbody tr:hover td {
+  background: #f5f8f6 !important;
+  color: var(--ph-text) !important;
+}
+
+app-root .contact-request-section {
+  border: 0 !important;
+  background: #eef3ef !important;
+}
+
+app-root .contact-request-image-space {
+  border: 0 !important;
+  border-radius: var(--ph-radius-lg) !important;
+  background: #dce6df url('/images/house.jpg') center / cover no-repeat !important;
+  box-shadow: var(--ph-shadow);
+}
+
+app-root .contact-request-form-section {
+  border: 1px solid var(--ph-border) !important;
+  border-radius: var(--ph-radius-lg) !important;
+  background: #fff !important;
+  box-shadow: var(--ph-shadow-sm) !important;
+}
+
+app-root .contact-request-header h2 {
+  color: var(--ph-text) !important;
+}
+
+app-root .contact-request-header p {
+  color: var(--ph-muted) !important;
+}
+
+app-root .contact-request-header .section-label {
+  color: var(--ph-blue-light) !important;
+}
+
+app-root .contact-request-form .form-control {
+  border-color: #dbe3de !important;
+  border-radius: 10px !important;
+  background: #f9fbf9 !important;
+  color: var(--ph-text) !important;
+}
+
+app-root .contact-request-form .form-control:focus {
+  border-color: var(--ph-blue-light) !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 4px rgba(58, 119, 110, .12) !important;
+}
+
+app-root .contact-request-form .form-control::placeholder {
+  color: #929e99 !important;
+}
+
+app-root .contact-request-form button,
+app-root .contact-request-form [type='submit'] {
+  border-radius: 10px !important;
+  background: var(--ph-navy) !important;
+  color: #fff !important;
+}
+
+app-root .callback-section {
+  border-color: var(--ph-border) !important;
+  border-radius: var(--ph-radius-lg) !important;
+  background: #fff !important;
+  box-shadow: var(--ph-shadow-sm) !important;
+}
+
+app-root .callback-section .callback-filters {
+  border-color: var(--ph-border) !important;
+  background: #f5f8f6 !important;
+  box-shadow: none;
+}
+
+app-root .callback-section .callback-filter-group label {
+  color: var(--ph-text-light) !important;
+}
+
+app-root .callback-section .callback-filter-input,
+app-root .callback-section .callback-filter-input:hover,
+app-root .callback-section .callback-filter-input:focus,
+app-root .callback-section .callback-status-select,
+app-root .callback-section .callback-status-select:hover,
+app-root .callback-section .callback-status-select:focus {
+  border-color: #dbe3de !important;
+  background: #fff !important;
+  color: var(--ph-text) !important;
+}
+
+app-root .callback-section .callback-filter-input::placeholder {
+  color: #929e99 !important;
+}
+
+app-root .callback-section .callback-filter-input option,
+app-root .callback-section .callback-status-select option {
+  background: #fff !important;
+  color: var(--ph-text) !important;
+}
+
+app-root .callback-section .callback-table-wrapper {
+  border-color: var(--ph-border) !important;
+  background: #fff !important;
+  box-shadow: var(--ph-shadow-sm) !important;
+}
+
+app-root .callback-section .callback-table-header {
+  border-color: var(--ph-border) !important;
+  background: #f3f7f4 !important;
+}
+
+app-root .callback-section .callback-table-header h4,
+app-root .callback-section .callback-customer strong {
+  color: var(--ph-text) !important;
+}
+
+app-root .callback-section .callback-table-header span,
+app-root .callback-section .callback-customer small,
+app-root .callback-section .callback-date small {
+  color: var(--ph-muted) !important;
+}
+
+app-root .callback-section .callback-request-count {
+  border-color: #e4d5b9;
+  background: #faf5e9;
+  color: #80632f;
+}
+
+app-root .callback-section .callback-requests-table thead th {
+  border-color: var(--ph-border) !important;
+  background: #f1f5f2 !important;
+  color: #344540 !important;
+}
+
+app-root .callback-section .callback-requests-table tbody td,
+app-root .callback-section .callback-requests-table tbody tr:hover td {
+  border-color: var(--ph-border) !important;
+  background: #fff !important;
+  color: var(--ph-text-light) !important;
+}
+
+app-root .callback-section .callback-id {
+  color: var(--ph-navy) !important;
+}
+
+app-root .callback-section .callback-contact-link {
+  color: var(--ph-navy) !important;
+}
+
+app-root .callback-section .callback-contact-link:hover {
+  color: var(--ph-blue-light) !important;
+}
+
+app-root .callback-section .callback-message,
+app-root .callback-section .callback-date {
+  color: var(--ph-text-light) !important;
+}
+
+app-root .callback-section h2,
+app-root .callback-section h3,
+app-root .callback-section h4,
+app-root .callback-section h5,
+app-root .callback-section .callback-section-description,
+app-root .callback-section .callback-summary-label {
+  color: var(--ph-text) !important;
+}
+
+app-root app-home .ph-footer-main {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+app-root .profile-header h2,
+app-root .compare-header h2,
+app-root .profile-card .section-title,
+app-root .property-reviews-section .section-title {
+  color: var(--ph-text) !important;
+}
+
+app-root .role-badge,
+app-root .compare-count {
+  border-color: #d4bd97;
+  background: #faf5e9;
+  color: #80632f;
+}
+
+app-root .profile-card {
+  border-radius: var(--ph-radius) !important;
+  background: #fff !important;
+  box-shadow: var(--ph-shadow-sm) !important;
+}
+
+app-root .profile-card .section-title {
+  border-color: var(--ph-border);
+}
+
+app-root .profile-image-wrapper {
+  border-color: #d6c29d;
+  background: #f0f5f1;
+  box-shadow: var(--ph-shadow-sm);
+}
+
+app-root .profile-image-placeholder {
+  background: #edf3ef;
+  color: var(--ph-blue-light);
+}
+
+app-root .profile-card .form-label {
+  color: var(--ph-text-light);
+}
+
+app-root .profile-card .form-control,
+app-root .profile-card .form-select {
+  border-color: #dbe3de !important;
+  background-color: #fff !important;
+  color: var(--ph-text) !important;
+}
+
+app-root .profile-card .profile-image-section .btn-outline-primary {
+  border-color: #b8cbc4 !important;
+  background: #fff !important;
+  color: var(--ph-navy) !important;
+}
+
+app-root .profile-card .profile-image-section .btn-outline-primary:hover:not(:disabled) {
+  border-color: var(--ph-navy) !important;
+  background: var(--ph-navy) !important;
+  color: #fff !important;
+}
+
+app-root .profile-card .form-control::placeholder {
+  color: #929e99 !important;
+}
+
+app-root .profile-card .form-control:focus,
+app-root .profile-card .form-select:focus {
+  border-color: var(--ph-blue-light) !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 0 4px rgba(58, 119, 110, .12) !important;
+}
+
+app-root .profile-card .form-select option {
+  background: #fff;
+  color: var(--ph-text);
+}
+
+app-root .profile-card .form-control[readonly] {
+  background: #f3f6f4 !important;
+  color: #687771 !important;
+}
+
+app-root .empty-compare {
+  border-color: var(--ph-border);
+  background: #fff;
+  box-shadow: var(--ph-shadow-sm);
+}
+
+app-root .empty-compare h3,
+app-root .comparison-table,
+app-root .comparison-table th,
+app-root .comparison-table td,
+app-root .comparison-table thead th {
+  background: #fff;
+  color: var(--ph-text);
+}
+
+app-root .comparison-table thead th {
+  background: #f2f6f3;
+}
+
+app-root .comparison-table .property-title,
+app-root .comparison-table .feature-name {
+  color: var(--ph-text);
+}
+
+app-root .property-reviews-section,
+app-root .review-summary-card,
+app-root .review-form-card,
+app-root .review-item-card {
+  border-color: var(--ph-border);
+  border-radius: var(--ph-radius);
+  background: #fff;
+  color: var(--ph-text);
+}
+
+app-root .review-summary-card,
+app-root .review-form-card,
+app-root .review-item-card,
+app-root .no-reviews-card {
+  border: 1px solid var(--ph-border) !important;
+  border-radius: 12px;
+  background: #fff !important;
+}
+
+app-root .review-summary-card,
+app-root .review-form-card,
+app-root .review-item-card {
+  box-shadow: var(--ph-shadow-sm);
+}
+
+app-root .review-summary-card h4,
+app-root .review-form-card h4,
+app-root .review-item-card strong {
+  color: var(--ph-text);
+}
+
+app-root .review-rating-select {
+  background-color: #fff;
+}
+
+app-root .review-out-of,
+app-root .review-summary-card .text-muted {
+  color: var(--ph-muted) !important;
+}
+
+app-root .reviews-header {
+  border-color: var(--ph-border);
+}
+
+@media (max-width: 767.98px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  app-root .container {
+    --bs-gutter-x: 1.25rem;
+  }
+
+  app-root .container.mt-5 {
+    margin-top: 1.75rem !important;
+  }
+
+  app-root .container.mb-5 {
+    margin-bottom: 2.5rem !important;
+  }
+
+  app-root .d-flex.justify-content-between.align-items-center {
+    align-items: flex-start !important;
+    gap: .9rem;
+    flex-wrap: wrap;
+  }
+
+  app-root .table-responsive {
+    border: 1px solid var(--ph-border);
+    border-radius: var(--ph-radius-sm);
+  }
+
+  app-root .contact-request-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  app-root .contact-request-image-space {
+    min-height: 230px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }

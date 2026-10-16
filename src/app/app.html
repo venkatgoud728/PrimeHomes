@@ -1,20 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark primehomes-navbar">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="navbar navbar-expand-lg primehomes-navbar" aria-label="Main navigation" (keydown.escape)="closeMenu()">
 
   <div class="container">
 
-
-    <!-- ============================= -->
-    <!-- Prime Homes Logo -->
-    <!-- ============================= -->
-
     <a
       class="navbar-brand primehomes-logo"
-      routerLink="/">
-
-      <img
-        src="/images/primehomes-logo.png"
-        alt="Prime Homes">
-
+      routerLink="/"
+      aria-label="PrimeHomes home"
+      (click)="closeMenu()">
+      <img src="/images/primehomes-logo.png" alt="PrimeHomes">
     </a>
 
 
@@ -25,7 +19,10 @@
     <button
       class="navbar-toggler"
       type="button"
-      (click)="toggleMenu()">
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      aria-controls="mainNavbar"
+      aria-label="Toggle navigation">
 
       <span class="navbar-toggler-icon"></span>
 
@@ -53,7 +50,8 @@
           class="nav-link"
           routerLink="/"
           routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeMenu()">
 
           Home
 
@@ -70,7 +68,8 @@
           <a
             class="nav-link"
             routerLink="/properties"
-            routerLinkActive="active">
+            routerLinkActive="active"
+            (click)="closeMenu()">
 
             Properties
 
@@ -89,7 +88,8 @@
           <a
             class="nav-link"
             routerLink="/login"
-            routerLinkActive="active">
+            routerLinkActive="active"
+            (click)="closeMenu()">
 
             Login
 
@@ -99,7 +99,8 @@
           <a
             class="nav-link"
             routerLink="/register"
-            routerLinkActive="active">
+            routerLinkActive="active"
+            (click)="closeMenu()">
 
             Register
 
@@ -112,52 +113,6 @@
         <!-- Buyer Navigation -->
         <!-- ============================= -->
 
-        <ng-container
-          *ngIf="isLoggedIn() && getUserRole() === 'Buyer'">
-
-
-          <a
-            class="nav-link"
-            routerLink="/buyer-dashboard"
-            routerLinkActive="active">
-
-            Dashboard
-
-          </a>
-
-
-          <a
-            class="nav-link"
-            routerLink="/my-favorites"
-            routerLinkActive="active">
-
-            ❤️ My Favorites
-
-          </a>
-
-
-          <a
-            class="nav-link"
-            routerLink="/compare-properties"
-            routerLinkActive="active">
-
-            ⚖ Compare
-
-          </a>
-
-
-          <a
-            class="nav-link"
-            routerLink="/my-inquiries"
-            routerLinkActive="active">
-
-            My Inquiries
-
-          </a>
-
-        </ng-container>
-
-
         <!-- ============================= -->
         <!-- Owner Navigation -->
         <!-- ============================= -->
@@ -169,7 +124,8 @@
           <a
             class="nav-link"
             routerLink="/owner-dashboard"
-            routerLinkActive="active">
+            routerLinkActive="active"
+            (click)="closeMenu()">
 
             Dashboard
 
@@ -179,7 +135,8 @@
           <a
             class="nav-link"
             routerLink="/my-properties"
-            routerLinkActive="active">
+            routerLinkActive="active"
+            (click)="closeMenu()">
 
             My Properties
 
@@ -234,7 +191,9 @@
             class="nav-link notification-nav-link"
             routerLink="/notifications"
             routerLinkActive="active"
-            title="Notifications">
+            title="Notifications"
+            aria-label="Notifications"
+            (click)="closeMenu()">
 
 
             <span class="notification-bell">
@@ -264,7 +223,8 @@
           <a
             class="nav-link"
             routerLink="/profile"
-            routerLinkActive="active">
+            routerLinkActive="active"
+            (click)="closeMenu()">
 
             👤 Profile
 
@@ -278,7 +238,8 @@
           <button
             class="btn btn-outline-light btn-sm ms-2"
             type="button"
-            (click)="logout()">
+            (click)="logout()"
+            aria-label="Log out">
 
             Logout
 
@@ -296,9 +257,25 @@
 
 </nav>
 
+<nav
+  *ngIf="isLoggedIn() && getUserRole() === 'Buyer'"
+  class="buyer-workspace-nav"
+  aria-label="Buyer workspace">
+  <div class="container buyer-workspace-inner">
+    <span class="buyer-workspace-label">BUYER SPACE</span>
+    <div class="buyer-workspace-links">
+      <a routerLink="/buyer-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Overview</a>
+      <a routerLink="/my-favorites" routerLinkActive="active">Saved homes</a>
+      <a routerLink="/compare-properties" routerLinkActive="active">Compare</a>
+      <a routerLink="/my-inquiries" routerLinkActive="active">Inquiries</a>
+    </div>
+  </div>
+</nav>
 
 <!-- ============================= -->
 <!-- Page Content -->
 <!-- ============================= -->
 
-<router-outlet></router-outlet>
+<main id="main-content">
+  <router-outlet></router-outlet>
+</main>

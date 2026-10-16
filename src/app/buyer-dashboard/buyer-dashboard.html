@@ -1,459 +1,177 @@
-<div class="container mt-5 mb-5">
-
-  <!-- ===================================================== -->
-  <!-- BUYER DASHBOARD HEADER -->
-  <!-- ===================================================== -->
-
-  <div class="d-flex justify-content-between align-items-center mb-4">
-
-    <div>
-      <h2 class="fw-bold">
-        Buyer Dashboard
-      </h2>
-
-      <p class="text-muted mb-0">
-        Welcome, {{ buyerName }}!
+<main class="container buyer-dashboard-page">
+  <section class="buyer-hero">
+    <div class="buyer-hero-copy">
+      <p class="page-kicker">Your home search, at a glance</p>
+      <h1>Welcome back, {{ buyerName }}</h1>
+      <p class="buyer-hero-description">
+        Keep track of the places you love and the conversations that bring you closer to home.
       </p>
     </div>
-
-    <a
-      routerLink="/properties"
-      class="btn btn-primary"
-    >
-      🔎 Browse Properties
-    </a>
-
-  </div>
-
-
-  <!-- ===================================================== -->
-  <!-- STATISTICS -->
-  <!-- ===================================================== -->
-
-  <div class="row g-4 mb-5">
-
-    <!-- Favorite Properties -->
-
-    <div class="col-lg-6 col-md-6">
-
-      <div class="card buyer-stat-card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <div class="stat-icon">
-            ❤️
-          </div>
-
-          <h6 class="text-muted">
-            Favorite Properties
-          </h6>
-
-          <h2 class="fw-bold text-danger">
-            {{ totalFavorites }}
-          </h2>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- My Inquiries -->
-
-    <div class="col-lg-6 col-md-6">
-
-      <div class="card buyer-stat-card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <div class="stat-icon">
-            📩
-          </div>
-
-          <h6 class="text-muted">
-            My Inquiries
-          </h6>
-
-          <h2 class="fw-bold text-primary">
-            {{ totalInquiries }}
-          </h2>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ===================================================== -->
-  <!-- RECENT FAVORITE PROPERTIES -->
-  <!-- ===================================================== -->
-
-  <div class="mb-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-
-      <h4 class="mb-0">
-        ❤️ Recent Favorite Properties
-      </h4>
-
-      <a
-        routerLink="/my-favorites"
-        class="btn btn-outline-primary btn-sm"
-      >
-        View All
+    <div class="buyer-hero-actions">
+      <a routerLink="/properties" class="btn btn-primary buyer-browse-button">
+        <span aria-hidden="true">⌕</span>
+        Browse properties
       </a>
+      <a routerLink="/compare-properties" class="buyer-compare-link">Compare shortlist <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
 
+  <section class="buyer-overview" aria-label="Your activity overview">
+    <article class="overview-card overview-card-favorites">
+      <span class="overview-icon" aria-hidden="true">♡</span>
+      <div>
+        <p class="overview-label">Saved homes</p>
+        <p class="overview-value">{{ totalFavorites }}</p>
+        <a routerLink="/my-favorites" class="overview-link">See your favorites <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <article class="overview-card overview-card-inquiries">
+      <span class="overview-icon" aria-hidden="true">↗</span>
+      <div>
+        <p class="overview-label">Inquiries sent</p>
+        <p class="overview-value">{{ totalInquiries }}</p>
+        <a routerLink="/my-inquiries" class="overview-link">Track responses <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <aside class="overview-note">
+      <span class="note-mark" aria-hidden="true">✦</span>
+      <div>
+        <h2>Your next move starts here</h2>
+        <p>Explore homes that fit your plans, then save or enquire when one feels right.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">Shortlisted for you</p>
+        <h2>Recent favorites</h2>
+      </div>
+      <a routerLink="/my-favorites" class="section-link">View all <span aria-hidden="true">→</span></a>
     </div>
 
-
-    <!-- No Favorites -->
-
-    <div
-      *ngIf="favorites.length === 0"
-      class="alert alert-light border"
-    >
-      You don't have any favorite properties yet.
-
-      <a routerLink="/properties">
-        Browse Properties
-      </a>
+    <div *ngIf="isLoadingFavorites" class="dashboard-state" role="status" aria-live="polite">
+      <span class="spinner-border text-primary" aria-hidden="true"></span>
+      <span>Loading your saved homes…</span>
+    </div>
+    <div *ngIf="!isLoadingFavorites && favoritesError" class="dashboard-error" role="alert">
+      <span>{{ favoritesError }}</span>
+      <button type="button" class="btn btn-sm btn-outline-primary" (click)="loadFavorites()">Try again</button>
+    </div>
+    <div *ngIf="!isLoadingFavorites && !favoritesError && favorites.length === 0" class="dashboard-empty">
+      <span class="empty-mark" aria-hidden="true">♡</span>
+      <div>
+        <h3>Your shortlist is ready to begin</h3>
+        <p>Save properties you like and they’ll be gathered here for easy comparison.</p>
+      </div>
+      <a routerLink="/properties" class="btn btn-outline-primary">Browse properties</a>
     </div>
 
-
-    <!-- Favorite Properties -->
-
-    <div
-      class="row g-4"
-      *ngIf="favorites.length > 0"
-    >
-
-      <div
-        class="col-md-6 col-lg-4"
-        *ngFor="let favorite of favorites.slice(0, 3)"
-      >
-
-        <div class="card h-100 shadow-sm favorite-property-card">
-
-
-          <!-- Property Image -->
-
-          <div class="favorite-property-image-container">
-
+    <div class="row g-4" *ngIf="!isLoadingFavorites && !favoritesError && favorites.length > 0">
+      <div class="col-md-6 col-lg-4" *ngFor="let favorite of favorites.slice(0, 3)">
+        <article class="card dashboard-property-card h-100">
+          <div class="dashboard-property-image">
             <img
-              [src]="favorite.imageUrl || '/images/Logo.png'"
+              *ngIf="favorite.imageUrl"
+              [src]="favorite.imageUrl"
               [alt]="favorite.title"
-              class="card-img-top favorite-property-image"
-            >
-
+              (error)="favorite.imageUrl = ''">
+            <span *ngIf="!favorite.imageUrl" class="image-fallback">Property photo unavailable</span>
+            <span class="image-label">Saved home</span>
           </div>
-
-
-          <!-- Property Details -->
-
-          <div class="card-body d-flex flex-column">
-
-            <h5 class="card-title">
-              {{ favorite.title }}
-            </h5>
-
-
-            <p class="text-muted mb-2">
-              📍 {{ favorite.location }}, {{ favorite.city }}
-            </p>
-
-
-            <p class="mb-2">
-              🏠 {{ favorite.propertyType }} |
-              {{ favorite.bhk }} BHK
-            </p>
-
-
-            <h5 class="text-primary mb-3">
-              ₹{{ favorite.price | number }}
-            </h5>
-
-
-            <!-- Buttons -->
-
-            <div class="mt-auto">
-
-              <a
-                [routerLink]="['/properties', favorite.propertyId]"
-                class="btn btn-primary btn-sm"
-              >
-                View Property
-              </a>
-
-
+          <div class="card-body">
+            <p class="property-location"><span aria-hidden="true">⌖</span> {{ favorite.location }}, {{ favorite.city }}</p>
+            <h3 class="card-title">{{ favorite.title }}</h3>
+            <p class="property-specs">{{ favorite.propertyType }} <span aria-hidden="true">·</span> {{ favorite.bhk }} BHK</p>
+            <p class="property-price">₹{{ favorite.price | number }}</p>
+            <div class="property-card-actions">
+              <a [routerLink]="['/properties', favorite.propertyId]" class="btn btn-primary">View property</a>
               <button
                 type="button"
-                class="btn btn-outline-danger btn-sm ms-2"
+                class="btn btn-outline-danger"
                 (click)="removeFavorite(favorite.propertyId)"
-              >
+                [attr.aria-label]="'Remove ' + favorite.title + ' from favorites'">
                 Remove
               </button>
-
             </div>
-
           </div>
-
-        </div>
-
+        </article>
       </div>
-
     </div>
-
-  </div>
-
-
-  <!-- ===================================================== -->
-  <!-- RECENT INQUIRIES -->
-  <!-- ===================================================== -->
-
-  <div class="mb-5">
-
-    <div class="d-flex justify-content-between align-items-center mb-3">
-
-      <h4 class="mb-0">
-        📩 Recent Inquiries
-      </h4>
-
-      <a
-        routerLink="/my-inquiries"
-        class="btn btn-outline-primary btn-sm"
-      >
-        View All
-      </a>
-
-    </div>
-
-
-    <!-- No Inquiries -->
-
-    <div
-      *ngIf="inquiries.length === 0"
-      class="alert alert-light border"
-    >
-
-      You haven't submitted any inquiries yet.
-
-      <a routerLink="/properties">
-        Browse Properties
-      </a>
-
-    </div>
-
-
-    <!-- Inquiry Table -->
-
-    <div
-      class="table-responsive"
-      *ngIf="inquiries.length > 0"
-    >
-
-      <table class="table table-bordered table-hover align-middle">
-
-
-        <!-- Table Header -->
-
-        <thead class="table-primary">
-
-          <tr>
-
-            <th>
-              Property
-            </th>
-
-            <th>
-              Message
-            </th>
-
-            <th>
-              Date
-            </th>
-
-            <th>
-              Status
-            </th>
-
-          </tr>
-
-        </thead>
-
-
-        <!-- Table Body -->
-
-        <tbody>
-
-          <tr
-            *ngFor="let inquiry of inquiries.slice(0, 5)"
-          >
-
-            <td>
-              <strong>
-                {{ inquiry.propertyTitle }}
-              </strong>
-            </td>
-
-
-            <td>
-              {{ inquiry.message }}
-            </td>
-
-
-            <td>
-              {{ inquiry.createdDate | date:'dd-MM-yyyy' }}
-            </td>
-
-
-            <!-- Inquiry Status -->
-
-            <td>
-
-  <span
-    class="inquiry-status"
-    [ngClass]="getInquiryStatusClass(inquiry.status)"
-  >
-
-    <ng-container
-      *ngIf="getInquiryStatus(inquiry.status) === 'New'"
-    >
-      🔵 New
-    </ng-container>
-
-    <ng-container
-      *ngIf="getInquiryStatus(inquiry.status) === 'Pending'"
-    >
-      🟡 Pending
-    </ng-container>
-
-    <ng-container
-      *ngIf="getInquiryStatus(inquiry.status) === 'Responded'"
-    >
-      🟢 Responded
-    </ng-container>
-
-    <ng-container
-      *ngIf="getInquiryStatus(inquiry.status) === 'Rejected'"
-    >
-      🔴 Rejected
-    </ng-container>
-
-  </span>
-
-</td>
-
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-
-  <!-- ===================================================== -->
-  <!-- QUICK ACTIONS -->
-  <!-- ===================================================== -->
-
-  <div class="row g-4">
-
-
-    <!-- My Favorites -->
-
-    <div class="col-md-4">
-
-      <div class="card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <h4 class="card-title">
-            ❤️ My Favorites
-          </h4>
-
-          <p class="text-muted">
-            View the properties you have saved.
-          </p>
-
-          <a
-            routerLink="/my-favorites"
-            class="btn btn-outline-danger"
-          >
-            View Favorites
-          </a>
-
-        </div>
-
+  </section>
+
+  <section class="dashboard-section inquiry-section">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">Stay in the conversation</p>
+        <h2>Recent inquiries</h2>
       </div>
-
+      <a routerLink="/my-inquiries" class="section-link">View all <span aria-hidden="true">→</span></a>
     </div>
 
-
-    <!-- My Inquiries -->
-
-    <div class="col-md-4">
-
-      <div class="card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <h4 class="card-title">
-            📩 My Inquiries
-          </h4>
-
-          <p class="text-muted">
-            Track inquiries you have sent to property owners.
-          </p>
-
-          <a
-            routerLink="/my-inquiries"
-            class="btn btn-outline-primary"
-          >
-            View Inquiries
-          </a>
-
-        </div>
-
+    <div *ngIf="isLoadingInquiries" class="dashboard-state" role="status" aria-live="polite">
+      <span class="spinner-border text-primary" aria-hidden="true"></span>
+      <span>Loading your inquiries…</span>
+    </div>
+    <div *ngIf="!isLoadingInquiries && inquiriesError" class="dashboard-error" role="alert">
+      <span>{{ inquiriesError }}</span>
+      <button type="button" class="btn btn-sm btn-outline-primary" (click)="loadInquiries()">Try again</button>
+    </div>
+    <div *ngIf="!isLoadingInquiries && !inquiriesError && inquiries.length === 0" class="dashboard-empty compact-empty">
+      <span class="empty-mark" aria-hidden="true">↗</span>
+      <div>
+        <h3>No inquiries just yet</h3>
+        <p>When you reach out about a home, you can follow its progress here.</p>
       </div>
-
+      <a routerLink="/properties" class="btn btn-outline-primary">Explore homes</a>
     </div>
 
-
-    <!-- Browse Properties -->
-
-    <div class="col-md-4">
-
-      <div class="card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <h4 class="card-title">
-            🏠 Browse Properties
-          </h4>
-
-          <p class="text-muted">
-            Explore available properties listed on Prime Homes.
-          </p>
-
-          <a
-            routerLink="/properties"
-            class="btn btn-outline-success"
-          >
-            Browse Properties
-          </a>
-
-        </div>
-
+    <div class="inquiry-table-wrap" *ngIf="!isLoadingInquiries && !inquiriesError && inquiries.length > 0">
+      <div class="table-responsive">
+        <table class="table dashboard-inquiry-table">
+          <thead>
+            <tr>
+              <th scope="col">Property</th>
+              <th scope="col">Your message</th>
+              <th scope="col">Sent</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inquiry of inquiries.slice(0, 5)">
+              <td class="inquiry-property">
+                <a [routerLink]="['/properties', inquiry.propertyId]">{{ inquiry.propertyTitle }}</a>
+              </td>
+              <td class="inquiry-message">{{ inquiry.message }}</td>
+              <td>{{ inquiry.createdDate | date:'dd-MM-yyyy' }}</td>
+              <td>
+                <span class="inquiry-status" [ngClass]="getInquiryStatusClass(inquiry.status)">
+                  {{ getInquiryStatus(inquiry.status) }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
     </div>
+  </section>
 
-  </div>
-
-</div>
+  <section class="buyer-quick-actions" aria-label="Quick actions">
+    <a routerLink="/my-favorites" class="quick-action-card">
+      <span class="quick-action-icon" aria-hidden="true">♡</span>
+      <span><strong>My favorites</strong><small>Return to your saved homes</small></span>
+      <span class="quick-action-arrow" aria-hidden="true">→</span>
+    </a>
+    <a routerLink="/my-inquiries" class="quick-action-card">
+      <span class="quick-action-icon" aria-hidden="true">↗</span>
+      <span><strong>My inquiries</strong><small>Review your conversations</small></span>
+      <span class="quick-action-arrow" aria-hidden="true">→</span>
+    </a>
+    <a routerLink="/properties" class="quick-action-card">
+      <span class="quick-action-icon" aria-hidden="true">⌂</span>
+      <span><strong>Discover properties</strong><small>Find your next place</small></span>
+      <span class="quick-action-arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+</main>

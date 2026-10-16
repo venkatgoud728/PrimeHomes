@@ -5,6 +5,7 @@ import {
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { InquiryService } from '../services/inquiry';
 import { Inquiry } from '../models/inquiry';
@@ -12,7 +13,7 @@ import { Inquiry } from '../models/inquiry';
 @Component({
   selector: 'app-my-inquiries',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './my-inquiries.html',
   styleUrl: './my-inquiries.css'
 })

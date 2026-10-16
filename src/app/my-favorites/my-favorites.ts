@@ -26,6 +26,7 @@ export class MyFavorites implements OnInit {
   favorites: Favorite[] = [];
 
   loading = true;
+  errorMessage = '';
 
 
   // ==========================================
@@ -56,6 +57,7 @@ export class MyFavorites implements OnInit {
   loadFavorites(): void {
 
     this.loading = true;
+    this.errorMessage = '';
 
     this.favoriteService
       .getMyFavorites()
@@ -84,6 +86,7 @@ export class MyFavorites implements OnInit {
           );
 
           this.loading = false;
+          this.errorMessage = 'Unable to load your saved homes. Please try again.';
 
           this.cdr.detectChanges();
 

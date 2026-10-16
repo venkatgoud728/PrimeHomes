@@ -8,7 +8,7 @@
 
       <div class="visual-content">
         <div class="brand-mark">
-          <i class="bi bi-house-heart-fill"></i>
+        <span class="brand-icon" aria-hidden="true">⌂</span>
           <span>PrimeHomes</span>
         </div>
 
@@ -22,7 +22,7 @@
         </div>
 
         <div class="visual-footer">
-          <i class="bi bi-check-circle-fill"></i>
+          <span aria-hidden="true">✓</span>
           Your next chapter starts here.
         </div>
       </div>
@@ -33,7 +33,7 @@
       <div class="form-wrapper">
 
         <div class="mobile-brand">
-          <i class="bi bi-house-heart-fill"></i>
+          <span class="brand-icon" aria-hidden="true">⌂</span>
           PrimeHomes
         </div>
 
@@ -43,73 +43,96 @@
           <p>Join us to discover your perfect property.</p>
         </div>
 
-        <div *ngIf="message" class="register-alert success-alert">
-          <i class="bi bi-check-circle-fill"></i>
+        <div *ngIf="message" class="register-alert success-alert" role="status" aria-live="polite">
+          <span aria-hidden="true">✓</span>
           <span>{{ message }}</span>
         </div>
 
-        <div *ngIf="errorMessage" class="register-alert error-alert">
-          <i class="bi bi-exclamation-circle-fill"></i>
+        <div *ngIf="errorMessage" class="register-alert error-alert" role="alert" aria-live="assertive">
+          <span aria-hidden="true">!</span>
           <span>{{ errorMessage }}</span>
         </div>
 
-        <form (ngSubmit)="register()" #registerForm="ngForm">
+        <form (ngSubmit)="register(registerForm)" #registerForm="ngForm" novalidate>
 
           <div class="form-field">
             <label for="fullName">Full Name</label>
             <div class="input-wrapper">
-              <i class="bi bi-person"></i>
+              <span class="field-icon" aria-hidden="true">•</span>
               <input
                 id="fullName"
                 type="text"
                 class="form-control"
                 name="fullName"
                 [(ngModel)]="user.fullName"
+                #fullNameControl="ngModel"
                 required
-                placeholder="Enter your full name">
+                [class.is-invalid]="fullNameControl.invalid && (fullNameControl.touched || registerForm.submitted)"
+                [attr.aria-invalid]="fullNameControl.invalid && (fullNameControl.touched || registerForm.submitted)"
+                [attr.aria-describedby]="fullNameControl.invalid && (fullNameControl.touched || registerForm.submitted) ? 'register-name-error' : null"
+                placeholder="Enter your full name"
+                autocomplete="name">
             </div>
+            <p *ngIf="fullNameControl.invalid && (fullNameControl.touched || registerForm.submitted)" id="register-name-error" class="field-error" aria-live="polite">Enter your full name.</p>
           </div>
 
           <div class="form-field">
             <label for="email">Email Address</label>
             <div class="input-wrapper">
-              <i class="bi bi-envelope"></i>
+              <span class="field-icon" aria-hidden="true">@</span>
               <input
                 id="email"
                 type="email"
                 class="form-control"
                 name="email"
                 [(ngModel)]="user.email"
+                #emailControl="ngModel"
                 required
                 email
-                placeholder="you@example.com">
+                [class.is-invalid]="emailControl.invalid && (emailControl.touched || registerForm.submitted)"
+                [attr.aria-invalid]="emailControl.invalid && (emailControl.touched || registerForm.submitted)"
+                [attr.aria-describedby]="emailControl.invalid && (emailControl.touched || registerForm.submitted) ? 'register-email-error' : null"
+                placeholder="you@example.com"
+                autocomplete="email">
             </div>
+            <p *ngIf="emailControl.invalid && (emailControl.touched || registerForm.submitted)" id="register-email-error" class="field-error" aria-live="polite">
+              <span *ngIf="emailControl.errors?.['required']">Enter your email address.</span>
+              <span *ngIf="emailControl.errors?.['email']">Enter a valid email address.</span>
+            </p>
           </div>
 
           <div class="form-field">
             <label for="password">Password</label>
             <div class="input-wrapper">
-              <i class="bi bi-lock"></i>
+              <span class="field-icon" aria-hidden="true">•</span>
               <input
                 id="password"
                 type="password"
                 class="form-control"
                 name="password"
                 [(ngModel)]="user.password"
+                #passwordControl="ngModel"
                 required
-                placeholder="Create a password">
+                [class.is-invalid]="passwordControl.invalid && (passwordControl.touched || registerForm.submitted)"
+                [attr.aria-invalid]="passwordControl.invalid && (passwordControl.touched || registerForm.submitted)"
+                [attr.aria-describedby]="passwordControl.invalid && (passwordControl.touched || registerForm.submitted) ? 'register-password-error' : null"
+                placeholder="Create a password"
+                autocomplete="new-password">
             </div>
+            <p *ngIf="passwordControl.invalid && (passwordControl.touched || registerForm.submitted)" id="register-password-error" class="field-error" aria-live="polite">Create a password to continue.</p>
           </div>
 
           <div class="form-field">
             <label for="role">I want to register as</label>
             <div class="input-wrapper select-wrapper">
-              <i class="bi bi-person-badge"></i>
+              <span class="field-icon" aria-hidden="true">◉</span>
               <select
                 id="role"
                 class="form-select"
                 name="role"
-                [(ngModel)]="user.role">
+                [(ngModel)]="user.role"
+                required
+                aria-label="Choose whether you are registering as a buyer or owner">
                 <option value="Buyer">Buyer — Find a property</option>
                 <option value="Owner">Owner — List my property</option>
               </select>
@@ -119,15 +142,16 @@
           <button
             type="submit"
             class="register-button"
-            [disabled]="registerForm.invalid || isLoading">
+            [disabled]="registerForm.invalid || isLoading"
+            [attr.aria-busy]="isLoading">
 
             <span *ngIf="!isLoading">
               Create Account
-              <i class="bi bi-arrow-right"></i>
+              <span aria-hidden="true">→</span>
             </span>
 
             <span *ngIf="isLoading">
-              <span class="spinner-border spinner-border-sm me-2"></span>
+              <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
               Registering...
             </span>
           </button>
@@ -140,7 +164,7 @@
         </div>
 
         <div class="form-bottom-note">
-          <i class="bi bi-shield-check"></i>
+          <span aria-hidden="true">✓</span>
           Your journey to a new home starts securely.
         </div>
 

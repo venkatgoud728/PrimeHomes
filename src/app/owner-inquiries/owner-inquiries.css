@@ -1,0 +1,299 @@
+.owner-inquiries-page {
+  max-width: 1320px;
+  padding-top: clamp(30px, 5vw, 62px);
+  padding-bottom: 70px;
+}
+
+.owner-inquiries-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+  border: 1px solid #dce6e0;
+  border-radius: 24px;
+  padding: clamp(26px, 4vw, 42px);
+  background:
+    radial-gradient(circle at 88% 15%, rgba(189, 146, 80, .13), transparent 24%),
+    linear-gradient(115deg, #fff, #f1f6f2);
+}
+
+.page-kicker {
+  margin: 0 0 8px;
+  color: var(--ph-gold-dark);
+  font-size: .74rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.owner-inquiries-hero h1 {
+  margin: 0;
+  color: var(--ph-navy);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.owner-inquiries-hero > div:first-child > p:last-child {
+  margin: 9px 0 0;
+}
+
+.owner-inquiries-count {
+  min-width: 102px;
+  display: grid;
+  justify-items: center;
+  border: 1px solid #d9e4dd;
+  border-radius: 16px;
+  padding: 12px 17px;
+  background: #fff;
+}
+
+.owner-inquiries-count > span {
+  color: var(--ph-navy);
+  font-family: 'Manrope', 'DM Sans', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.owner-inquiries-count small {
+  color: var(--ph-muted);
+  font-size: .75rem;
+  font-weight: 650;
+}
+
+.owner-inquiries-empty {
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #cbd9d0;
+  border-radius: 20px;
+  padding: 32px;
+  background: #f9fbf9;
+  text-align: center;
+}
+
+.empty-symbol {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  background: #edf4ef;
+  color: var(--ph-gold-dark);
+  font-size: 1.8rem;
+}
+
+.owner-inquiries-empty h2 {
+  margin: 0;
+  color: var(--ph-navy);
+  font-size: 1.55rem;
+}
+
+.owner-inquiries-empty > p:last-child {
+  margin: 9px 0 0;
+}
+
+.inquiry-list-heading {
+  margin-bottom: 16px;
+}
+
+.inquiry-list-heading h2 {
+  margin: 0;
+  color: var(--ph-navy);
+  font-size: 1.35rem;
+}
+
+.inquiry-list-heading p {
+  margin: 4px 0 0;
+  font-size: .88rem;
+}
+
+.owner-inquiries-table-frame {
+  overflow: hidden;
+  border: 1px solid var(--ph-border);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: var(--ph-shadow-sm);
+}
+
+.owner-inquiries-table {
+  min-width: 1120px;
+  margin: 0;
+}
+
+.owner-inquiries-table th {
+  padding: 15px;
+  border-bottom: 1px solid var(--ph-border);
+  color: var(--ph-muted);
+  font-size: .7rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.owner-inquiries-table td {
+  padding: 15px;
+  font-size: .86rem;
+}
+
+.owner-inquiries-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.owner-inquiries-table td strong {
+  display: block;
+  color: var(--ph-text);
+}
+
+.property-reference {
+  display: block;
+  margin-top: 3px;
+  color: var(--ph-muted);
+  font-size: .73rem;
+}
+
+.inquiry-reference {
+  color: var(--ph-gold-dark);
+  font-weight: 750;
+}
+
+.buyer-message {
+  min-width: 230px;
+  max-width: 340px;
+  color: var(--ph-text-light);
+}
+
+.owner-inquiry-status {
+  display: inline-flex;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: .74rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-new {
+  border-color: #e6d2ae;
+  background: #fbf5ea;
+  color: #80632f;
+}
+
+.status-contacted {
+  border-color: #c7d9d2;
+  background: #eff5f1;
+  color: var(--ph-navy);
+}
+
+.status-closed {
+  border-color: #c2dfd1;
+  background: #edf7f1;
+  color: #28765d;
+}
+
+.inquiry-actions {
+  display: flex;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.inquiry-actions .btn {
+  min-height: 36px;
+  padding: .42rem .7rem;
+  font-size: .78rem;
+}
+
+@media (max-width: 760px) {
+  .owner-inquiries-page {
+    padding-top: 22px;
+    padding-bottom: 44px;
+  }
+
+  .owner-inquiries-hero {
+    align-items: flex-start;
+    border-radius: 20px;
+    padding: 23px 20px;
+  }
+
+  .owner-inquiries-count {
+    min-width: 78px;
+    padding: 9px 10px;
+  }
+
+  .owner-inquiries-table-frame {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .owner-inquiries-table-frame .table-responsive {
+    overflow: visible;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .owner-inquiries-table {
+    min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+  }
+
+  .owner-inquiries-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+
+  .owner-inquiries-table tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: hidden;
+    border: 1px solid var(--ph-border);
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: var(--ph-shadow-sm);
+  }
+
+  .owner-inquiries-table td {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px;
+    border: 0;
+    padding: 12px 14px;
+    overflow-wrap: anywhere;
+    font-size: .84rem;
+  }
+
+  .owner-inquiries-table td::before {
+    content: attr(data-label);
+    color: var(--ph-muted);
+    font-size: .67rem;
+    font-weight: 750;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+  }
+
+  .owner-inquiries-table td:nth-child(2),
+  .owner-inquiries-table td:nth-child(4),
+  .owner-inquiries-table td:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .buyer-message {
+    min-width: 0;
+    max-width: none;
+  }
+
+  .inquiry-actions {
+    flex-wrap: wrap;
+  }
+}

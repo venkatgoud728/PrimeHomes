@@ -1,98 +1,87 @@
-<div class="container mt-5">
-
-  <div class="d-flex justify-content-between align-items-center mb-4">
-
+<main class="container my-properties-page">
+  <header class="properties-hero">
     <div>
-      <h2>My Properties</h2>
-
-      <p class="text-muted">
-        Properties listed by you
-      </p>
+      <p class="page-kicker">Your property portfolio</p>
+      <h1>My properties</h1>
+      <p>Review listing details and keep your property information up to date.</p>
     </div>
+    <div class="properties-count" aria-label="{{ properties.length }} listed properties">
+      <span>{{ properties.length }}</span>
+      <small>{{ properties.length === 1 ? 'property' : 'properties' }}</small>
+    </div>
+  </header>
 
+  <div *ngIf="isLoading" class="properties-state" role="status" aria-live="polite">
+    <span class="spinner-border text-primary" aria-hidden="true"></span>
+    <p>Loading your listings…</p>
   </div>
 
+  <div *ngIf="!isLoading && loadError" class="properties-error" role="alert">
+    <span class="state-icon" aria-hidden="true">!</span>
+    <div>
+      <h2>Your properties aren’t available right now</h2>
+      <p>{{ loadError }}</p>
+    </div>
+    <button type="button" class="btn btn-outline-primary" (click)="loadMyProperties()">Try again</button>
+  </div>
 
-  <div class="row">
-
-    <div
-      class="col-md-4 mb-4"
-      *ngFor="let property of properties">
-
-      <div class="card h-100 shadow-sm">
-
-        <img
-          [src]="property.imageUrl || 'https://via.placeholder.com/400x250'"
-          class="card-img-top"
-          alt="Property Image"
-          style="height: 220px; object-fit: cover;"
-        >
-
-        <div class="card-body">
-
-          <h5 class="card-title">
-            {{ property.title }}
-          </h5>
-
-          <p class="text-muted">
-            📍 {{ property.location }}, {{ property.city }}
-          </p>
-
-          <p>
-            🏠 {{ property.propertyType }}
-            &nbsp; | &nbsp;
-            🛏️ {{ property.bhk }} BHK
-          </p>
-
-          <h5 class="text-primary">
-            ₹{{ property.price | number }}
-          </h5>
-
-          <p>
-            📐 {{ property.area }} sq.ft
-          </p>
-
-          <p>
-            <strong>Status:</strong>
-
-            <span class="badge bg-warning text-dark">
-              {{ property.status }}
-            </span>
-          </p>
-
-         <div class="d-flex gap-2 mt-3">
-
-  <button
-    class="btn btn-primary flex-fill"
-    (click)="editProperty(property)">
-    Edit
-  </button>
-
-  <button
-    class="btn btn-danger flex-fill"
-    (click)="deleteProperty(property)">
-    Delete
-  </button>
-
-</div>
-
-        </div>
-
+  <section *ngIf="!isLoading && !loadError && properties.length > 0" class="properties-list" aria-label="Your property listings">
+    <div class="properties-list-heading">
+      <div>
+        <h2>Your listings</h2>
+        <p>Make changes or remove a listing from your portfolio.</p>
       </div>
-
     </div>
 
-  </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" *ngFor="let property of properties">
+        <article class="card owner-property-card h-100">
+          <div class="owner-property-image">
+            <img
+              *ngIf="property.imageUrl"
+              [src]="property.imageUrl"
+              [alt]="property.title"
+              (error)="property.imageUrl = ''">
+            <span *ngIf="!property.imageUrl" class="image-fallback">Property photo unavailable</span>
+            <span class="property-status">{{ property.status }}</span>
+          </div>
 
+          <div class="card-body">
+            <p class="property-location"><span aria-hidden="true">⌖</span> {{ property.location }}, {{ property.city }}</p>
+            <h3 class="card-title">{{ property.title }}</h3>
+            <div class="property-facts">
+              <span>{{ property.propertyType }}</span>
+              <span>{{ property.bhk }} BHK</span>
+              <span>{{ property.area }} sq.ft</span>
+            </div>
+            <p class="property-price">₹{{ property.price | number }}</p>
 
-  <div
-    *ngIf="properties.length === 0"
-    class="text-center text-muted mt-5">
+            <div class="property-actions">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="editProperty(property)"
+                [attr.aria-label]="'Edit ' + property.title">
+                Edit listing
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                (click)="deleteProperty(property)"
+                [attr.aria-label]="'Delete ' + property.title">
+                Delete
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <h5>No properties found.</h5>
-
-    <p>Add your first property to get started.</p>
-
-  </div>
-
-</div>
+  <section *ngIf="!isLoading && !loadError && properties.length === 0" class="properties-empty">
+    <span class="state-icon" aria-hidden="true">⌂</span>
+    <p class="page-kicker">A new beginning</p>
+    <h2>No properties listed yet</h2>
+    <p>Your property listings will appear here once you’ve added them.</p>
+  </section>
+</main>

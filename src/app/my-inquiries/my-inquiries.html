@@ -1,45 +1,75 @@
-<div class="container mt-4">
+<main class="container my-inquiries-page">
+  <header class="inquiries-hero">
+    <div>
+      <p class="page-kicker">Keep the conversation moving</p>
+      <h1>My inquiries</h1>
+      <p>Follow the messages you’ve sent about properties and check each response status.</p>
+    </div>
+    <div class="inquiries-hero-actions">
+      <div class="inquiries-count" aria-label="{{ inquiries.length }} inquiries">
+        <span>{{ inquiries.length }}</span>
+        <small>{{ inquiries.length === 1 ? 'inquiry' : 'inquiries' }}</small>
+      </div>
+      <a routerLink="/properties" class="btn btn-light">Explore properties <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
 
-  <h2>My Inquiries</h2>
-
-  <div *ngIf="isLoading" class="alert alert-info">
-    Loading inquiries...
+  <div *ngIf="isLoading" class="inquiries-state" role="status" aria-live="polite">
+    <span class="spinner-border text-primary" aria-hidden="true"></span>
+    <p>Loading your conversations…</p>
   </div>
 
-  <div *ngIf="errorMessage" class="alert alert-danger">
-    {{ errorMessage }}
+  <div *ngIf="!isLoading && errorMessage" class="inquiries-error" role="alert">
+    <span class="state-symbol" aria-hidden="true">!</span>
+    <div>
+      <h2>We couldn’t load your inquiries</h2>
+      <p>{{ errorMessage }}</p>
+    </div>
+    <button type="button" class="btn btn-outline-primary" (click)="loadMyInquiries()">Try again</button>
   </div>
 
-  <div *ngIf="!isLoading && inquiries.length === 0"
-       class="alert alert-warning">
-    No inquiries found.
-  </div>
+  <section *ngIf="!isLoading && !errorMessage && inquiries.length === 0" class="inquiries-empty">
+    <span class="state-symbol" aria-hidden="true">↗</span>
+    <p class="page-kicker">Nothing to follow up yet</p>
+    <h2>No inquiries found</h2>
+    <p>Your messages to property owners will appear here, along with their status.</p>
+  </section>
 
-  <table *ngIf="!isLoading && inquiries.length > 0"
-         class="table table-bordered table-striped">
-
-    <thead>
-      <tr>
-        <th>Inquiry ID</th>
-        <th>Property Title</th>
-        <th>Property ID</th>
-        <th>Message</th>
-        <th>Status</th>
-        <th>Date</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let inquiry of inquiries">
-        <td>{{ inquiry.inquiryId }}</td>
-        <td>{{ inquiry.propertyTitle }}</td>
-        <td>{{ inquiry.propertyId }}</td>
-        <td>{{ inquiry.message }}</td>
-        <td>{{ inquiry.status }}</td>
-        <td>{{ inquiry.createdDate | date:'medium' }}</td>
-      </tr>
-    </tbody>
-
-  </table>
-
-</div>
+  <section *ngIf="!isLoading && !errorMessage && inquiries.length > 0" class="inquiries-list">
+    <div class="list-heading">
+      <div>
+        <h2>Your conversations</h2>
+        <p>Review the details and current status of your property inquiries.</p>
+      </div>
+    </div>
+    <div class="inquiries-table-frame">
+      <div class="table-responsive">
+        <table class="table inquiries-table">
+          <caption class="visually-hidden">Your property inquiries, messages, statuses, and dates</caption>
+          <thead>
+            <tr>
+              <th scope="col">Inquiry</th>
+              <th scope="col">Property</th>
+              <th scope="col">Property ID</th>
+              <th scope="col">Message</th>
+              <th scope="col">Status</th>
+              <th scope="col">Date sent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inquiry of inquiries">
+              <td data-label="Inquiry ID"><span class="inquiry-id">#{{ inquiry.inquiryId }}</span></td>
+              <td data-label="Property">
+                <a [routerLink]="['/properties', inquiry.propertyId]" class="inquiry-property-link"><strong>{{ inquiry.propertyTitle }}</strong></a>
+              </td>
+              <td data-label="Property ID">{{ inquiry.propertyId }}</td>
+              <td data-label="Message" class="message-cell">{{ inquiry.message }}</td>
+              <td data-label="Status"><span class="inquiry-status">{{ inquiry.status }}</span></td>
+              <td data-label="Date sent">{{ inquiry.createdDate | date:'medium' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,214 +1,80 @@
- <div class="container mt-5 mb-5">
-
-  <!-- ========================================== -->
-  <!-- Page Header -->
-  <!-- ========================================== -->
-
-  <div class="d-flex justify-content-between align-items-center mb-4">
-
+<main class="container favorites-page">
+  <header class="favorites-hero">
     <div>
-      <h2 class="fw-bold">❤️ My Favorites</h2>
-
-      <p class="text-muted mb-0">
-        Properties you have saved for later.
-      </p>
+      <p class="page-kicker">Your personal shortlist</p>
+      <h1>Saved homes</h1>
+      <p class="favorites-intro">All the places you’ve bookmarked, together in one place.</p>
     </div>
+    <div class="favorites-hero-actions">
+      <div class="favorites-count" aria-label="{{ favorites.length }} saved properties">
+        <span class="count-number">{{ favorites.length }}</span>
+        <span class="count-label">saved {{ favorites.length === 1 ? 'home' : 'homes' }}</span>
+      </div>
+      <a routerLink="/properties" class="btn btn-light">Find more homes <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
 
-    <span class="badge bg-primary fs-6">
-      {{ favorites.length }} Saved
-    </span>
-
+  <div *ngIf="loading" class="favorites-loading" role="status" aria-live="polite">
+    <span class="spinner-border text-primary" aria-hidden="true"></span>
+    <p>Gathering your saved homes…</p>
   </div>
 
-
-  <!-- ========================================== -->
-  <!-- Loading -->
-  <!-- ========================================== -->
-
-  <div
-    *ngIf="loading"
-    class="text-center py-5">
-
-    <div
-      class="spinner-border text-primary"
-      role="status">
-
+  <div *ngIf="!loading && errorMessage" class="favorites-error" role="alert">
+    <div>
+      <h2>We couldn’t load your saved homes</h2>
+      <p>{{ errorMessage }}</p>
     </div>
-
-    <p class="text-muted mt-3">
-      Loading your favorites...
-    </p>
-
+    <button type="button" class="btn btn-outline-primary" (click)="loadFavorites()">Try again</button>
   </div>
 
-
-  <!-- ========================================== -->
-  <!-- Favorite Properties -->
-  <!-- ========================================== -->
-
-  <div
-    class="row g-4"
-    *ngIf="!loading && favorites.length > 0">
-
-    <div
-      class="col-lg-4 col-md-6"
-      *ngFor="let favorite of favorites">
-
-      <div class="card favorite-card h-100 shadow-sm border-0">
-
-
-        <!-- Property Image -->
-
+  <section class="row g-4 favorites-grid" *ngIf="!loading && !errorMessage && favorites.length > 0" aria-label="Favorite properties">
+    <div class="col-lg-4 col-md-6" *ngFor="let favorite of favorites">
+      <article class="card favorite-card h-100">
         <div class="favorite-image-container">
-
           <img
-            [src]="favorite.imageUrl || 'https://via.placeholder.com/600x400?text=Prime+Homes'"
-            class="card-img-top favorite-image"
-            alt="Property Image">
-
-
-          <!-- Status -->
-
-          <span
-            class="badge bg-success favorite-status">
-
-            {{ favorite.status }}
-
-          </span>
-
-
-          <!-- Favorite Icon -->
-
-          <span class="favorite-heart">
-            ❤️
-          </span>
-
+            *ngIf="favorite.imageUrl"
+            [src]="favorite.imageUrl"
+            class="favorite-image"
+            [alt]="favorite.title"
+            (error)="favorite.imageUrl = ''">
+          <span *ngIf="!favorite.imageUrl" class="image-fallback">Property photo unavailable</span>
+          <span class="favorite-status">{{ favorite.status }}</span>
+          <span class="favorite-heart" aria-hidden="true">♡</span>
         </div>
 
+        <div class="card-body">
+          <p class="favorite-location"><span aria-hidden="true">⌖</span> {{ favorite.location }}, {{ favorite.city }}</p>
+          <h2 class="card-title">{{ favorite.title }}</h2>
+          <p class="favorite-price">₹{{ favorite.price | number }}</p>
 
-        <!-- Property Information -->
-
-        <div class="card-body d-flex flex-column">
-
-          <h5 class="card-title fw-bold">
-
-            {{ favorite.title }}
-
-          </h5>
-
-
-          <p class="text-muted mb-2">
-
-            📍 {{ favorite.location }},
-            {{ favorite.city }}
-
-          </p>
-
-
-          <h4 class="text-primary fw-bold mb-3">
-
-            ₹{{ favorite.price | number }}
-
-          </h4>
-
-
-          <!-- Features -->
-
-          <div class="favorite-features mb-3">
-
-            <span>
-              🛏 {{ favorite.bhk }} BHK
-            </span>
-
-            <span>
-              📐 {{ favorite.area }} Sq.ft
-            </span>
-
-            <span>
-              🏠 {{ favorite.propertyType }}
-            </span>
-
+          <div class="favorite-features" aria-label="Property features">
+            <span><span aria-hidden="true">⌂</span> {{ favorite.bhk }} BHK</span>
+            <span><span aria-hidden="true">▧</span> {{ favorite.area }} sq.ft</span>
+            <span>{{ favorite.propertyType }}</span>
           </div>
 
+          <p class="favorite-description">{{ favorite.description }}</p>
 
-          <!-- Description -->
-
-          <p class="text-muted favorite-description">
-
-            {{ favorite.description }}
-
-          </p>
-
-
-          <!-- Buttons -->
-
-          <div class="d-flex gap-2 mt-auto">
-
-            <a
-              [routerLink]="[
-                '/properties',
-                favorite.propertyId
-              ]"
-              class="btn btn-primary flex-fill">
-
-              View Details
-
-            </a>
-
-
+          <div class="favorite-actions">
+            <a [routerLink]="['/properties', favorite.propertyId]" class="btn btn-primary">View details</a>
             <button
               type="button"
               class="btn btn-outline-danger"
               (click)="removeFavorite(favorite.propertyId)"
-              title="Remove from Favorites">
-
-              🗑️
-
+              [attr.aria-label]="'Remove ' + favorite.title + ' from favorites'">
+              Remove
             </button>
-
           </div>
-
         </div>
-
-      </div>
-
+      </article>
     </div>
+  </section>
 
-  </div>
-
-
-  <!-- ========================================== -->
-  <!-- No Favorites -->
-  <!-- ========================================== -->
-
-  <div
-    *ngIf="!loading && favorites.length === 0"
-    class="text-center py-5">
-
-    <div class="empty-favorites">
-
-      <div class="empty-heart">
-        ♡
-      </div>
-
-      <h3 class="fw-bold mt-3">
-        No Favorites Yet
-      </h3>
-
-      <p class="text-muted">
-        You haven't saved any properties yet.
-      </p>
-
-      <a
-        routerLink="/properties"
-        class="btn btn-primary mt-2">
-
-        Browse Properties
-
-      </a>
-
-    </div>
-
-  </div>
-
-</div>
+  <section *ngIf="!loading && !errorMessage && favorites.length === 0" class="favorites-empty">
+    <span class="empty-heart" aria-hidden="true">♡</span>
+    <p class="page-kicker">Your shortlist starts here</p>
+    <h2>No saved homes yet</h2>
+    <p>When a property catches your eye, save it here to come back to it later.</p>
+    <a routerLink="/properties" class="btn btn-primary">Explore properties</a>
+  </section>
+</main>

@@ -46,6 +46,8 @@ export class Home implements OnInit {
   totalProperties = 0;
   approvedProperties = 0;
   citiesCovered = 0;
+  isLoadingFeatured = false;
+  featuredPropertiesError = '';
 
 
   constructor(
@@ -68,7 +70,7 @@ export class Home implements OnInit {
 
       queryParams: {
 
-        location: this.searchLocation,
+        location: this.searchLocation.trim(),
 
         propertyType: this.selectedPropertyType,
 
@@ -82,6 +84,9 @@ export class Home implements OnInit {
 
 
   loadFeaturedProperties(): void {
+
+    this.isLoadingFeatured = true;
+    this.featuredPropertiesError = '';
 
     this.propertyService.getProperties().subscribe({
 
@@ -116,6 +121,7 @@ export class Home implements OnInit {
 
 
         this.featuredProperties = uniqueImageProperties;
+        this.isLoadingFeatured = false;
 
 
         this.totalProperties = data.length;
@@ -136,24 +142,6 @@ export class Home implements OnInit {
         this.citiesCovered = new Set(cities).size;
 
 
-        console.log(
-          'Total Properties:',
-          this.totalProperties
-        );
-
-
-        console.log(
-          'Approved Properties:',
-          this.approvedProperties
-        );
-
-
-        console.log(
-          'Cities Covered:',
-          this.citiesCovered
-        );
-
-
         this.cdr.detectChanges();
 
       },
@@ -165,6 +153,11 @@ export class Home implements OnInit {
           'Error loading featured properties:',
           error
         );
+
+        this.isLoadingFeatured = false;
+        this.featuredPropertiesError =
+          'We couldn’t load featured properties. Please try again.';
+        this.cdr.detectChanges();
 
       }
 

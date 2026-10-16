@@ -1,378 +1,282 @@
-<div class="container py-5">
-
-  <div class="row justify-content-center">
-
-    <div class="col-lg-8">
-
-      <div class="card shadow border-0">
-
-        <div class="card-body p-4">
-
-          <h2 class="mb-4 text-center">
-            {{ isEditMode ? 'Edit Property' : 'Add New Property' }}
-          </h2>
-
-          <form (ngSubmit)="uploadSelectedImage()" #propertyForm="ngForm">
-
-            <!-- Property Title -->
-            <div class="mb-3">
-              <label class="form-label">Property Title</label>
-
-              <input
-                type="text"
-                class="form-control"
-                name="title"
-                [(ngModel)]="property.title"
-                placeholder="Enter property title"
-                required>
-            </div>
-
-
-            <!-- Description -->
-            <div class="mb-3">
-              <label class="form-label">Description</label>
-
-              <textarea
-                class="form-control"
-                name="description"
-                [(ngModel)]="property.description"
-                rows="4"
-                placeholder="Enter property description"
-                required>
-              </textarea>
-            </div>
-
-
-            <!-- Property Type -->
-            <div class="mb-3">
-              <label class="form-label">Property Type</label>
-
-              <select
-                class="form-select"
-                name="propertyType"
-                [(ngModel)]="property.propertyType"
-                required>
-
-                <option value="">Select Property Type</option>
-                <option value="Apartment">Apartment</option>
-                <option value="Villa">Villa</option>
-                <option value="House">House</option>
-                <option value="Plot">Plot</option>
-                <option value="Commercial">Commercial</option>
-
-              </select>
-            </div>
-
-
-            <!-- BHK and Area -->
-            <div class="row">
-
-              <div class="col-md-6 mb-3">
-                <label class="form-label">BHK</label>
-
-                <input
-                  type="number"
-                  class="form-control"
-                  name="bhk"
-                  [(ngModel)]="property.bhk"
-                  min="0"
-                  placeholder="Enter BHK">
-              </div>
-
-              <div class="col-md-6 mb-3">
-                <label class="form-label">Area (Sq. Ft.)</label>
-
-                <input
-                  type="number"
-                  class="form-control"
-                  name="area"
-                  [(ngModel)]="property.area"
-                  min="0"
-                  placeholder="Enter area">
-              </div>
-
-            </div>
-
-
-            <!-- Price -->
-            <div class="mb-3">
-              <label class="form-label">Price</label>
-
-              <input
-                type="number"
-                class="form-control"
-                name="price"
-                [(ngModel)]="property.price"
-                min="0"
-                placeholder="Enter property price"
-                required>
-            </div>
-
-
-            <!-- Location -->
-            <div class="mb-3">
-              <label class="form-label">Location</label>
-
-              <input
-                type="text"
-                class="form-control"
-                name="location"
-                [(ngModel)]="property.location"
-                placeholder="Enter location"
-                required>
-            </div>
-
-
-            <!-- City -->
-            <div class="mb-3">
-              <label class="form-label">City</label>
-
-              <input
-                type="text"
-                class="form-control"
-                name="city"
-                [(ngModel)]="property.city"
-                placeholder="Enter city"
-                required>
-            </div>
-
-           
-<!-- LIFESTYLE & COMMUNITY FEATURES -->
-<div class="mt-4 mb-4 p-3 border rounded lifestyle-form-section">
-
-  <h5 class="fw-bold mb-2">
-    <i class="bi bi-buildings-fill me-2"></i>
-    Lifestyle & Community Features
-  </h5>
-
-  <p class="text-muted small mb-3">
-    Select only the facilities available at this property.
-  </p>
-
-  <div class="row g-3">
-
-    <div class="col-md-6" *ngFor="let feature of availableLifestyleFeatures">
-      <label class="lifestyle-checkbox-item">
-        <input
-          type="checkbox"
-          [checked]="selectedLifestyleFeatures.includes(feature)"
-          (change)="toggleLifestyleFeature(feature, $event)"
-        />
-
-        <span>{{ feature }}</span>
-      </label>
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- Property Map Location -->
-<div class="mt-4 mb-4 p-3 border rounded">
-
-  <h5 class="fw-bold mb-2">
-    📍 Select Property Location
-  </h5>
-
-  <p class="text-muted small">
-    Click on the map to select the property's exact location.
-    The latitude and longitude fields will update automatically.
-  </p>
-
-  <!-- Latitude and Longitude -->
-  <div class="row">
-
-    <div class="col-md-6 mb-3">
-      <label class="form-label">Latitude</label>
-
-      <input
-        type="number"
-        class="form-control"
-        name="latitude"
-        [(ngModel)]="property.latitude"
-        min="-90"
-        max="90"
-        step="any"
-        placeholder="Example: 17.3850">
-    </div>
-
-    <div class="col-md-6 mb-3">
-      <label class="form-label">Longitude</label>
-
-      <input
-        type="number"
-        class="form-control"
-        name="longitude"
-        [(ngModel)]="property.longitude"
-        min="-180"
-        max="180"
-        step="any"
-        placeholder="Example: 78.4867">
-    </div>
-
-  </div>
-
-  <div class="d-flex flex-wrap gap-2 mb-3">
-    <button
-      type="button"
-      class="btn btn-outline-primary btn-sm"
-      (click)="showPropertyLocationOnMap()">
-      Show Selected Location
-    </button>
-
-    <button
-      type="button"
-      class="btn btn-outline-secondary btn-sm"
-      (click)="clearPropertyLocation()">
-      Clear Location
-    </button>
-  </div>
-
-  <!-- Interactive Map -->
-  <div
-    id="owner-property-map"
-    style="width: 100%; height: 350px; border-radius: 10px; overflow: hidden;">
-  </div>
-
-  <small class="text-muted d-block mt-2">
-    You can click the map to place the marker. These coordinates are optional.
-  </small>
-
-</div>
-
-
-
-           <!-- Main Property Image -->
-<div class="mb-4">
-
-  <label class="form-label fw-bold">
-    Main Property Image
-  </label>
-
-  <input
-    type="file"
-    class="form-control"
-    accept="image/*"
-    (change)="onFileSelected($event)"
-  />
-
-  <!-- Main Image Preview -->
-  <div
-    *ngIf="imagePreview"
-    class="mt-3"
-  >
-
-    <p class="fw-semibold mb-2">
-      Main Image Preview
-    </p>
-
-    <img
-      [src]="imagePreview"
-      alt="Property Preview"
-      class="img-thumbnail"
-      style="width: 250px; height: 180px; object-fit: cover;"
-    />
-
-  </div>
-
-</div>
-
-
-<!-- Property Gallery Images -->
-<div class="mb-4">
-
-  <label class="form-label fw-bold">
-    Property Gallery Images
-  </label>
-
-  <input
-    type="file"
-    class="form-control"
-    accept="image/*"
-    multiple
-    (change)="onGalleryFilesSelected($event)"
-  />
-
-  <small class="text-muted">
-    You can select multiple images for this property.
-  </small>
-
-
-  <!-- Gallery Preview -->
-  <div
-    *ngIf="galleryPreviews.length > 0"
-    class="mt-3"
-  >
-
-    <p class="fw-semibold mb-2">
-      Gallery Preview
-    </p>
-
-    <div class="row g-3">
-
-      <div
-        class="col-6 col-md-4 col-lg-3"
-        *ngFor="let image of galleryPreviews"
-      >
-
-        <img
-          [src]="image"
-          alt="Gallery Image"
-          class="img-thumbnail w-100"
-          style="height: 150px; object-fit: cover;"
-        />
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-
-            <!-- Image Preview -->
-            <div
-              class="mb-4 text-center"
-              *ngIf="imagePreview">
-
-              <label class="form-label d-block">
-                Image Preview
-              </label>
-
-              <img
-                [src]="imagePreview"
-                alt="Property Preview"
-                class="img-fluid rounded shadow"
-                style="max-height: 300px; object-fit: cover;">
-
-            </div>
-
-
-            <!-- Submit Button -->
-            <div class="d-grid">
-
-              <button
-                type="submit"
-                class="btn btn-primary btn-lg"
-                [disabled]="propertyForm.invalid">
-
-                {{ isEditMode ? 'Update Property' : 'Add Property' }}
-
-              </button>
-
-            </div>
-
-          </form>
-
+<main class="property-form-page container py-5">
+  <header class="property-form-heading">
+    <span class="property-form-eyebrow">{{ isEditMode ? 'Listing details' : 'Seller workspace' }}</span>
+    <h1>{{ isEditMode ? 'Edit Property' : 'Add New Property' }}</h1>
+    <p>Organize your property information, location and photography in one place.</p>
+  </header>
+
+  <div class="property-form-card">
+    <form (ngSubmit)="uploadSelectedImage()" #propertyForm="ngForm">
+      <section class="form-section" aria-labelledby="property-details-heading">
+        <div class="form-section-heading">
+          <span class="form-section-step">01</span>
+          <div>
+            <h2 id="property-details-heading">Property details</h2>
+            <p>Set the essentials buyers need to know.</p>
+          </div>
         </div>
 
+        <div class="row g-3">
+          <div class="col-md-7">
+            <label class="form-label" for="property-title">Property Title</label>
+            <input
+              id="property-title"
+              type="text"
+              class="form-control"
+              name="title"
+              [(ngModel)]="property.title"
+              placeholder="Enter property title"
+              required>
+          </div>
+
+          <div class="col-md-5">
+            <label class="form-label" for="property-type">Property Type</label>
+            <select
+              id="property-type"
+              class="form-select"
+              name="propertyType"
+              [(ngModel)]="property.propertyType"
+              required>
+              <option value="">Select Property Type</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Villa">Villa</option>
+              <option value="House">House</option>
+              <option value="Plot">Plot</option>
+              <option value="Commercial">Commercial</option>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label" for="property-description">Description</label>
+            <textarea
+              id="property-description"
+              class="form-control"
+              name="description"
+              [(ngModel)]="property.description"
+              rows="4"
+              placeholder="Enter property description"
+              required></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section" aria-labelledby="property-pricing-heading">
+        <div class="form-section-heading">
+          <span class="form-section-step">02</span>
+          <div>
+            <h2 id="property-pricing-heading">Pricing &amp; layout</h2>
+            <p>Share the size, layout and asking price.</p>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label class="form-label" for="property-price">Price</label>
+            <input
+              id="property-price"
+              type="number"
+              class="form-control"
+              name="price"
+              [(ngModel)]="property.price"
+              min="0"
+              placeholder="Enter property price"
+              required>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label" for="property-bhk">BHK</label>
+            <input
+              id="property-bhk"
+              type="number"
+              class="form-control"
+              name="bhk"
+              [(ngModel)]="property.bhk"
+              min="0"
+              placeholder="Enter BHK">
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label" for="property-area">Area (Sq. Ft.)</label>
+            <input
+              id="property-area"
+              type="number"
+              class="form-control"
+              name="area"
+              [(ngModel)]="property.area"
+              min="0"
+              placeholder="Enter area">
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section" aria-labelledby="property-address-heading">
+        <div class="form-section-heading">
+          <span class="form-section-step">03</span>
+          <div>
+            <h2 id="property-address-heading">Address &amp; amenities</h2>
+            <p>Add the neighborhood and available community facilities.</p>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-7">
+            <label class="form-label" for="property-location">Location</label>
+            <input
+              id="property-location"
+              type="text"
+              class="form-control"
+              name="location"
+              [(ngModel)]="property.location"
+              placeholder="Enter location"
+              required>
+          </div>
+
+          <div class="col-md-5">
+            <label class="form-label" for="property-city">City</label>
+            <input
+              id="property-city"
+              type="text"
+              class="form-control"
+              name="city"
+              [(ngModel)]="property.city"
+              placeholder="Enter city"
+              required>
+          </div>
+        </div>
+
+        <div class="lifestyle-form-section">
+          <div class="subsection-heading">
+            <h3>Lifestyle &amp; Community Features</h3>
+            <p>Select only the facilities available at this property.</p>
+          </div>
+          <div class="row g-2">
+            <div class="col-md-6" *ngFor="let feature of availableLifestyleFeatures">
+              <label class="lifestyle-checkbox-item">
+                <input
+                  type="checkbox"
+                  [checked]="selectedLifestyleFeatures.includes(feature)"
+                  (change)="toggleLifestyleFeature(feature, $event)">
+                <span>{{ feature }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section" aria-labelledby="property-map-heading">
+        <div class="form-section-heading">
+          <span class="form-section-step">04</span>
+          <div>
+            <h2 id="property-map-heading">Pin the property location</h2>
+            <p>Click on the map to select the exact location. Coordinates update automatically.</p>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="property-latitude">Latitude</label>
+            <input
+              id="property-latitude"
+              type="number"
+              class="form-control"
+              name="latitude"
+              [(ngModel)]="property.latitude"
+              min="-90"
+              max="90"
+              step="any"
+              placeholder="Example: 17.3850">
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label" for="property-longitude">Longitude</label>
+            <input
+              id="property-longitude"
+              type="number"
+              class="form-control"
+              name="longitude"
+              [(ngModel)]="property.longitude"
+              min="-180"
+              max="180"
+              step="any"
+              placeholder="Example: 78.4867">
+          </div>
+        </div>
+
+        <div class="map-actions">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            (click)="showPropertyLocationOnMap()">
+            Show Selected Location
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary btn-sm"
+            (click)="clearPropertyLocation()">
+            Clear Location
+          </button>
+        </div>
+
+        <div id="owner-property-map" class="property-location-map"></div>
+        <small class="form-hint">You can click the map to place the marker. These coordinates are optional.</small>
+      </section>
+
+      <section class="form-section" aria-labelledby="property-media-heading">
+        <div class="form-section-heading">
+          <span class="form-section-step">05</span>
+          <div>
+            <h2 id="property-media-heading">Property photography</h2>
+            <p>Choose the main image and add additional gallery photos.</p>
+          </div>
+        </div>
+
+        <div class="media-upload-grid">
+          <div class="media-upload-panel">
+            <label class="form-label" for="property-main-image">Main Property Image</label>
+            <input
+              id="property-main-image"
+              type="file"
+              class="form-control"
+              accept="image/*"
+              (change)="onFileSelected($event)">
+
+            <div *ngIf="imagePreview" class="image-preview">
+              <p class="preview-label">Main Image Preview</p>
+              <img [src]="imagePreview" alt="Property Preview" class="main-image-preview">
+            </div>
+          </div>
+
+          <div class="media-upload-panel">
+            <label class="form-label" for="property-gallery-images">Property Gallery Images</label>
+            <input
+              id="property-gallery-images"
+              type="file"
+              class="form-control"
+              accept="image/*"
+              multiple
+              (change)="onGalleryFilesSelected($event)">
+            <small class="form-hint">You can select multiple images for this property.</small>
+
+            <div *ngIf="galleryPreviews.length > 0" class="gallery-preview">
+              <p class="preview-label">Gallery Preview</p>
+              <div class="gallery-preview-grid">
+                <div *ngFor="let image of galleryPreviews">
+                  <img [src]="image" alt="Gallery Image">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="form-submit-bar">
+        <button
+          type="submit"
+          class="btn btn-primary btn-lg"
+          [disabled]="propertyForm.invalid">
+          {{ isEditMode ? 'Update Property' : 'Add Property' }}
+        </button>
       </div>
-
-    </div>
-
+    </form>
   </div>
-
-</div>
+</main>

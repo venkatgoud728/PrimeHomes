@@ -1,207 +1,83 @@
-<div class="container mt-5 mb-5">
-
-  <!-- ========================================== -->
-  <!-- HEADER -->
-  <!-- ========================================== -->
-
-  <div class="d-flex justify-content-between align-items-center mb-4">
-
+<main class="container owner-dashboard-page">
+  <section class="owner-hero">
     <div>
-      <h2 class="fw-bold">
-        Owner Dashboard
-      </h2>
-
-      <p class="text-muted mb-0">
-        Welcome, {{ ownerName }}!
-      </p>
+      <p class="page-kicker">Owner workspace</p>
+      <h1>Good to see you, {{ ownerName }}</h1>
+      <p>Stay on top of your listings and keep buyer conversations moving.</p>
     </div>
-
-
-    <a
-      routerLink="/add-property"
-      class="btn btn-primary"
-    >
-      + Add Property
+    <a routerLink="/add-property" class="btn btn-primary add-property-button">
+      <span aria-hidden="true">＋</span> Add a property
     </a>
+  </section>
 
-  </div>
-
-
-  <!-- ========================================== -->
-  <!-- STATISTICS -->
-  <!-- ========================================== -->
-
-  <div class="row g-4 mb-4">
-
-    <!-- Total Properties -->
-    <div class="col-lg-3 col-md-6">
-
-      <div class="card dashboard-stat-card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <div class="stat-icon">
-            🏠
-          </div>
-
-          <h6 class="text-muted">
-            Total Properties
-          </h6>
-
-          <h2 class="fw-bold">
-            {{ totalProperties }}
-          </h2>
-
-        </div>
-
+  <section class="owner-overview" aria-label="Portfolio overview">
+    <div class="overview-heading">
+      <div>
+        <p class="section-kicker">Your portfolio</p>
+        <h2>At a glance</h2>
       </div>
-
+      <span class="overview-caption">Listing activity</span>
     </div>
 
+    <div class="owner-stat-grid">
+      <article class="owner-stat-card">
+        <span class="stat-symbol" aria-hidden="true">⌂</span>
+        <p class="stat-label">Total properties</p>
+        <p class="stat-value">{{ totalProperties }}</p>
+        <span class="stat-note">Your current listings</span>
+      </article>
+      <article class="owner-stat-card stat-approved">
+        <span class="stat-symbol" aria-hidden="true">✓</span>
+        <p class="stat-label">Approved</p>
+        <p class="stat-value">{{ approvedProperties }}</p>
+        <span class="stat-note">Approved listings</span>
+      </article>
+      <article class="owner-stat-card stat-pending">
+        <span class="stat-symbol" aria-hidden="true">◷</span>
+        <p class="stat-label">Pending review</p>
+        <p class="stat-value">{{ pendingProperties }}</p>
+        <span class="stat-note">Awaiting a decision</span>
+      </article>
+      <article class="owner-stat-card stat-rejected">
+        <span class="stat-symbol" aria-hidden="true">–</span>
+        <p class="stat-label">Rejected</p>
+        <p class="stat-value">{{ rejectedProperties }}</p>
+        <span class="stat-note">Rejected listings</span>
+      </article>
+      <article class="owner-stat-card stat-inquiries">
+        <span class="stat-symbol" aria-hidden="true">↗</span>
+        <p class="stat-label">Buyer inquiries</p>
+        <p class="stat-value">{{ totalInquiries }}</p>
+        <span class="stat-note">Conversations received</span>
+      </article>
+    </div>
+  </section>
 
-    <!-- Approved Properties -->
-    <div class="col-lg-3 col-md-6">
-
-      <div class="card dashboard-stat-card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <div class="stat-icon">
-            ✅
-          </div>
-
-          <h6 class="text-muted">
-            Approved
-          </h6>
-
-          <h2 class="fw-bold text-success">
-            {{ approvedProperties }}
-          </h2>
-
-        </div>
-
-      </div>
-
+  <section class="owner-dashboard-actions">
+    <div class="action-intro">
+      <p class="section-kicker">Manage your business</p>
+      <h2>What would you like to do?</h2>
+      <p>Make a quick update or respond to someone interested in your property.</p>
     </div>
 
-
-    <!-- Pending Properties -->
-    <div class="col-lg-3 col-md-6">
-
-      <div class="card dashboard-stat-card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <div class="stat-icon">
-            ⏳
-          </div>
-
-          <h6 class="text-muted">
-            Pending
-          </h6>
-
-          <h2 class="fw-bold text-warning">
-            {{ pendingProperties }}
-          </h2>
-
-        </div>
-
-      </div>
-
+    <div class="owner-action-grid">
+      <a routerLink="/my-properties" class="owner-action-card">
+        <span class="action-icon" aria-hidden="true">⌂</span>
+        <span class="action-copy">
+          <strong>Manage properties</strong>
+          <small>Review, edit, or remove your listings.</small>
+          <span class="action-cta">View my properties <span aria-hidden="true">→</span></span>
+        </span>
+      </a>
+      <a routerLink="/owner-inquiries" class="owner-action-card inquiry-action">
+        <span class="action-icon" aria-hidden="true">↗</span>
+        <span class="action-copy">
+          <strong>Respond to inquiries</strong>
+          <small>Keep up with buyers interested in your homes.</small>
+          <span class="action-cta">View inquiries <span aria-hidden="true">→</span></span>
+        </span>
+        <span class="action-count">{{ totalInquiries }}</span>
+      </a>
     </div>
-
-
-    <!-- Total Inquiries -->
-    <div class="col-lg-3 col-md-6">
-
-      <div class="card dashboard-stat-card shadow-sm border-0 h-100">
-
-        <div class="card-body">
-
-          <div class="stat-icon">
-            📩
-          </div>
-
-          <h6 class="text-muted">
-            Total Inquiries
-          </h6>
-
-          <h2 class="fw-bold text-primary">
-            {{ totalInquiries }}
-          </h2>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ========================================== -->
-  <!-- QUICK ACTIONS -->
-  <!-- ========================================== -->
-
-  <div class="row g-4">
-
-    <!-- My Properties -->
-    <div class="col-md-6">
-
-      <div class="card shadow-sm h-100 border-0">
-
-        <div class="card-body">
-
-          <h4 class="card-title">
-            🏠 My Properties
-          </h4>
-
-          <p class="text-muted">
-            Manage the properties you have listed.
-          </p>
-
-          <a
-            routerLink="/my-properties"
-            class="btn btn-outline-primary"
-          >
-            View My Properties
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- My Inquiries -->
-    <div class="col-md-6">
-
-      <div class="card shadow-sm h-100 border-0">
-
-        <div class="card-body">
-
-          <h4 class="card-title">
-            📩 My Inquiries
-          </h4>
-
-          <p class="text-muted">
-            View inquiries received from buyers.
-          </p>
-
-          <a
-            routerLink="/owner-inquiries"
-            class="btn btn-outline-success"
-          >
-            View Inquiries
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
+  </section>
+</main>

@@ -28,6 +28,8 @@ export class PropertyList implements OnInit {
   properties: Property[] = [];
 
   filteredProperties: Property[] = [];
+  isLoadingProperties = false;
+  propertiesError = '';
 
 
   // ==========================================
@@ -113,11 +115,15 @@ selectedSort = '';
 
   loadProperties(): void {
 
+    this.isLoadingProperties = true;
+    this.propertiesError = '';
+
     this.propertyService.getProperties().subscribe({
 
       next: (data) => {
 
         this.properties = data;
+        this.isLoadingProperties = false;
 
         console.log(
           'Properties loaded:',
@@ -136,6 +142,11 @@ selectedSort = '';
           'Error loading properties:',
           error
         );
+
+        this.isLoadingProperties = false;
+        this.propertiesError =
+          'Properties could not be loaded. Please try again.';
+        this.cdr.detectChanges();
 
       }
 

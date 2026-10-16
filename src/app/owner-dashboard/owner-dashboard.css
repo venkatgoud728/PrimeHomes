@@ -1,27 +1,331 @@
-.card {
-  border: none;
-  border-radius: 12px;
+.owner-dashboard-page {
+  max-width: 1240px;
+  padding-top: clamp(30px, 5vw, 62px);
+  padding-bottom: 70px;
 }
 
-.card:hover {
+.owner-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 38px;
+  border: 1px solid #dce6e0;
+  border-radius: 25px;
+  padding: clamp(28px, 5vw, 48px);
+  background:
+    radial-gradient(circle at 88% 6%, rgba(189, 146, 80, .15), transparent 26%),
+    linear-gradient(115deg, #fff, #f1f6f2);
+}
+
+.page-kicker,
+.section-kicker {
+  margin: 0 0 8px;
+  color: var(--ph-gold-dark);
+  font-size: .74rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.owner-hero h1 {
+  margin: 0;
+  color: var(--ph-navy);
+  font-size: clamp(1.9rem, 4vw, 2.85rem);
+}
+
+.owner-hero > div > p:last-child {
+  margin: 10px 0 0;
+}
+
+.add-property-button {
+  flex: 0 0 auto;
+}
+
+.add-property-button > span {
+  font-size: 1.25rem;
+}
+
+.owner-overview {
+  margin-bottom: 54px;
+}
+
+.overview-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.overview-heading h2,
+.action-intro h2 {
+  margin: 0;
+  color: var(--ph-navy);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+}
+
+.section-kicker {
+  margin-bottom: 5px;
+  font-size: .68rem;
+}
+
+.overview-caption {
+  border: 1px solid #dce6e0;
+  border-radius: 999px;
+  padding: 6px 11px;
+  color: var(--ph-muted);
+  font-size: .75rem;
+  font-weight: 650;
+}
+
+.owner-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.owner-stat-card {
+  min-height: 190px;
+  border: 1px solid var(--ph-border);
+  border-radius: 17px;
+  padding: 19px;
+  background: #fff;
+  box-shadow: var(--ph-shadow-sm);
+  transition: transform var(--ph-transition), box-shadow var(--ph-transition);
+}
+
+.owner-stat-card:hover {
   transform: translateY(-3px);
-  transition: 0.2s;
+  box-shadow: var(--ph-shadow);
 }
 
-.dashboard-stat-card {
+.stat-symbol {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 17px;
   border-radius: 12px;
-  transition: all 0.3s ease;
+  background: #edf4ef;
+  color: var(--ph-navy);
+  font-size: 1.4rem;
+  font-weight: 750;
 }
 
-.dashboard-stat-card:hover {
-  transform: translateY(-5px);
+.stat-approved .stat-symbol {
+  background: #edf6ef;
+  color: #28765d;
 }
 
-.stat-icon {
-  font-size: 32px;
-  margin-bottom: 10px;
+.stat-pending .stat-symbol {
+  background: #faf3e6;
+  color: #916d38;
 }
 
-.dashboard-stat-card h2 {
-  margin-bottom: 0;
+.stat-rejected .stat-symbol {
+  background: #fbefee;
+  color: #a44444;
+}
+
+.stat-inquiries .stat-symbol {
+  background: #eef2f7;
+  color: #3e617e;
+}
+
+.stat-label {
+  margin: 0;
+  color: var(--ph-muted);
+  font-size: .81rem;
+  font-weight: 650;
+}
+
+.stat-value {
+  margin: 2px 0 3px;
+  color: var(--ph-navy);
+  font-family: 'Manrope', 'DM Sans', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.stat-approved .stat-value {
+  color: #28765d;
+}
+
+.stat-pending .stat-value {
+  color: #916d38;
+}
+
+.stat-rejected .stat-value {
+  color: #a44444;
+}
+
+.stat-note {
+  color: var(--ph-muted);
+  font-size: .75rem;
+}
+
+.owner-dashboard-actions {
+  border: 1px solid var(--ph-border);
+  border-radius: 22px;
+  padding: clamp(22px, 4vw, 34px);
+  background: #fff;
+  box-shadow: var(--ph-shadow-sm);
+}
+
+.action-intro {
+  margin-bottom: 21px;
+}
+
+.action-intro > p:last-child {
+  margin: 7px 0 0;
+}
+
+.owner-action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.owner-action-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+  min-width: 0;
+  border: 1px solid #e2e9e4;
+  border-radius: 16px;
+  padding: 21px;
+  background: #f8faf8;
+  transition: transform var(--ph-transition), background var(--ph-transition), border-color var(--ph-transition);
+}
+
+.owner-action-card:hover {
+  transform: translateY(-2px);
+  border-color: #c7d9cd;
+  background: #f2f7f3;
+}
+
+.inquiry-action {
+  border-color: #e9dfcd;
+  background: #fcfaf6;
+}
+
+.inquiry-action:hover {
+  border-color: #dfcda9;
+  background: #faf5eb;
+}
+
+.action-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #e8f0ea;
+  color: var(--ph-navy);
+  font-size: 1.65rem;
+}
+
+.inquiry-action .action-icon {
+  background: #f2e9d9;
+  color: var(--ph-gold-dark);
+}
+
+.action-copy {
+  display: block;
+  min-width: 0;
+}
+
+.action-copy strong,
+.action-copy small,
+.action-cta {
+  display: block;
+}
+
+.action-copy strong {
+  color: var(--ph-text);
+  font-size: 1rem;
+}
+
+.action-copy small {
+  margin-top: 3px;
+  color: var(--ph-muted);
+  font-size: .84rem;
+}
+
+.action-cta {
+  margin-top: 15px;
+  color: var(--ph-navy);
+  font-size: .83rem;
+  font-weight: 750;
+}
+
+.action-count {
+  min-width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #f2e9d9;
+  color: #80632f;
+  font-size: .82rem;
+  font-weight: 750;
+}
+
+@media (max-width: 1050px) {
+  .owner-stat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .owner-dashboard-page {
+    padding-top: 22px;
+    padding-bottom: 44px;
+  }
+
+  .owner-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 25px 21px;
+  }
+
+  .owner-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .owner-stat-card {
+    min-height: 166px;
+    padding: 15px;
+  }
+
+  .owner-stat-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .overview-caption {
+    display: none;
+  }
+
+  .owner-action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .owner-dashboard-actions {
+    border-radius: 18px;
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .owner-stat-card,
+  .owner-action-card {
+    transition: none;
+  }
 }

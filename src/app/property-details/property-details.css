@@ -1,1493 +1,504 @@
-/* =========================================================
-   PRIMEHOMES PROPERTY DETAILS
-   Luxury Navy + Gold Theme
-   ========================================================= */
-
-
-/* =========================================================
-   MAIN PROPERTY IMAGE
-   ========================================================= */
-
-.property-image-wrapper {
-  overflow: hidden;
-
-  border-radius: 18px;
-
-  box-shadow:
-    0 8px 25px rgba(0, 0, 0, 0.20);
-}
-
-
-.property-main-image {
-  width: 100%;
-
-  height: 500px;
-
-  object-fit: cover;
-
+:host {
   display: block;
-
-  transition:
-    transform 0.4s ease;
-}
-
-
-.property-image-wrapper:hover .property-main-image {
-  transform: scale(1.03);
-}
-
-
-/* =========================================================
-   PROPERTY INFORMATION CARD
-   ========================================================= */
-
-.property-info-card {
-  width: 100%;
-
-  height: 100%;
-
-  box-sizing: border-box;
-
+  padding: 1px 0 3rem;
   background:
-    linear-gradient(
-      145deg,
-      #0b1326,
-      #101b32
-    );
-
-  color: #ffffff;
-
-  border: 1px solid
-    rgba(212, 175, 90, 0.28);
-
-  border-radius: 18px;
-
-  padding: 30px;
-
-  box-shadow:
-    0 12px 35px
-    rgba(0, 0, 0, 0.30);
+    radial-gradient(ellipse at 8% 0, rgba(189, 146, 80, .08), transparent 28rem),
+    var(--ph-background);
 }
 
-
-/* =========================================================
-   PROPERTY TITLE
-   ========================================================= */
-
-.property-title {
-  font-weight: 700;
-
-  color: #ffffff !important;
-
-  margin-bottom: 10px;
-
-  line-height: 1.25;
+:host > .container {
+  max-width: 1280px;
 }
 
-
-/* =========================================================
-   PROPERTY LOCATION
-   ========================================================= */
-
-.property-location {
-  color: #c7ccd6 !important;
-
-  margin-bottom: 20px;
-
-  font-size: 15px;
-}
-
-
-/* =========================================================
-   PROPERTY PRICE
-   ========================================================= */
-
-.property-price {
-  color: #e6c978 !important;
-
-  font-weight: 700;
-
-  margin-bottom: 20px;
-
-  font-size: 28px;
-}
-
-
-/* =========================================================
-   PROPERTY TYPE AT TOP
-   ========================================================= */
-
-.property-info-card > .d-flex .text-muted {
-  color: #c7ccd6 !important;
-
-  font-size: 14px;
-
-  font-weight: 500;
-}
-
-
-/* =========================================================
-   PROPERTY FEATURES
-   ========================================================= */
-
-.property-features {
-  margin: 20px 0;
-}
-
-
-/* =========================================================
-   FEATURE BOX
-   ========================================================= */
-
-.feature-box {
-  background:
-    rgba(255, 255, 255, 0.055);
-
-  border:
-    1px solid rgba(212, 175, 90, 0.20);
-
-  border-radius: 12px;
-
-  padding: 15px 8px;
-
-  min-height: 115px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  box-sizing: border-box;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
-}
-
-
-/* =========================================================
-   FEATURE BOX HOVER
-   ========================================================= */
-
-.feature-box:hover {
-  transform: translateY(-2px);
-
-  background:
-    rgba(212, 175, 90, 0.08);
-
-  border-color:
-    rgba(212, 175, 90, 0.55);
-
-  box-shadow:
-    0 6px 18px
-    rgba(0, 0, 0, 0.20);
-}
-
-
-/* =========================================================
-   FEATURE ICON
-   ========================================================= */
-
-.feature-box h5 {
-  font-size: 24px;
-
-  margin: 0 0 8px;
-
-  line-height: 1;
-
-  color: #e6c978 !important;
-}
-
-
-/* =========================================================
-   FEATURE MAIN VALUE
-   ========================================================= */
-
-.feature-box strong {
-  display: block;
-
-  font-size: 15px;
-
-  font-weight: 700;
-
-  color: #ffffff !important;
-
-  line-height: 1.4;
-
-  text-align: center;
-}
-
-
-/* =========================================================
-   FEATURE LABEL
-   ========================================================= */
-
-.feature-box small {
-  display: block;
-
-  color: #bfc5d0 !important;
-
-  font-size: 13px;
-
-  font-weight: 500;
-
-  margin-top: 5px;
-
-  line-height: 1.4;
-
-  text-align: center;
-}
-
-
-/* =========================================================
-   SECTION TITLES
-   ========================================================= */
-
-.section-title {
-  font-weight: 600;
-
-  color: #e6c978 !important;
-
-  margin-bottom: 12px;
-}
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
-
-.description {
-  color: #c7ccd6 !important;
-
-  line-height: 1.7;
-
-  margin-bottom: 15px;
-}
-
-
-/* =========================================================
-   INQUIRY SECTION
-   ========================================================= */
-
-.inquiry-section {
-  margin-top: 25px;
-
-  padding-top: 10px;
-}
-
-
-/* =========================================================
-   INQUIRY DESCRIPTION
-   ========================================================= */
-
-.inquiry-section > p.text-muted {
-  color: #aeb6c4 !important;
-}
-
-
-/* =========================================================
-   FORM CONTROL
-   ========================================================= */
-
-.form-control {
-  border-radius: 8px;
-}
-
-
-/* =========================================================
-   INQUIRY TEXTAREA
-   ========================================================= */
-
-.inquiry-section .form-control {
-  background: #080f20;
-
-  color: #ffffff;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.15);
-
-  border-radius: 8px;
-
-  resize: vertical;
-}
-
-
-.inquiry-section .form-control::placeholder {
-  color: #9ca3af;
-
-  opacity: 1;
-}
-
-
-.inquiry-section .form-control:focus {
-  background: #080f20;
-
-  color: #ffffff;
-
-  border-color: #d4af5a;
-
-  box-shadow:
-    0 0 0 0.2rem
-    rgba(212, 175, 90, 0.15);
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.btn {
-  border-radius: 8px;
-
-  padding: 11px;
-
-  font-weight: 500;
-}
-
-
-/* =========================================================
-   INQUIRY BUTTON
-   ========================================================= */
-
-.inquiry-section .btn-primary {
-  background:
-    linear-gradient(
-      135deg,
-      #d4af5a,
-      #a77b2e
-    ) !important;
-
-  border-color:
-    #d4af5a !important;
-
-  color: #111827 !important;
-
-  font-weight: 600;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-
-.inquiry-section .btn-primary:hover {
-  transform: translateY(-1px);
-
-  background:
-    linear-gradient(
-      135deg,
-      #e6c978,
-      #d4af5a
-    ) !important;
-
-  border-color:
-    #e6c978 !important;
-
-  color: #111827 !important;
-
-  box-shadow:
-    0 5px 15px
-    rgba(212, 175, 90, 0.25);
-}
-
-
-/* =========================================================
-   STATUS BADGE
-   ========================================================= */
-
-.property-info-card .badge {
-  border-radius: 20px;
-
-  padding: 8px 12px;
-
-  font-weight: 600;
-}
-
-
-/* =========================================================
-   PROPERTY TYPE
-   ========================================================= */
-
-.property-info-card .text-muted {
-  color: #c7ccd6 !important;
-}
-
-
-/* =========================================================
-   PROPERTY GALLERY
-   ========================================================= */
-
-.property-gallery {
-  margin-top: 25px;
-}
-
-
-.property-gallery h4 {
-  font-weight: 600;
-
-  margin-bottom: 15px;
-
-  color: #ffffff;
-}
-
-
-/* =========================================================
-   GALLERY CARD
-   ========================================================= */
-
-.gallery-card {
+.main-image-container {
   position: relative;
-
-  width: 100%;
-
-  height: 160px;
-
-  overflow: hidden;
-
-  border-radius: 10px;
-
-  border: 1px solid #ddd;
-
-  background: #f8f9fa;
-}
-
-
-/* =========================================================
-   GALLERY IMAGE
-   ========================================================= */
-
-.gallery-image {
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-
-  display: block;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.3s ease;
-}
-
-
-.gallery-image:hover {
-  transform: scale(1.05);
-}
-
-
-/* =========================================================
-   GALLERY DELETE BUTTON
-   ========================================================= */
-
-.gallery-delete-btn {
-  position: absolute;
-
-  bottom: 8px;
-
-  right: 8px;
-
-  z-index: 10;
-}
-
-
-/* =========================================================
-   TWO-COLUMN PROPERTY DETAILS LAYOUT
-   ========================================================= */
-
-.property-details-layout {
-  display: grid;
-
-  grid-template-columns: 2fr 1fr;
-
-  gap: 30px;
-
-  align-items: start;
-}
-
-
-/* =========================================================
-   LEFT SIDE - PROPERTY IMAGES
-   ========================================================= */
-
-.property-images-section {
-  width: 100%;
-}
-
-
-/* =========================================================
-   RIGHT SIDE - PROPERTY INFORMATION
-   ========================================================= */
-
-.property-info-section {
-  width: 100%;
-}
-
-
-/* =========================================================
-   HORIZONTAL RULE
-   ========================================================= */
-
-.property-info-card hr {
-  border: 0;
-
-  border-top:
-    1px solid rgba(255, 255, 255, 0.12);
-
-  margin:
-    22px 0;
-}
-
-
-/* =========================================================
-   RESPONSIVE - TABLET
-   ========================================================= */
-
-@media (max-width: 991px) {
-
-  .property-details-layout {
-    grid-template-columns: 1fr;
-
-    gap: 25px;
-  }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE - MOBILE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-  .property-main-image {
-    height: 300px;
-  }
-
-
-  .property-info-card {
-    padding: 20px;
-  }
-
-
-  .property-title {
-    font-size: 24px;
-  }
-
-
-  .property-price {
-    font-size: 24px;
-  }
-
-
-  .feature-box {
-    min-height: 105px;
-
-    padding: 12px 5px;
-  }
-
-
-  .feature-box h5 {
-    font-size: 21px;
-  }
-
-
-  .feature-box strong {
-    font-size: 14px;
-  }
-
-
-  .feature-box small {
-    font-size: 12px;
-  }
-
-
-  .gallery-card {
-    height: 140px;
-  }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE - SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 576px) {
-
-  .property-main-image {
-    height: 250px;
-  }
-
-
-  .property-info-card {
-    padding: 16px;
-  }
-
-
-  .property-title {
-    font-size: 22px;
-  }
-
-
-  .property-location {
-    font-size: 14px;
-  }
-
-
-  .property-price {
-    font-size: 22px;
-  }
-
-
-  .feature-box {
-    min-height: 100px;
-  }
-
-
-  .feature-box h5 {
-    font-size: 19px;
-  }
-
-
-  .feature-box strong {
-    font-size: 13px;
-  }
-
-
-  .feature-box small {
-    font-size: 11px;
-  }
-
-
-  .gallery-card {
-    height: 120px;
-  }
-
-}
-
-
-
-/* ==========================================
-   Property Location Map
-========================================== */
-
-.property-map-section {
-  margin-bottom: 1.5rem;
-}
-
-.property-map {
-  width: 60%;
-  height: 220px;
   min-height: 280px;
-  border-radius: 12px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  border: 1px solid #a0bceb;
-  z-index: 0;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius);
+  background: linear-gradient(140deg, #e8efea, #f7f8f6);
+  box-shadow: var(--ph-shadow);
 }
 
-.property-map-section .section-title {
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-
-@media (max-width: 576px) {
-  .property-map {
-    height: 260px;
-  }
-}
-
-
-
-/* PROPERTY MAP AND NEARBY AMENITIES */
-
-.property-map {
+.main-property-image {
+  display: block;
   width: 100%;
-  height: 300px;
-  min-height: 300px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #a0bceb;
-  z-index: 0;
-}
-
-.nearby-amenities-panel {
   height: 100%;
-  padding: 22px;
-  background: linear-gradient(145deg, #0b1326, #101b32);
-  border: 1px solid rgba(212, 175, 90, 0.28);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  min-height: 280px;
+  object-fit: cover;
 }
 
-.amenity-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 10px;
-  margin-bottom: 8px;
-  color: #ffffff;
-  text-decoration: none;
-  border: 1px solid rgba(212, 175, 90, 0.16);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.035);
-  transition: background 0.2s ease, border-color 0.2s ease;
+.image-fallback {
+  display: grid;
+  min-height: 100%;
+  place-items: center;
+  padding: 1.5rem;
+  color: var(--ph-muted);
+  text-align: center;
 }
-
-.amenity-item:hover {
-  background: rgba(212, 175, 90, 0.09);
-  border-color: rgba(212, 175, 90, 0.55);
-}
-
-.amenity-icon {
-  width: 42px;
-  height: 42px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  font-size: 20px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.school-icon { color: #83b7ff; }
-.hospital-icon { color: #ff8585; }
-.mall-icon { color: #e6c978; }
-.airport-icon { color: #c3a6ff; }
-.park-icon { color: #80d99a; }
-.transport-icon { color: #78d9df; }
-
-.amenity-details {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.amenity-details strong {
-  color: #ffffff;
-  font-size: 14px;
-}
-
-.amenity-details small {
-  color: #c7ccd6;
-  font-size: 12px;
-  line-height: 1.4;
-}
-
-.amenity-arrow {
-  color: #e6c978;
-  flex-shrink: 0;
-}
-
-.amenities-note {
-  padding: 10px;
-  color: #c7ccd6;
-  font-size: 12px;
-  line-height: 1.5;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-@media (max-width: 991px) {
-  .nearby-amenities-panel {
-    padding: 18px;
-  }
-}
-
-@media (max-width: 576px) {
-  .property-map {
-    height: 260px;
-    min-height: 260px;
-  }
-
-  .nearby-amenities-panel {
-    padding: 14px;
-  }
-}
-
-
-
-/* DIFFERENT COLORS FOR NEARBY AMENITIES */
-
-.nearby-amenities-panel {
-  background: linear-gradient(145deg, #0b1326, #101b32);
-  border: 1px solid rgba(212, 175, 90, 0.35);
-  border-radius: 16px;
-}
-
-/* School - Blue */
-.school-icon {
-  color: #60a5fa;
-  background: rgba(59, 130, 246, 0.16);
-}
-
-/* Hospital - Red */
-.hospital-icon {
-  color: #f87171;
-  background: rgba(239, 68, 68, 0.16);
-}
-
-/* Shopping Mall - Gold */
-.mall-icon {
-  color: #fbbf24;
-  background: rgba(245, 158, 11, 0.16);
-}
-
-/* Airport - Purple */
-.airport-icon {
-  color: #c084fc;
-  background: rgba(168, 85, 247, 0.16);
-}
-
-/* Parks - Green */
-.park-icon {
-  color: #4ade80;
-  background: rgba(34, 197, 94, 0.16);
-}
-
-/* Metro and Transport - Cyan */
-.transport-icon {
-  color: #22d3ee;
-  background: rgba(6, 182, 212, 0.16);
-}
-
-/* Amenity cards */
-.amenity-item {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  transition: all 0.25s ease;
-}
-
-.amenity-item:hover {
-  transform: translateX(4px);
-  background: rgba(212, 175, 90, 0.08);
-  border-color: #d4af5a;
-}
-
-.amenity-details strong {
-  color: #ffffff;
-}
-
-.amenity-details small {
-  color: #c7ccd6;
-}
-
-
-/* LARGER PROPERTY GALLERY THUMBNAILS */
 
 .gallery-image-container {
   position: relative;
-  width: 100%;
-  height: 180px;
+  height: 100px;
   overflow: hidden;
-  border-radius: 10px;
-  background: #101b32;
+  border-radius: var(--ph-radius-sm);
+  background: #e8efea;
 }
 
 .gallery-thumbnail {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform var(--ph-transition), opacity var(--ph-transition);
 }
 
 .gallery-thumbnail:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-.active-thumbnail {
-  outline: 3px solid #d4af5a;
+.gallery-thumbnail.active-thumbnail {
+  outline: 3px solid var(--ph-gold);
   outline-offset: -3px;
 }
 
-/* Keep gallery images readable on smaller screens */
-@media (max-width: 768px) {
-  .gallery-image-container {
-    height: 140px;
-  }
+.delete-gallery-image {
+  position: absolute;
+  top: .4rem;
+  right: .4rem;
+  min-height: 34px;
+  padding: .25rem .55rem;
 }
 
-@media (max-width: 576px) {
-  .gallery-image-container {
-    height: 120px;
-  }
-}
-
-
-/* PREMIUM NEARBY AMENITIES PANEL */
-
+.property-details-card,
+.property-reviews-section,
+.property-extra-section,
 .nearby-amenities-panel {
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius);
+  background: var(--ph-card);
+  box-shadow: var(--ph-shadow-sm);
+}
+
+.property-details-card {
   height: 100%;
-  padding: 22px;
-  border: 1px solid rgba(212, 175, 90, 0.4);
-  border-radius: 18px;
-  background: linear-gradient(145deg, #101c33, #080f20);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  padding: clamp(1.25rem, 3vw, 2rem);
 }
 
-.amenities-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.amenities-heading-icon {
-  width: 46px;
-  height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border-radius: 12px;
-  background: rgba(212, 175, 90, 0.14);
-  color: #e6c978;
-  font-size: 22px;
-}
-
-.amenities-heading h4 {
-  margin: 0 0 5px;
-  color: #e6c978;
-  font-size: 20px;
+.property-details-card > .badge {
+  border: 1px solid #ead8b7;
+  border-radius: 999px;
+  background: #f8f1e5 !important;
+  color: #725628 !important;
   font-weight: 700;
 }
 
-.amenities-heading p {
-  margin: 0;
-  color: #bfc9da;
-  font-size: 12px;
+.property-title {
+  margin: .5rem 0 .65rem;
+  color: var(--ph-text);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
-.amenities-image-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+.property-details-card > .text-muted {
+  color: var(--ph-muted) !important;
 }
 
-.amenity-image-card {
-  position: relative;
-  display: block;
-  height: 175px;
-  overflow: hidden;
-  border-radius: 13px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  text-decoration: none;
-  background: #172943;
-  isolation: isolate;
+.property-price {
+  color: var(--ph-navy);
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  font-weight: 800;
 }
 
-.amenity-image-card img {
-  width: 100%;
+.property-details-card .text-warning {
+  color: #a4772f !important;
+}
+
+.property-details-card hr {
+  border-color: var(--ph-border);
+  opacity: 1;
+}
+
+.property-feature {
   height: 100%;
+  min-height: 82px;
+  padding: .9rem 1rem;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius-sm);
+  background: var(--ph-background-light);
+}
+
+.property-feature strong {
   display: block;
-  object-fit: cover;
-  transition: transform 0.35s ease;
+  margin-bottom: .15rem;
+  color: var(--ph-muted);
+  font-size: .77rem;
+  font-weight: 700;
+  letter-spacing: .045em;
+  text-transform: uppercase;
 }
 
-.amenity-image-card:hover img {
-  transform: scale(1.07);
+.property-feature > div {
+  color: var(--ph-text);
+  font-size: 1.04rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
-.amenity-image-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 12px;
-  gap: 4px;
-  color: #fff;
-  background: linear-gradient(
-    to top,
-    rgba(4, 10, 22, 0.96),
-    rgba(4, 10, 22, 0.12) 80%
-  );
+.section-title {
+  color: var(--ph-navy);
+  font-weight: 750;
 }
 
-.amenity-image-overlay i {
-  font-size: 21px;
-  margin-bottom: 3px;
+.property-description {
+  color: var(--ph-text-light);
+  line-height: 1.75;
+  white-space: pre-line;
 }
 
-.amenity-image-overlay strong {
-  font-size: 13px;
-  line-height: 1.3;
+.inquiry-section {
+  padding: 1.2rem;
+  border: 1px solid #e7ece8;
+  border-radius: var(--ph-radius-sm);
+  background: var(--ph-background-light);
 }
 
-.amenity-image-overlay small {
-  color: #e0e7f0;
-  font-size: 10px;
+.inquiry-section .form-label {
+  color: var(--ph-text);
+  font-weight: 650;
 }
 
-/* Different accent colors */
-
-.school-card {
-  border-bottom: 3px solid #60a5fa;
+.inquiry-section textarea.form-control,
+.property-map-section .form-control,
+.review-form-card .form-control,
+.review-form-card .form-select {
+  border-color: #dbe3de !important;
+  border-radius: var(--ph-radius-sm) !important;
+  background: #fff !important;
+  color: var(--ph-text) !important;
 }
 
-.school-card .amenity-image-overlay i {
-  color: #93c5fd;
+.inquiry-section textarea.form-control:focus,
+.property-map-section .form-control:focus,
+.review-form-card .form-control:focus,
+.review-form-card .form-select:focus {
+  border-color: var(--ph-blue-light) !important;
+  box-shadow: 0 0 0 4px rgba(58, 119, 110, .12) !important;
 }
-
-.mall-card {
-  border-bottom: 3px solid #fbbf24;
-}
-
-.mall-card .amenity-image-overlay i {
-  color: #fcd34d;
-}
-
-.hospital-card {
-  border-bottom: 3px solid #f87171;
-}
-
-.hospital-card .amenity-image-overlay i {
-  color: #fca5a5;
-}
-
-.park-card {
-  border-bottom: 3px solid #4ade80;
-}
-
-.park-card .amenity-image-overlay i {
-  color: #86efac;
-}
-
-.amenities-footer {
-  margin-top: 28px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  color:#00ff00;
-  font-size: 18px;
-}
-
-.amenities-footer i {
-  color: #e6c978;
-  margin-right: 5px;
-}
-
-@media (max-width: 576px) {
-  .nearby-amenities-panel {
-    padding: 14px;
-  }
-
-  .amenities-image-grid {
-    gap: 10px;
-  }
-
-  .amenity-image-card {
-    height: 150px;
-  }
-
-  .amenity-image-overlay {
-    padding: 9px;
-  }
-}
-
-
-/* ========================================
-   PROPERTY REVIEWS AND RATINGS
-======================================== */
-
-/* Compact Property Reviews & Ratings */
 
 .property-reviews-section {
-  margin-top: 22px;
+  height: 100%;
+  padding: clamp(1.2rem, 3vw, 1.75rem);
 }
 
 .reviews-header {
-  padding-bottom: 10px;
-  margin-bottom: 12px;
-  border-bottom: 1px solid #9932CC;
-}
-
-.reviews-header .section-title {
-  font-size: 18px;
-  margin-bottom: 4px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ph-border);
 }
 
 .review-summary-card,
 .review-form-card,
 .review-item-card,
 .no-reviews-card {
-  background: transparent;
-  border: 1px solid #344258;
-  border-radius: 8px;
-  padding: 12px 14px;
-  box-shadow: none;
-}
-
-.review-summary-card {
-  margin-bottom: 12px !important;
-}
-
-.review-summary-card .row {
-  align-items: center;
+  padding: 1.15rem;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius-sm);
+  background: var(--ph-background-light);
 }
 
 .review-average {
-  color: #ffc107;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.2;
+  color: var(--ph-navy);
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
-.review-out-of {
-  color: #aebbd0;
-  font-size: 12px;
+.review-out-of,
+.review-summary-card .text-muted {
+  color: var(--ph-muted) !important;
+  font-size: .95rem;
 }
 
 .review-stars {
-  color: #ffc107;
-  font-size: 15px;
-  letter-spacing: 1px;
+  color: #a4772f;
+  letter-spacing: .08em;
 }
 
-.review-summary-card .text-muted {
-  font-size: 18px;
-}
-
-.review-summary-card h5 {
-  font-size: 13px;
-  margin-bottom: 4px;
-}
-
-.review-form-card {
-  margin-bottom: 14px !important;
-}
-
-.review-form-card h5 {
-  font-size: 14px;
-  margin-bottom: 8px !important;
+.review-summary-card h4,
+.review-form-card h4,
+.reviews-list h5 {
+  color: var(--ph-text);
+  font-size: 1.1rem;
+  font-weight: 750;
 }
 
 .review-form-card .form-label {
-  font-size: 12px;
-  margin-bottom: 4px;
-}
-
-.review-form-card .form-control,
-.review-form-card .form-select {
-  font-size: 12px;
-  padding: 7px 9px;
-}
-
-.review-form-card textarea {
-  min-height: 65px;
-}
-
-.review-form-card .btn {
-  font-size: 12px;
-  padding: 6px 12px;
-}
-
-.review-form-card .alert {
-  font-size: 12px;
-  padding: 8px 10px;
+  color: var(--ph-text);
+  font-weight: 650;
 }
 
 .review-item-card {
-  margin-bottom: 10px !important;
+  background: #fff;
 }
 
-.review-item-card .review-comment {
-  font-size: 12px;
-  line-height: 1.5;
-  margin-top: 8px !important;
+.review-item-card .text-muted {
+  color: var(--ph-muted) !important;
 }
 
-.review-item-card small {
-  font-size: 10px;
+.review-comment {
+  color: var(--ph-text-light);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .no-reviews-card {
-  padding: 16px !important;
+  color: var(--ph-text-light);
 }
 
 .no-reviews-card h5 {
-  font-size: 14px;
+  color: var(--ph-text);
 }
-
-.no-reviews-card p {
-  font-size: 12px;
-}
-
-@media (max-width: 576px) {
-  .review-summary-card,
-  .review-form-card,
-  .review-item-card,
-  .no-reviews-card {
-    padding: 10px;
-  }
-
-  .review-average {
-    font-size: 21px;
-  }
-}
-
-
-
-/* Reviews occupy only the left half */
-.property-reviews-section {
-  width: 100%;
-  margin-top: 0;
-}
-
-/* Reserved space for the next feature */
-.property-extra-section {
-  width: 100%;
-  min-height: 200px;
-}
-
-@media (max-width: 991.98px) {
-  .property-reviews-section,
-  .property-extra-section {
-    width: 100%;
-  }
-}
-
-
-/* LIFESTYLE & COMMUNITY FEATURES */
 
 .lifestyle-panel {
-  width: 100%;
-  padding: 16px;
-  border: 1px solid #66532c;
-  border-radius: 10px;
-  background: rgba(9, 18, 35, 0.7);
-  color: #f5f7fb;
+  height: 100%;
+  padding: clamp(1.2rem, 3vw, 1.75rem);
 }
 
-.lifestyle-panel .highlights-header {
+.highlights-header,
+.amenities-heading {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding-bottom: 14px;
-  margin-bottom: 12px;
-  border-bottom: 1px solid #344258;
+  gap: .9rem;
+  margin-bottom: 1.25rem;
 }
 
-.lifestyle-panel .highlights-header > i {
-  color: #ffc857;
-  font-size: 24px;
+.highlights-header > i,
+.amenities-heading-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  place-items: center;
+  border-radius: 14px;
+  background: #edf4f0;
+  color: var(--ph-navy);
+  font-size: 1.35rem;
 }
 
-.lifestyle-panel .highlights-header h4 {
-  color: #ffc857;
-  font-size: 17px;
-  margin: 0 0 4px;
+.highlights-header h2,
+.amenities-heading h4 {
+  margin: 0 0 .25rem;
+  color: var(--ph-text);
+  font-size: 1.2rem;
 }
 
-.lifestyle-panel .highlights-header p {
-  color: #aebbd0;
-  font-size: 11px;
+.highlights-header p,
+.amenities-heading p {
   margin: 0;
+  color: var(--ph-muted);
+  font-size: .9rem;
 }
 
 .lifestyle-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: .75rem;
 }
 
 .lifestyle-item {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: .75rem;
   min-width: 0;
-  padding: 11px 9px;
-  border: 1px solid #26354b;
-  border-radius: 7px;
+  padding: .9rem;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius-sm);
+  background: var(--ph-background-light);
 }
 
 .lifestyle-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 7px;
-  background: #BDB76B;
-  color: #ffc857;
-  font-size: 17px;
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border-radius: 10px;
+  background: #f7f0e4;
+  color: var(--ph-gold-dark);
 }
 
-.lifestyle-item strong {
+.lifestyle-item strong,
+.lifestyle-item small {
   display: block;
-  color: #FF8C00;
-  font-size: 18px;
   overflow-wrap: anywhere;
 }
 
+.lifestyle-item strong {
+  color: var(--ph-text);
+  font-size: .92rem;
+}
+
 .lifestyle-item small {
+  margin-top: .2rem;
+  color: var(--ph-muted);
+  font-size: .8rem;
+  line-height: 1.45;
+}
+
+.lifestyle-note,
+.amenities-footer {
+  margin-top: 1rem;
+  padding-top: .9rem;
+  border-top: 1px solid var(--ph-border);
+  color: var(--ph-muted);
+  font-size: .85rem;
+}
+
+.property-map-section {
+  padding: clamp(1rem, 3vw, 1.6rem);
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius);
+  background: var(--ph-card);
+  box-shadow: var(--ph-shadow-sm);
+}
+
+.property-map-section .text-muted {
+  color: var(--ph-muted) !important;
+}
+
+.property-map {
+  z-index: 0;
+  width: 100%;
+  height: 330px;
+  overflow: hidden;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius-sm);
+  background: #edf2ef;
+}
+
+.route-info-card {
+  height: 100%;
+  padding: .85rem 1rem;
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius-sm);
+  background: var(--ph-background-light);
+  color: var(--ph-text-light);
+}
+
+.route-info-card strong {
   display: block;
-  margin-top: 4px;
-  color: #aebbd0;
-  font-size: 14px;
+  margin-bottom: .25rem;
+  color: var(--ph-navy);
 }
 
-.lifestyle-note {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid #344258;
-  color: #aebbd0;
-  font-size: 12px;
+.nearby-amenities-panel {
+  height: 100%;
+  padding: clamp(1rem, 3vw, 1.4rem);
 }
 
-.lifestyle-note i {
-  color: #ffc857;
+.amenities-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
 }
 
-@media (max-width: 575.98px) {
-  .lifestyle-grid {
+.amenity-image-card {
+  position: relative;
+  display: flex;
+  min-height: 155px;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: var(--ph-radius-sm);
+  background: #dce5df;
+  color: #fff;
+  isolation: isolate;
+}
+
+.amenity-image-card::after {
+  position: absolute;
+  z-index: -1;
+  background: linear-gradient(0deg, rgba(16, 40, 36, .88), rgba(16, 40, 36, 0) 82%);
+  content: '';
+  inset: 0;
+}
+
+.amenity-image-card img {
+  position: absolute;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 220ms ease;
+  inset: 0;
+}
+
+.amenity-image-card:hover {
+  color: #fff;
+}
+
+.amenity-image-card:hover img {
+  transform: scale(1.05);
+}
+
+.amenity-image-overlay {
+  display: grid;
+  gap: .1rem;
+  padding: .85rem;
+}
+
+.amenity-image-overlay i {
+  margin-bottom: .15rem;
+  color: #e6ca92;
+}
+
+.amenity-image-overlay small {
+  color: rgba(255, 255, 255, .82);
+  font-size: .76rem;
+}
+
+.alert-light {
+  border: 1px solid var(--ph-border);
+  border-radius: var(--ph-radius-sm);
+  background: var(--ph-card);
+  color: var(--ph-text);
+}
+
+@media (max-width: 767.98px) {
+  :host > .container {
+    margin-top: 1.5rem !important;
+  }
+
+  .main-image-container,
+  .main-property-image {
+    min-height: 240px;
+  }
+
+  .gallery-image-container {
+    height: 82px;
+  }
+
+  .property-map {
+    height: 270px;
+  }
+}
+
+@media (max-width: 479.98px) {
+  .lifestyle-grid,
+  .amenities-image-grid {
     grid-template-columns: 1fr;
   }
-}
 
-
-/* COMPACT REVIEWS - BALANCED TWO-COLUMN LAYOUT */
-
-.property-reviews-section {
-  width: 100%;
-  margin-top: 0 !important;
-}
-
-.property-reviews-section .reviews-header {
-  margin-bottom: 10px !important;
-  padding-bottom: 8px;
-}
-
-.property-reviews-section .reviews-header .section-title {
-  font-size: 16px;
-  margin-bottom: 4px !important;
-}
-
-.property-reviews-section .reviews-header p {
-  font-size: 11px;
-}
-
-.property-reviews-section .review-summary-card {
-  padding: 10px;
-  margin-bottom: 8px !important;
-}
-
-.property-reviews-section .review-average {
-  font-size: 22px;
-}
-
-.property-reviews-section .review-summary-card h5 {
-  font-size: 12px;
-}
-
-.property-reviews-section .review-summary-card p,
-.property-reviews-section .review-summary-card .text-muted {
-  font-size: 10px;
-}
-
-.property-reviews-section .review-form-card {
-  padding: 10px;
-  margin-bottom: 8px !important;
-}
-
-.property-reviews-section .review-form-card h5 {
-  font-size: 12px;
-  margin-bottom: 6px !important;
-}
-
-.property-reviews-section .review-form-card .mb-3 {
-  margin-bottom: 8px !important;
-}
-
-.property-reviews-section .review-form-card .form-label {
-  font-size: 10px;
-  margin-bottom: 3px;
-}
-
-.property-reviews-section .review-form-card .form-select,
-.property-reviews-section .review-form-card .form-control {
-  font-size: 11px;
-  padding: 5px 7px;
-}
-
-.property-reviews-section .review-form-card textarea {
-  height: 55px;
-  min-height: 55px;
-}
-
-.property-reviews-section .review-form-card .btn {
-  font-size: 10px;
-  padding: 5px 9px;
-}
-
-.property-reviews-section .reviews-list > h5 {
-  font-size: 13px;
-  margin-bottom: 6px !important;
-}
-
-.property-reviews-section .review-item-card {
-  padding: 10px;
-  margin-bottom: 8px !important;
-}
-
-.property-reviews-section .review-item-card .review-stars {
-  font-size: 12px;
-}
-
-.property-reviews-section .review-item-card strong {
-  font-size: 10px;
-  margin-top: 3px !important;
-}
-
-.property-reviews-section .review-item-card small {
-  font-size: 9px;
-}
-
-.property-reviews-section .review-item-card .review-comment {
-  font-size: 11px;
-  margin-top: 6px !important;
-  line-height: 1.4;
-}
-
-.property-reviews-section .no-reviews-card {
-  padding: 12px !important;
-}
-
-.property-reviews-section .no-reviews-card .display-6 {
-  font-size: 20px;
-}
-
-.property-reviews-section .no-reviews-card h5 {
-  font-size: 12px;
-  margin-top: 6px !important;
-}
-
-.property-reviews-section .no-reviews-card p {
-  font-size: 10px;
-}
-
-/* Keep the lifestyle panel aligned with the reviews column */
-.property-extra-section.lifestyle-panel {
-  width: 100%;
-  margin-top: 0;
-  box-sizing: border-box;
-}
-
-@media (max-width: 991.98px) {
-  .property-reviews-section,
-  .property-extra-section.lifestyle-panel {
-    width: 100%;
+  .amenity-image-card {
+    min-height: 145px;
   }
 }
 
-
+@media (prefers-reduced-motion: reduce) {
+  .gallery-thumbnail,
+  .amenity-image-card img {
+    transition: none;
+  }
+}

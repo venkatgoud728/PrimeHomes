@@ -1,104 +1,95 @@
 
 <div class="ph-login-page">
   <div class="ph-login-card">
-
-    <!-- Left login panel -->
-    <section class="ph-login-form">
-
-      <a routerLink="/" class="ph-brand">
-        <i class="bi bi-house-heart-fill"></i>
-        <span>PrimeHomes🏠</span>
+    <section class="ph-login-form" aria-labelledby="login-heading">
+      <a routerLink="/" class="ph-brand" aria-label="PrimeHomes home">
+        <span class="ph-brand-icon" aria-hidden="true">⌂</span>
+        <span>PrimeHomes</span>
       </a>
 
       <div class="ph-heading">
-        <h1>Welcome Back</h1>
-        <p>Let's login to find your perfect home</p>
+        <span class="ph-eyebrow">YOUR NEXT CHAPTER</span>
+        <h1 id="login-heading">Welcome home</h1>
+        <p>Sign in to continue your property journey.</p>
       </div>
 
-      <!-- Social buttons: visual only until OAuth is configured -->
-      <button type="button" class="ph-social-button" disabled>
-        <span class="ph-google-icon">G</span>
-        Continue with Google
-      </button>
-
-      <button type="button" class="ph-social-button" disabled>
-        <i class="bi bi-facebook ph-facebook-icon"></i>
-        Continue with Facebook
-      </button>
-
-      <div class="ph-divider">
-        <span></span>
-        <small>Or</small>
-        <span></span>
+      <div *ngIf="errorMessage" class="ph-login-message" role="alert" aria-live="assertive">
+        <span class="message-icon" aria-hidden="true">!</span>
+        <span>{{ errorMessage }}</span>
       </div>
 
-      <form (ngSubmit)="login()" #loginForm="ngForm">
-
+      <form (ngSubmit)="login(loginForm)" #loginForm="ngForm" novalidate>
         <div class="ph-input-group">
-          <label for="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            [(ngModel)]="email"
-            required
-            email
-            placeholder="Enter your email"
-            autocomplete="username">
+          <label for="login-email">Email address</label>
+          <div class="ph-input-wrap">
+            <span class="input-icon" aria-hidden="true">@</span>
+            <input
+              id="login-email"
+              type="email"
+              name="email"
+              [(ngModel)]="email"
+              #emailControl="ngModel"
+              required
+              email
+              [class.is-invalid]="emailControl.invalid && (emailControl.touched || loginForm.submitted)"
+              [attr.aria-invalid]="emailControl.invalid && (emailControl.touched || loginForm.submitted)"
+              [attr.aria-describedby]="emailControl.invalid && (emailControl.touched || loginForm.submitted) ? 'login-email-error' : null"
+              placeholder="you@example.com"
+              autocomplete="username">
+          </div>
+          <p *ngIf="emailControl.invalid && (emailControl.touched || loginForm.submitted)" id="login-email-error" class="ph-field-error" aria-live="polite">
+            <span *ngIf="emailControl.errors?.['required']">Enter your email address.</span>
+            <span *ngIf="emailControl.errors?.['email']">Enter a valid email address.</span>
+          </p>
         </div>
 
         <div class="ph-input-group">
-          <label for="password">Password</label>
-          <div class="ph-password-wrapper">
+          <label for="login-password">Password</label>
+          <div class="ph-input-wrap">
+            <span class="input-icon" aria-hidden="true">•</span>
             <input
-              id="password"
+              id="login-password"
               type="password"
               name="password"
               [(ngModel)]="password"
+              #passwordControl="ngModel"
               required
+              [class.is-invalid]="passwordControl.invalid && (passwordControl.touched || loginForm.submitted)"
+              [attr.aria-invalid]="passwordControl.invalid && (passwordControl.touched || loginForm.submitted)"
+              [attr.aria-describedby]="passwordControl.invalid && (passwordControl.touched || loginForm.submitted) ? 'login-password-error' : null"
               placeholder="Enter your password"
               autocomplete="current-password">
           </div>
-        </div>
-
-        <div class="ph-login-options">
-          <label class="ph-remember">
-            <input type="checkbox" name="rememberMe">
-            <span>Remember me</span>
-          </label>
-
-          <a routerLink="/forgot-password" class="ph-forgot">
-            Forgot Password?
-          </a>
+          <p *ngIf="passwordControl.invalid && (passwordControl.touched || loginForm.submitted)" id="login-password-error" class="ph-field-error" aria-live="polite">
+            Enter your password.
+          </p>
         </div>
 
         <button
           type="submit"
           class="ph-login-button"
-          [disabled]="loginForm.invalid">
-          Login
+          [disabled]="loginForm.invalid || isLoading">
+          <span *ngIf="!isLoading">Sign in <span aria-hidden="true">→</span></span>
+          <span *ngIf="isLoading"><span class="spinner-border spinner-border-sm" aria-hidden="true"></span> Signing in…</span>
         </button>
-
       </form>
 
       <p class="ph-signup">
-        Don't have an account?
-        <a routerLink="/register">Sign Up</a>
+        New to PrimeHomes?
+        <a routerLink="/register">Create an account</a>
       </p>
 
-      <div class="ph-login-message" aria-live="polite">
-        <!-- Existing login error messages can be displayed here if available. -->
-      </div>
-
+      <p class="ph-secure-note"><span aria-hidden="true">✓</span> Your account and journey are in safe hands.</p>
     </section>
 
-    <!-- Right architectural image -->
-    <section class="ph-login-visual">
-      <div class="ph-visual-caption">
-        Browse thousands of properties to buy, sell,<br>
-        or rent with trusted agents.
+    <aside class="ph-login-visual" aria-label="Find a place to call home">
+      <div class="ph-visual-shade"></div>
+      <div class="ph-visual-content">
+        <span class="ph-visual-tag"><span aria-hidden="true">✧</span> A place to belong</span>
+        <h2>Find a home<br>that feels like <em>you.</em></h2>
+        <p>Thoughtful homes. Trusted guidance. A better way to move forward.</p>
+        <div class="ph-visual-mark"><span aria-hidden="true">•</span><span>Find your place with PrimeHomes</span></div>
       </div>
-    </section>
-
+    </aside>
   </div>
 </div>

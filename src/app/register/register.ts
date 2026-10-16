@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
@@ -29,7 +29,15 @@ export class Register {
     private router: Router
   ) {}
 
-  register(): void {
+  register(form: NgForm): void {
+    if (form.invalid) {
+      form.control.markAllAsTouched();
+      return;
+    }
+
+    if (this.isLoading) {
+      return;
+    }
 
     this.message = '';
     this.errorMessage = '';
@@ -61,11 +69,10 @@ export class Register {
 
         this.isLoading = false;
 
-        if (error.error) {
-          this.errorMessage = error.error;
-        } else {
-          this.errorMessage = 'Registration failed. Please try again.';
-        }
+        this.errorMessage = error.error?.message
+          || error.error?.title
+          || (typeof error.error === 'string' ? error.error : '')
+          || 'Registration failed. Please check your details and try again.';
       }
     });
   }

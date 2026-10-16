@@ -40,7 +40,7 @@
       rgba(24, 49, 37, 0.25),
       rgba(24, 49, 37, 0.88)
     ),
-    url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85");
+    url("/images/villa.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -75,8 +75,14 @@
   letter-spacing: -0.5px;
 }
 
-.brand-mark i,
-.mobile-brand i {
+.brand-mark .brand-icon,
+.mobile-brand .brand-icon {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .12);
   color: #b9d5a9;
   font-size: 27px;
 }
@@ -101,6 +107,7 @@
 
 .welcome-copy h1 {
   margin: 0 0 22px;
+  color: #fff;
   font-size: clamp(36px, 4vw, 53px);
   font-weight: 600;
   line-height: 1.13;
@@ -128,7 +135,7 @@
   font-size: 13px;
 }
 
-.visual-footer i {
+.visual-footer > span {
   color: #c6dfb5;
 }
 
@@ -194,7 +201,7 @@
   position: relative;
 }
 
-.input-wrapper > i {
+.input-wrapper > .field-icon {
   position: absolute;
   top: 50%;
   left: 15px;
@@ -247,7 +254,7 @@
   transition: background-color 0.2s, transform 0.2s;
 }
 
-.register-button i {
+.register-button span[aria-hidden='true'] {
   margin-left: 8px;
 }
 
@@ -285,7 +292,7 @@
   color: #a52e2e;
 }
 
-.register-alert i {
+.register-alert > span:first-child {
   margin-top: 2px;
 }
 
@@ -320,7 +327,7 @@
   font-size: 11px;
 }
 
-.form-bottom-note i {
+.form-bottom-note > span {
   color: #648a6a;
   font-size: 15px;
 }
@@ -502,5 +509,39 @@
   .form-bottom-note {
     margin-top: 13px;
     padding-top: 11px;
+  }
+}
+
+.input-wrapper .form-control.is-invalid,
+.input-wrapper .form-select.is-invalid {
+  border-color: #c65b53;
+}
+
+.input-wrapper .form-control.is-invalid:focus,
+.input-wrapper .form-select.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(198, 91, 83, 0.12);
+}
+
+.field-error {
+  margin: 6px 0 0;
+  color: #a53f39;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.register-button:focus-visible,
+.login-prompt a:focus-visible {
+  outline: 3px solid rgba(100, 138, 106, 0.55);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

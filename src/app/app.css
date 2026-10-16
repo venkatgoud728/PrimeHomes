@@ -1,1095 +1,354 @@
-/* =========================================================
-   PRIMEHOMES GLOBAL THEME
-   Blue + Gold Luxury Real Estate Theme
-   ========================================================= */
-
-:root {
-
-  /* ==========================================
-     PRIMARY BLUE
-     ========================================== */
-
-  --ph-navy: #123B6D;
-
-  --ph-navy-light: #1E5A91;
-
-  --ph-blue: #1E5A91;
-
-  --ph-blue-light: #3F7FB5;
-
-  --ph-blue-dark: #0B2A4A;
-
-
-  /* ==========================================
-     LUXURY GOLD
-     ========================================== */
-
-  --ph-gold: #C9A24D;
-
-  --ph-gold-light: #E0C06A;
-
-  --ph-gold-dark: #A98232;
-
-
-  /* ==========================================
-     BACKGROUND
-     ========================================== */
-
-  --ph-background: #EEF4FB;
-
-  --ph-background-light: #F5F8FC;
-
-  --ph-white: #FFFFFF;
-
-
-  /* ==========================================
-     TEXT
-     ========================================== */
-
-  --ph-text: #172B3A;
-
-  --ph-text-light: #344054;
-
-  --ph-muted: #667085;
-
-  --ph-text-muted: #667085;
-
-
-  /* ==========================================
-     CARDS / BORDERS
-     ========================================== */
-
-  --ph-card: #FFFFFF;
-
-  --ph-border: #D5E2F0;
-
-  --ph-dark: #172B3A;
-
-  --ph-dark-secondary: #E8F0F8;
-
-}
-
-
-/* =========================================================
-   GLOBAL HTML / BODY
-========================================================= */
-
-html,
-body {
-
-  margin: 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      #EEF4FB,
-      #F5F8FC
-    );
-
-  color:
-    var(--ph-text);
-
-}
-
-
-body {
-
-  font-family:
-    "Inter",
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
+:host {
+  display: block;
   min-height: 100vh;
-
 }
-
-
-/* =========================================================
-   GLOBAL LINKS
-========================================================= */
-
-a {
-
-  color:
-    var(--ph-navy);
-
-}
-
-
-a:hover {
-
-  color:
-    var(--ph-gold-dark);
-
-}
-
-
-/* =========================================================
-   NAVBAR BASE
-========================================================= */
-
-.navbar {
-
-  min-height: 64px;
-
-}
-
-
-.navbar-brand {
-
-  font-size: 1.25rem;
-
-  letter-spacing: 0.3px;
-
-}
-
-
-.navbar-nav {
-
-  align-items: center;
-
-  gap: 4px;
-
-}
-
-
-.nav-link {
-
-  color:
-    rgba(255, 255, 255, 0.92) !important;
-
-  padding:
-    8px 12px !important;
-
-  border-radius:
-    7px;
-
-  transition:
-    all 0.2s ease;
-
-}
-
-
-.nav-link:hover {
-
-  color:
-    #FFFFFF !important;
-
-  background:
-    rgba(255, 255, 255, 0.12);
-
-}
-
-
-.nav-link.active {
-
-  color:
-    #FFFFFF !important;
-
-  background:
-    rgba(201, 162, 77, 0.18);
-
-}
-
-
-.navbar .btn {
-
-  border-radius:
-    7px;
-
-  font-weight:
-    600;
-
-}
-
-
-/* =========================================================
-   NAVBAR RESPONSIVE
-========================================================= */
-
-@media (max-width: 768px) {
-
-  .navbar-nav {
-
-    align-items:
-      flex-start;
-
-    margin-top:
-      10px;
-
-  }
-
-
-  .navbar-nav .nav-link {
-
-    width:
-      100%;
-
-  }
-
-}
-
-
-.navbar-collapse {
-
-  display:
-    flex;
-
-}
-
-
-@media (max-width: 991px) {
-
-  .navbar-collapse {
-
-    display:
-      none;
-
-    width:
-      100%;
-
-  }
-
-
-  .navbar-collapse.show {
-
-    display:
-      block;
-
-  }
-
-
-  .navbar-nav {
-
-    margin-top:
-      15px;
-
-    align-items:
-      flex-start;
-
-  }
-
-
-  .navbar-nav .nav-link {
-
-    width:
-      100%;
-
-    padding:
-      10px 15px !important;
-
-  }
-
-
-  .navbar-nav .btn {
-
-    margin-top:
-      10px;
-
-  }
-
-}
-
-
-/* =========================================================
-   PRIMEHOMES LOGO
-========================================================= */
-
-.primehomes-logo {
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  width:
-    400px;
-
-  height:
-    90px;
-
-  overflow:
-    hidden;
-
-  padding:
-    0;
-
-}
-
-
-.primehomes-logo img {
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-  object-fit:
-    cover;
-
-  object-position:
-    center;
-
-  display:
-    block;
-
-}
-
-
-/* =========================================================
-   NOTIFICATION BELL
-========================================================= */
-
-.notification-nav-link {
-
-  position:
-    relative;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-}
-
-
-.notification-bell {
-
-  position:
-    relative;
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  font-size:
-    21px;
-
-  width:
-    38px;
-
-  height:
-    38px;
-
-  transition:
-    transform 0.2s ease;
-
-}
-
-
-.notification-bell:hover {
-
-  transform:
-    scale(1.12);
-
-}
-
-
-/* =========================================================
-   NOTIFICATION BADGE
-========================================================= */
-
-.notification-badge {
-
-  position:
-    absolute;
-
-  top:
-    -3px;
-
-  right:
-    -5px;
-
-  min-width:
-    18px;
-
-  height:
-    18px;
-
-  padding:
-    0 5px;
-
-  border-radius:
-    10px;
-
-  background:
-    #D64545;
-
-  color:
-    #FFFFFF;
-
-  border:
-    2px solid #123B6D;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  font-size:
-    10px;
-
-  font-weight:
-    700;
-
-  line-height:
-    1;
-
-}
-
-
-/* =========================================================
-   NOTIFICATION ACTIVE
-========================================================= */
-
-.notification-nav-link.active .notification-bell {
-
-  transform:
-    scale(1.08);
-
-}
-
-
-/* =========================================================
-   NOTIFICATION MOBILE
-========================================================= */
-
-@media (max-width: 991px) {
-
-  .notification-nav-link {
-
-    display:
-      flex;
-
-    align-items:
-      center;
-
-  }
-
-
-  .notification-bell {
-
-    width:
-      40px;
-
-    height:
-      40px;
-
-  }
-
-}
-
-
-/* =========================================================
-   PRIMEHOMES LUXURY NAVBAR
-   BLUE VERSION
-========================================================= */
 
 .primehomes-navbar {
-
-  min-height:
-    72px;
-
+  position: sticky;
+  z-index: 1040;
+  top: 0;
+  min-height: 104px;
+  border: 0;
+  border-bottom: 1px solid rgba(213, 173, 111, .42);
   background:
-    linear-gradient(
-      135deg,
-      #0B2A4A 0%,
-      #123B6D 55%,
-      #1E5A91 100%
-    ) !important;
-
-  border-bottom:
-    2px solid rgba(201, 162, 77, 0.65);
-
-  box-shadow:
-    0 5px 20px rgba(11, 42, 74, 0.22);
-
+    radial-gradient(ellipse at 25% -75%, rgba(90, 143, 119, .34), transparent 52%),
+    linear-gradient(105deg, #102f2c 0%, #173c39 54%, #214e45 100%) !important;
+  box-shadow: 0 8px 28px rgba(11, 37, 33, .2);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
 }
 
+.primehomes-navbar > .container {
+  min-height: 82px;
+}
 
-/* =========================================================
-   NAVBAR LINKS
-========================================================= */
+.primehomes-logo {
+  display: inline-flex;
+  width: 330px;
+  height: 94px;
+  align-items: center;
+  padding: 0 !important;
+  margin-right: 24px;
+  overflow: visible;
+  flex-shrink: 0;
+  border-radius: 0;
+  background: transparent !important;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.primehomes-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  background: transparent;
+}
+
+.navbar-toggler {
+  display: none;
+  width: 44px;
+  height: 42px;
+  border: 1px solid rgba(220, 192, 145, .55);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(211, 173, 115, .22);
+}
+
+.navbar-toggler-icon {
+  width: 22px;
+  height: 18px;
+  background-image: none !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 18px;
+  background-image: linear-gradient(#f4e5c8, #f4e5c8), linear-gradient(#f4e5c8, #f4e5c8), linear-gradient(#f4e5c8, #f4e5c8) !important;
+  background-size: 22px 2px, 22px 2px, 22px 2px !important;
+  background-position: center 2px, center center, center 16px !important;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 2000;
+  top: 8px;
+  left: 8px;
+  transform: translateY(-160%);
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: #173c39;
+  color: #fff;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  color: #fff;
+}
+
+.navbar-collapse {
+  display: flex;
+  flex-basis: auto;
+  align-items: center;
+}
+
+.navbar-nav {
+  align-items: center;
+  gap: 3px;
+}
 
 .primehomes-navbar .nav-link {
-
-  color:
-    rgba(255, 255, 255, 0.92) !important;
-
-  padding:
-    9px 13px !important;
-
-  border-radius:
-    7px;
-
-  transition:
-    color 0.25s ease,
-    background 0.25s ease,
-    transform 0.25s ease;
-
+  position: relative;
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 8px 14px !important;
+  color: rgba(245, 248, 245, .86) !important;
+  font-size: .88rem;
+  font-weight: 600;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-
-.primehomes-navbar .nav-link:hover {
-
-  color:
-    #E0C06A !important;
-
-  background:
-    rgba(201, 162, 77, 0.13);
-
-  transform:
-    translateY(-1px);
-
-}
-
-
-/* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
-
+.primehomes-navbar .nav-link:hover,
 .primehomes-navbar .nav-link.active {
-
-  color:
-    #E0C06A !important;
-
-  background:
-    rgba(201, 162, 77, 0.16);
-
-  box-shadow:
-    inset 0 -2px 0 #C9A24D;
-
+  transform: translateY(-1px);
+  border-color: rgba(211, 173, 115, .35);
+  background: rgba(255, 255, 255, .09);
+  color: #f1d49f !important;
 }
 
-
-/* =========================================================
-   NAVBAR LOGO
-========================================================= */
-
-.primehomes-navbar .primehomes-logo {
-
-  height:
-    64px;
-
+.primehomes-navbar .navbar-nav > .nav-link.active::after {
+  position: absolute;
+  right: 17px;
+  bottom: 3px;
+  left: 17px;
+  height: 1px;
+  border-radius: 2px;
+  background: #d3ad73;
+  content: '';
 }
-
-
-/* =========================================================
-   NAVBAR BUTTON
-========================================================= */
 
 .primehomes-navbar .btn-outline-light {
-
-  color:
-    #E0C06A;
-
-  border-color:
-    #C9A24D;
-
+  min-height: 40px;
+  border-color: #d3ad73 !important;
+  border-radius: 999px;
+  padding-inline: 19px !important;
+  color: #f1d49f !important;
+  font-weight: 650;
 }
-
 
 .primehomes-navbar .btn-outline-light:hover {
-
-  color:
-    #0B2A4A;
-
-  background:
-    #C9A24D;
-
-  border-color:
-    #C9A24D;
-
+  border-color: #e0c18f !important;
+  background: #d3ad73 !important;
+  color: #173c39 !important;
 }
 
-
-/* =========================================================
-   NOTIFICATION BADGE
-========================================================= */
-
-.primehomes-navbar .notification-badge {
-
-  background:
-    #C9A24D;
-
-  color:
-    #0B2A4A;
-
-  border-color:
-    #123B6D;
-
+.notification-nav-link {
+  justify-content: center;
+  padding: 5px 8px !important;
 }
 
-
-/* =========================================================
-   NOTIFICATION BELL
-========================================================= */
-
-.primehomes-navbar .notification-bell {
-
-  color:
-    #E0C06A;
-
+.notification-bell {
+  position: relative;
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 50%;
+  font-size: 19px;
+  transition: background-color 180ms ease, transform 180ms ease;
 }
 
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-.primehomes-navbar .navbar-toggler {
-
-  border-color:
-    rgba(201, 162, 77, 0.65);
-
+.notification-nav-link:hover .notification-bell {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, .09);
 }
 
-
-.primehomes-navbar .navbar-toggler:focus {
-
-  box-shadow:
-    0 0 0 0.15rem
-    rgba(201, 162, 77, 0.25);
-
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  min-width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #173c39;
+  border-radius: 999px;
+  background: #bd4f4f;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
 }
 
+.buyer-workspace-nav {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid #244d46;
+  background: #173c39;
+  color: #fff;
+}
 
-/* =========================================================
-   MOBILE NAVBAR
-========================================================= */
+.buyer-workspace-inner {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
 
-@media (max-width: 991px) {
+.buyer-workspace-label {
+  flex: 0 0 auto;
+  color: #c9d8cf;
+  font-size: .66rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
 
-  .primehomes-navbar .navbar-collapse {
+.buyer-workspace-links {
+  display: flex;
+  min-width: 0;
+  align-items: stretch;
+  align-self: stretch;
+  gap: 8px;
+}
 
-    background:
-      #123B6D;
+.buyer-workspace-links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  color: #d9e5df;
+  font-size: .84rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
 
-    padding:
-      10px 0 15px;
+.buyer-workspace-links a:hover,
+.buyer-workspace-links a.active {
+  color: #fff;
+}
 
-    border-top:
-      1px solid rgba(201, 162, 77, 0.25);
+.buyer-workspace-links a.active::after {
+  position: absolute;
+  right: 14px;
+  bottom: 0;
+  left: 14px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #d3ad73;
+  content: '';
+}
 
+@media (max-width: 991.98px) {
+  .primehomes-navbar,
+  .primehomes-navbar > .container {
+    min-height: 72px;
   }
 
-
-  .primehomes-navbar .navbar-nav .nav-link {
-
-    color:
-      #FFFFFF !important;
-
+  .navbar-toggler {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-
-  .primehomes-navbar .navbar-nav .nav-link:hover {
-
-    color:
-      #E0C06A !important;
-
-    background:
-      rgba(201, 162, 77, 0.12);
-
+  .navbar-collapse {
+    display: none;
+    position: absolute;
+    top: calc(100% - 1px);
+    right: 0;
+    left: 0;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    border-bottom: 1px solid rgba(213, 173, 111, .36);
+    background: linear-gradient(160deg, #123632, #173c39 75%, #214e45);
+    box-shadow: 0 18px 24px rgba(11, 37, 33, .22);
   }
 
+  .navbar-collapse.show {
+    display: block;
+  }
+
+  .navbar-nav {
+    align-items: stretch;
+    padding: 12px max(1.25rem, calc((100vw - 720px) / 2));
+  }
+
+  .primehomes-navbar .nav-link {
+    min-height: 44px;
+    width: 100%;
+    padding: 10px 12px !important;
+    border-radius: 10px;
+  }
+
+  .primehomes-navbar .navbar-nav > .nav-link.active::after {
+    right: auto;
+    bottom: 9px;
+    left: 0;
+    width: 3px;
+    height: 26px;
+    border-radius: 3px;
+  }
+
+  .primehomes-navbar .btn-outline-light {
+    align-self: flex-start;
+    margin: 7px 0 10px 10px !important;
+  }
+
+  .notification-nav-link {
+    justify-content: flex-start;
+  }
 }
 
-
-/* =========================================================
-   GLOBAL CARDS
-========================================================= */
-
-.card {
-
-  background:
-    var(--ph-card);
-
-  border:
-    1px solid var(--ph-border);
-
-  color:
-    var(--ph-text);
-
-  border-radius:
-    12px;
-
-}
-
-
-/* =========================================================
-   GLOBAL PRIMARY BUTTON
-========================================================= */
-
-.btn-primary {
-
-  background:
-    linear-gradient(
-      135deg,
-      #123B6D,
-      #1E5A91
-    );
-
-  border:
-    none;
-
-  color:
-    #FFFFFF;
-
-  font-weight:
-    600;
-
-}
-
-
-.btn-primary:hover {
-
-  background:
-    linear-gradient(
-      135deg,
-      #0B2A4A,
-      #123B6D
-    );
-
-  color:
-    #FFFFFF;
-
-}
-
-
-/* =========================================================
-   OUTLINE PRIMARY BUTTON
-========================================================= */
-
-.btn-outline-primary {
-
-  color:
-    #123B6D;
-
-  border:
-    1px solid #123B6D;
-
-}
-
-
-.btn-outline-primary:hover {
-
-  background:
-    #123B6D;
-
-  border-color:
-    #123B6D;
-
-  color:
-    #FFFFFF;
-
-}
-
-
-/* =========================================================
-   GOLD BUTTON
-========================================================= */
-
-.btn-gold {
-
-  background:
-    linear-gradient(
-      135deg,
-      #C9A24D,
-      #A98232
-    );
-
-  border:
-    none;
-
-  color:
-    #FFFFFF;
-
-  font-weight:
-    600;
-
-}
-
-
-.btn-gold:hover {
-
-  background:
-    linear-gradient(
-      135deg,
-      #E0C06A,
-      #C9A24D
-    );
-
-  color:
-    #0B2A4A;
-
-}
-
-
-/* =========================================================
-   GLOBAL FORM CONTROLS
-========================================================= */
-
-.form-control,
-.form-select {
-
-  background:
-    #FFFFFF;
-
-  color:
-    #172B3A;
-
-  border:
-    1px solid #C9D8E8;
-
-  border-radius:
-    7px;
-
-}
-
-
-.form-control::placeholder {
-
-  color:
-    #8A99AA;
-
-}
-
-
-.form-control:focus,
-.form-select:focus {
-
-  background:
-    #FFFFFF;
-
-  color:
-    #172B3A;
-
-  border-color:
-    #C9A24D;
-
-  box-shadow:
-    0 0 0 3px
-    rgba(201, 162, 77, 0.13);
-
-}
-
-
-/* =========================================================
-   GLOBAL TABLE
-========================================================= */
-
-.table {
-
-  background:
-    #FFFFFF;
-
-  color:
-    #172B3A;
-
-}
-
-
-.table thead th {
-
-  background:
-    #123B6D;
-
-  color:
-    #E0C06A;
-
-  border-color:
-    #D5E2F0;
-
-}
-
-
-.table tbody td {
-
-  background:
-    #FFFFFF;
-
-  color:
-    #344054;
-
-  border-color:
-    #D5E2F0;
-
-}
-
-
-.table-hover tbody tr:hover td {
-
-  background:
-    #F0F6FC;
-
-  color:
-    #172B3A;
-
-}
-
-
-/* =========================================================
-   GLOBAL HEADINGS
-========================================================= */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-
-  color:
-    #123B6D;
-
-}
-
-
-/* =========================================================
-   GLOBAL MUTED TEXT
-========================================================= */
-
-.text-muted {
-
-  color:
-    #667085 !important;
-
-}
-
-
-/* =========================================================
-   GLOBAL HR
-========================================================= */
-
-hr {
-
-  border-color:
-    #D5E2F0;
-
-  opacity:
-    1;
-
-}
-
-
-/* =========================================================
-   LIGHT BLUE SECTION
-========================================================= */
-
-.ph-section-blue {
-
-  background:
-    linear-gradient(
-      135deg,
-      #E8F1FA,
-      #F3F7FC
-    );
-
-  border-top:
-    1px solid #D5E2F0;
-
-  border-bottom:
-    1px solid #D5E2F0;
-
-}
-
-
-/* =========================================================
-   BLUE PREMIUM SECTION
-========================================================= */
-
-.ph-section-dark-blue {
-
-  background:
-    linear-gradient(
-      135deg,
-      #0B2A4A,
-      #123B6D,
-      #1E5A91
-    );
-
-  color:
-    #FFFFFF;
-
-}
-
-
-.ph-section-dark-blue h1,
-.ph-section-dark-blue h2,
-.ph-section-dark-blue h3,
-.ph-section-dark-blue h4,
-.ph-section-dark-blue h5,
-.ph-section-dark-blue h6 {
-
-  color:
-    #FFFFFF;
-
-}
-
-
-/* =========================================================
-   GOLD DIVIDER
-========================================================= */
-
-.ph-gold-divider {
-
-  width:
-    70px;
-
-  height:
-    3px;
-
-  margin:
-    10px 0 20px;
-
-  border-radius:
-    10px;
-
-  background:
-    linear-gradient(
-      90deg,
-      #A98232,
-      #E0C06A
-    );
-
-}
-
-
-/* =========================================================
-   MOBILE LOGO
-========================================================= */
-
-@media (max-width: 768px) {
-
+@media (max-width: 575.98px) {
   .primehomes-logo {
-
-    width:
-      260px;
-
-    height:
-      65px;
-
+    width: 220px;
+    height: 66px;
   }
 
-
-  .primehomes-navbar .primehomes-logo {
-
-    height:
-      58px;
-
+  .navbar-nav {
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
 
+  .buyer-workspace-inner {
+    min-height: 49px;
+    gap: 12px;
+    padding-right: 0;
+    padding-left: 1rem;
+  }
+
+  .buyer-workspace-label {
+    font-size: .59rem;
+  }
+
+  .buyer-workspace-links {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .buyer-workspace-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .buyer-workspace-links a {
+    padding: 0 10px;
+    font-size: .78rem;
+  }
+
+  .buyer-workspace-links a.active::after {
+    right: 10px;
+    left: 10px;
+  }
 }
+
+
+

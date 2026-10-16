@@ -39,7 +39,12 @@
         *ngFor="let notification of notifications"
         class="notification-card"
         [class.unread]="!notification.isRead"
-        (click)="markAsRead(notification)">
+        role="button"
+        tabindex="0"
+        [attr.aria-label]="notification.title + (notification.isRead ? ', read notification' : ', unread notification. Activate to mark as read')"
+        (click)="markAsRead(notification)"
+        (keydown.enter)="markAsRead(notification)"
+        (keydown.space)="markAsRead(notification); $event.preventDefault()">
 
 
         <!-- Icon -->

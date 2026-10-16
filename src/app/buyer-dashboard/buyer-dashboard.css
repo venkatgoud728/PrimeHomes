@@ -1,279 +1,588 @@
-/* =========================================================
-   BUYER DASHBOARD
-   ========================================================= */
-
-
-/* =========================================================
-   STATISTICS CARDS
-   ========================================================= */
-
-.buyer-stat-card {
-  border-radius: 12px;
-  transition: all 0.3s ease;
+.buyer-dashboard-page {
+  max-width: 1240px;
+  padding-top: clamp(30px, 5vw, 64px);
+  padding-bottom: 64px;
 }
 
-.buyer-stat-card:hover {
-  transform: translateY(-5px);
+.buyer-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 32px;
+  padding: clamp(28px, 5vw, 54px);
+  border: 1px solid #204b43;
+  border-radius: 26px;
+  background:
+    radial-gradient(ellipse at 85% 15%, rgba(211, 173, 115, .23), transparent 30%),
+    linear-gradient(118deg, #153b35 0%, #255c4f 100%);
+  box-shadow: 0 18px 42px rgba(23, 60, 57, .15);
 }
 
-.stat-icon {
-  font-size: 32px;
-  margin-bottom: 10px;
+.page-kicker,
+.section-kicker {
+  margin: 0 0 9px;
+  color: var(--ph-gold-dark);
+  font-size: .76rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 
-.buyer-stat-card h2 {
-  margin-bottom: 0;
+.buyer-hero h1 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.2rem);
 }
 
-
-/* =========================================================
-   GENERAL CARDS
-   ========================================================= */
-
-.card {
-  border-radius: 12px;
+.buyer-hero-description {
+  max-width: 620px;
+  margin: 14px 0 0;
+  color: #dce8e1;
+  font-size: 1.04rem;
 }
 
-.card-title {
-  font-weight: 600;
+.buyer-hero .page-kicker {
+  color: #e0c18f;
 }
 
+.buyer-hero-actions {
+  display: grid;
+  flex: 0 0 auto;
+  justify-items: start;
+  gap: 11px;
+}
 
-/* =========================================================
-   INQUIRY STATUS
-   ========================================================= */
+.buyer-browse-button {
+  flex: 0 0 auto;
+  padding: .8rem 1.25rem !important;
+  border-color: #d3ad73 !important;
+  background: #d3ad73 !important;
+  color: #173c39 !important;
+  box-shadow: 0 7px 18px rgba(7, 26, 23, .2);
+}
 
-.inquiry-status {
+.buyer-browse-button:hover {
+  border-color: #e0c18f !important;
+  background: #e0c18f !important;
+  color: #102e2c !important;
+}
+
+.buyer-browse-button > span {
+  font-size: 1.35rem;
+  line-height: .8;
+}
+
+.buyer-compare-link {
   display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #f2f5f2;
+  font-size: .83rem;
+  font-weight: 700;
+}
 
+.buyer-compare-link:hover {
+  color: #e0c18f;
+}
+
+.buyer-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.35fr;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.overview-card,
+.overview-note {
+  min-height: 164px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid var(--ph-border);
+  border-radius: 18px;
+  padding: 22px;
+  background: #fff;
+  box-shadow: var(--ph-shadow-sm);
+}
+
+.overview-icon,
+.note-mark,
+.quick-action-icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #edf4ef;
+  color: var(--ph-navy);
+  font-size: 1.8rem;
+}
+
+.overview-card-favorites .overview-icon {
+  background: #f8f0e6;
+  color: var(--ph-gold-dark);
+}
+
+.overview-label {
+  margin: 0;
+  color: var(--ph-muted);
+  font-size: .86rem;
+  font-weight: 650;
+}
+
+.overview-value {
+  margin: 2px 0 1px;
+  color: var(--ph-navy);
+  font-family: 'Manrope', 'DM Sans', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.overview-link,
+.section-link {
+  color: var(--ph-navy);
+  font-size: .83rem;
+  font-weight: 700;
+}
+
+.overview-link:hover,
+.section-link:hover {
+  color: var(--ph-gold-dark);
+}
+
+.overview-note {
+  border-color: #e5d9c4;
+  background: linear-gradient(135deg, #fff 0%, #faf6ee 100%);
+}
+
+.note-mark {
+  background: #f2e8d7;
+  color: var(--ph-gold-dark);
+}
+
+.overview-note h2 {
+  margin: 0 0 7px;
+  font-size: 1.05rem;
+}
+
+.overview-note p {
+  margin: 0;
+  font-size: .9rem;
+}
+
+.dashboard-section {
+  margin-bottom: 54px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--ph-navy);
+  font-size: clamp(1.45rem, 3vw, 1.8rem);
+}
+
+.section-kicker {
+  margin-bottom: 5px;
+  font-size: .68rem;
+}
+
+.section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+}
+
+.dashboard-empty {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px dashed #cddbd2;
+  border-radius: 18px;
+  padding: 24px;
+  background: #f8faf8;
+}
+
+.dashboard-state,
+.dashboard-error {
+  display: flex;
   align-items: center;
   justify-content: center;
-
-  min-width: 80px;
-
-  padding: 6px 14px;
-
-  border-radius: 20px;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  line-height: 1.2;
-
-  white-space: nowrap;
-
-  text-align: center;
+  gap: 13px;
+  min-height: 112px;
+  border: 1px solid var(--ph-border);
+  border-radius: 16px;
+  padding: 20px;
+  background: #fff;
+  color: var(--ph-muted);
 }
 
-
-/* =========================================================
-   NEW
-   ========================================================= */
-
-.status-new {
-  background: rgba(80, 140, 255, 0.20);
-
-  color: #75A7FF;
-
-  border: 1px solid #75A7FF;
+.dashboard-error {
+  justify-content: space-between;
+  border-color: #e8d4cf;
+  background: #fff9f6;
+  color: #80574e;
 }
 
-
-/* =========================================================
-   PENDING
-   ========================================================= */
-
-.status-pending {
-  background: rgba(212, 175, 90, 0.20);
-
-  color: #E6C978;
-
-  border: 1px solid #E6C978;
+.dashboard-error .btn {
+  flex: 0 0 auto;
 }
 
-
-/* =========================================================
-   RESPONDED
-   ========================================================= */
-
-.status-responded {
-  background: rgba(40, 167, 69, 0.20);
-
-  color: #66D17A;
-
-  border: 1px solid #66D17A;
+.empty-mark {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #edf4ef;
+  color: var(--ph-navy);
+  font-size: 1.6rem;
 }
 
-
-/* =========================================================
-   REJECTED
-   ========================================================= */
-
-.status-rejected {
-  background: rgba(220, 53, 69, 0.20);
-
-  color: #FF7B87;
-
-  border: 1px solid #FF7B87;
+.dashboard-empty h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
 }
 
+.dashboard-empty p {
+  margin: 0;
+  font-size: .9rem;
+}
 
-/* =========================================================
-   FAVORITE PROPERTY CARD
-   ========================================================= */
+.dashboard-empty .btn {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
 
-.favorite-property-card {
+.dashboard-property-card {
+  overflow: hidden;
+  border-radius: 18px !important;
+  transition: transform var(--ph-transition), box-shadow var(--ph-transition);
+}
+
+.dashboard-property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ph-shadow) !important;
+}
+
+.dashboard-property-image {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  background: #e8efea;
+}
+
+.dashboard-property-image img {
+  width: 100%;
   height: 100%;
-
-  overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-
-/* =========================================================
-   CARD HOVER
-   ========================================================= */
-
-.favorite-property-card:hover {
-  transform: translateY(-5px);
-
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.35) !important;
-}
-
-
-/* =========================================================
-   FAVORITE PROPERTY IMAGE CONTAINER
-   ========================================================= */
-
-.favorite-property-image-container {
-  width: 100%;
-
-  height: 220px;
-
-  overflow: hidden;
-
-  background: #0B1326;
-}
-
-
-/* =========================================================
-   FAVORITE PROPERTY IMAGE
-   ========================================================= */
-
-.favorite-property-card img,
-.favorite-property-image {
-  width: 100%;
-
-  height: 220px;
-
   object-fit: cover;
-
-  object-position: center;
-
-  display: block;
-
-  transition: transform 0.4s ease;
+  transition: transform 250ms ease;
 }
 
-
-/* =========================================================
-   IMAGE HOVER
-   ========================================================= */
-
-.favorite-property-card:hover .favorite-property-image {
-  transform: scale(1.04);
+.dashboard-property-card:hover .dashboard-property-image img {
+  transform: scale(1.035);
 }
 
+.image-label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  border: 1px solid rgba(255, 255, 255, .66);
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, .94);
+  color: var(--ph-navy);
+  font-size: .72rem;
+  font-weight: 700;
+}
 
-/* =========================================================
-   PROPERTY CARD BODY
-   ========================================================= */
-
-.favorite-property-card .card-body {
+.dashboard-property-card .card-body {
   display: flex;
-
   flex-direction: column;
+  padding: 20px;
 }
 
+.property-location {
+  margin: 0 0 7px;
+  color: var(--ph-muted);
+  font-size: .82rem;
+}
 
-/* Keep buttons at bottom */
+.dashboard-property-card .card-title {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
 
-.favorite-property-card .card-body > div:last-child {
+.property-specs {
+  margin: 0;
+  color: var(--ph-text-light);
+  font-size: .87rem;
+}
+
+.property-price {
+  margin: 10px 0 18px;
+  color: var(--ph-navy);
+  font-family: 'Manrope', 'DM Sans', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.property-card-actions {
+  display: flex;
+  gap: 9px;
   margin-top: auto;
 }
 
+.property-card-actions .btn:first-child {
+  flex: 1;
+}
 
-/* =========================================================
-   INQUIRY TABLE
-   ========================================================= */
-
-.table-responsive {
-  border-radius: 8px;
-
+.inquiry-table-wrap {
   overflow: hidden;
+  border: 1px solid var(--ph-border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--ph-shadow-sm);
 }
 
-
-/* =========================================================
-   TABLE STATUS COLUMN
-   ========================================================= */
-
-.table th:last-child,
-.table td:last-child {
-  width: 120px;
-
-  text-align: center;
+.dashboard-inquiry-table {
+  min-width: 720px;
+  margin: 0;
 }
 
-
-/* =========================================================
-   RESPONSIVE - TABLET
-   ========================================================= */
-
-@media (max-width: 992px) {
-
-  .favorite-property-image-container {
-    height: 210px;
-  }
-
-  .favorite-property-card img,
-  .favorite-property-image {
-    height: 210px;
-  }
-
+.dashboard-inquiry-table th {
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--ph-border);
+  color: var(--ph-muted);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
+.dashboard-inquiry-table td {
+  padding: 16px 18px;
+}
 
-/* =========================================================
-   RESPONSIVE - MOBILE
-   ========================================================= */
+.dashboard-inquiry-table tbody tr:last-child td {
+  border-bottom: 0;
+}
 
-@media (max-width: 576px) {
+.inquiry-property {
+  color: var(--ph-text) !important;
+  font-weight: 700;
+}
 
-  .buyer-stat-card {
-    margin-bottom: 10px;
+.inquiry-property a {
+  color: var(--ph-text);
+}
+
+.inquiry-property a:hover {
+  color: var(--ph-blue-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.inquiry-message {
+  max-width: 420px;
+}
+
+.inquiry-status {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 88px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: .76rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-new {
+  border-color: #c7d9d2;
+  background: #eff5f1;
+  color: var(--ph-navy);
+}
+
+.status-pending {
+  border-color: #e6d2ae;
+  background: #fbf5ea;
+  color: #80632f;
+}
+
+.status-responded {
+  border-color: #c2dfd1;
+  background: #edf7f1;
+  color: #28765d;
+}
+
+.status-rejected {
+  border-color: #e8caca;
+  background: #fbf0f0;
+  color: #a44444;
+}
+
+.buyer-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quick-action-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  border: 1px solid var(--ph-border);
+  border-radius: 16px;
+  padding: 18px;
+  background: #fff;
+  box-shadow: var(--ph-shadow-sm);
+  transition: transform var(--ph-transition), border-color var(--ph-transition), box-shadow var(--ph-transition);
+}
+
+.quick-action-card:hover {
+  transform: translateY(-2px);
+  border-color: #c5d8cc;
+  box-shadow: var(--ph-shadow);
+}
+
+.quick-action-icon {
+  width: 44px;
+  height: 44px;
+  flex-basis: 44px;
+  font-size: 1.45rem;
+}
+
+.quick-action-card strong,
+.quick-action-card small {
+  display: block;
+}
+
+.quick-action-card strong {
+  color: var(--ph-text);
+  font-size: .92rem;
+}
+
+.quick-action-card small {
+  margin-top: 3px;
+  color: var(--ph-muted);
+  font-size: .78rem;
+}
+
+.quick-action-arrow {
+  margin-left: auto;
+  color: var(--ph-gold-dark);
+  font-size: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .buyer-overview {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .favorite-property-image-container {
-    height: 200px;
+  .overview-note {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .buyer-dashboard-page {
+    padding-top: 22px;
+    padding-bottom: 40px;
   }
 
-  .favorite-property-card img,
-  .favorite-property-image {
-    height: 200px;
+  .buyer-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+    border-radius: 20px;
+    padding: 26px 22px;
   }
 
-  .inquiry-status {
-    min-width: 70px;
-
-    padding: 5px 9px;
-
-    font-size: 11px;
+  .buyer-hero-actions {
+    width: 100%;
   }
 
+  .buyer-hero-description {
+    font-size: .94rem;
+  }
+
+  .buyer-overview {
+    grid-template-columns: 1fr;
+    gap: 11px;
+    margin-bottom: 42px;
+  }
+
+  .overview-card,
+  .overview-note {
+    min-height: 130px;
+    padding: 18px;
+  }
+
+  .overview-note {
+    grid-column: auto;
+  }
+
+  .dashboard-section {
+    margin-bottom: 40px;
+  }
+
+  .dashboard-empty {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 13px;
+    padding: 18px;
+  }
+
+  .dashboard-error {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dashboard-empty > div {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .dashboard-empty .btn {
+    margin-left: 63px;
+  }
+
+  .compact-empty .btn {
+    margin-left: 63px;
+  }
+
+  .buyer-quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    align-items: center;
+  }
+
+  .section-link {
+    flex: 0 0 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-property-card,
+  .dashboard-property-image img,
+  .quick-action-card {
+    transition: none;
+  }
 }

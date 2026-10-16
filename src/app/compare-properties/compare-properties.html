@@ -1,16 +1,14 @@
-<p>compare-properties works!</p>
 <div class="container mt-5 mb-5">
 
   <!-- Page Header -->
 
-  <div class="compare-header">
+  <header class="compare-header">
 
     <div>
-      <h2 class="fw-bold mb-2">
-        ⚖ Compare Properties
-      </h2>
+      <p class="page-kicker">Make your shortlist clearer</p>
+      <h1>Compare your finalists</h1>
 
-      <p class="text-muted mb-0">
+      <p class="mb-0">
         Compare your selected properties side by side.
       </p>
     </div>
@@ -23,7 +21,7 @@
 
     </div>
 
-  </div>
+  </header>
 
 
   <!-- Empty Comparison -->
@@ -84,9 +82,13 @@
 
     <!-- Comparison Table -->
 
-    <div class="table-responsive">
+    <div
+      class="table-responsive"
+      tabindex="0"
+      role="region"
+      aria-label="Property comparison table. Scroll horizontally to compare all properties.">
 
-      <table class="table comparison-table">
+      <table class="table comparison-table" aria-label="Property comparison">
 
         <!-- Property Header -->
 
@@ -94,20 +96,24 @@
 
           <tr>
 
-            <th class="feature-column">
+            <th class="feature-column" scope="col">
               Property Details
             </th>
 
             <th
               *ngFor="let property of compareProperties"
-              class="property-column">
+              class="property-column"
+              scope="col">
 
               <div class="property-image-container">
 
                 <img
-                  [src]="property.imageUrl || 'https://via.placeholder.com/600x400?text=Prime+Homes'"
+                  *ngIf="property.imageUrl"
+                  [src]="property.imageUrl"
                   [alt]="property.title"
-                  class="property-image">
+                  class="property-image"
+                  (error)="property.imageUrl = ''">
+                <span *ngIf="!property.imageUrl" class="image-fallback">Property photo unavailable</span>
 
               </div>
 
@@ -130,9 +136,9 @@
 
           <tr>
 
-            <td class="feature-name">
-              💰 Price
-            </td>
+            <th class="feature-name" scope="row">
+              Price
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -149,9 +155,9 @@
 
           <tr>
 
-            <td class="feature-name">
-              🏠 Property Type
-            </td>
+            <th class="feature-name" scope="row">
+              Property type
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -166,9 +172,9 @@
 
           <tr>
 
-            <td class="feature-name">
-              🛏 BHK
-            </td>
+            <th class="feature-name" scope="row">
+              Bedrooms
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -183,9 +189,9 @@
 
           <tr>
 
-            <td class="feature-name">
-              📐 Area
-            </td>
+            <th class="feature-name" scope="row">
+              Area
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -200,9 +206,9 @@
 
           <tr>
 
-            <td class="feature-name">
-              📍 Location
-            </td>
+            <th class="feature-name" scope="row">
+              Location
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -217,9 +223,9 @@
 
           <tr>
 
-            <td class="feature-name">
-              🌆 City
-            </td>
+            <th class="feature-name" scope="row">
+              City
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -234,9 +240,9 @@
 
           <tr>
 
-            <td class="feature-name">
-              ✓ Status
-            </td>
+            <th class="feature-name" scope="row">
+              Status
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -253,9 +259,9 @@
 
           <tr>
 
-            <td class="feature-name">
-              📝 Description
-            </td>
+            <th class="feature-name" scope="row">
+              Description
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -274,9 +280,9 @@
 
           <tr>
 
-            <td class="feature-name">
+            <th class="feature-name" scope="row">
               Actions
-            </td>
+            </th>
 
             <td *ngFor="let property of compareProperties">
 
@@ -296,6 +302,7 @@
                 <button
                   type="button"
                   class="btn btn-outline-danger btn-sm"
+                  [attr.aria-label]="'Remove ' + property.title + ' from comparison'"
                   (click)="removeFromCompare(property.propertyId)">
 
                   Remove

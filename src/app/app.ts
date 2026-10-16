@@ -139,6 +139,7 @@ export class App {
     localStorage.clear();
 
     this.unreadNotificationCount = 0;
+    this.menuOpen = false;
 
     this.router.navigate(['/login']);
 
@@ -152,6 +153,12 @@ export class App {
   toggleMenu(): void {
 
     this.menuOpen = !this.menuOpen;
+
+  }
+
+  closeMenu(): void {
+
+    this.menuOpen = false;
 
   }
 

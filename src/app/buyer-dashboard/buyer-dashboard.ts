@@ -50,6 +50,8 @@ export class BuyerDashboard implements OnInit {
   favorites: Favorite[] = [];
 
   totalFavorites = 0;
+  isLoadingFavorites = true;
+  favoritesError = '';
 
 
   // =====================================================
@@ -59,6 +61,8 @@ export class BuyerDashboard implements OnInit {
   inquiries: Inquiry[] = [];
 
   totalInquiries = 0;
+  isLoadingInquiries = true;
+  inquiriesError = '';
 
 
   // =====================================================
@@ -93,6 +97,9 @@ export class BuyerDashboard implements OnInit {
 
   loadFavorites(): void {
 
+    this.isLoadingFavorites = true;
+    this.favoritesError = '';
+
     this.favoriteService
       .getMyFavorites()
       .subscribe({
@@ -114,6 +121,7 @@ export class BuyerDashboard implements OnInit {
           this.totalFavorites =
             data.length;
 
+          this.isLoadingFavorites = false;
           this.cdr.detectChanges();
 
         },
@@ -124,6 +132,10 @@ export class BuyerDashboard implements OnInit {
             'Error loading buyer favorites:',
             error
           );
+
+          this.isLoadingFavorites = false;
+          this.favoritesError = 'Unable to load your saved homes. Please try again.';
+          this.cdr.detectChanges();
 
         }
 
@@ -137,6 +149,9 @@ export class BuyerDashboard implements OnInit {
   // =====================================================
 
   loadInquiries(): void {
+
+    this.isLoadingInquiries = true;
+    this.inquiriesError = '';
 
     this.inquiryService
       .getMyInquiries()
@@ -154,6 +169,7 @@ export class BuyerDashboard implements OnInit {
           this.totalInquiries =
             data.length;
 
+          this.isLoadingInquiries = false;
           this.cdr.detectChanges();
 
         },
@@ -164,6 +180,10 @@ export class BuyerDashboard implements OnInit {
             'Error loading buyer inquiries:',
             error
           );
+
+          this.isLoadingInquiries = false;
+          this.inquiriesError = 'Unable to load your inquiries. Please try again.';
+          this.cdr.detectChanges();
 
         }
 

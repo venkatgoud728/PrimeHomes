@@ -1,11 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -13,6 +14,8 @@ export class Login {
 
   email: string = '';
   password: string = '';
+  errorMessage = '';
+  isLoading = false;
 
   constructor(
     private http: HttpClient,
@@ -20,7 +23,18 @@ export class Login {
   ) {
   }
 
-  login(): void {
+  login(form: NgForm): void {
+    if (form.invalid) {
+      form.control.markAllAsTouched();
+      return;
+    }
+
+    if (this.isLoading) {
+      return;
+    }
+
+    this.errorMessage = '';
+    this.isLoading = true;
 
     const loginData = {
       email: this.email,
@@ -37,32 +51,32 @@ export class Login {
         console.log('Login successful:', response);
 
         localStorage.setItem('token', response.token);
-
         localStorage.setItem('userId', response.userId);
-
         localStorage.setItem('role', response.role);
-
         localStorage.setItem('name', response.name);
 
-        alert('Login successful!');
+        const destinations: Record<string, string> = {
+          Owner: '/owner-dashboard',
+          Buyer: '/buyer-dashboard',
+          Admin: '/admin-dashboard'
+        };
+        const destination = destinations[response.role];
 
-       if (response.role === 'Owner') {
-  window.location.href = '/owner-dashboard';
-}
-else if (response.role === 'Buyer') {
-  window.location.href = '/buyer-dashboard';
-}
-else if (response.role === 'Admin') {
-  window.location.href = '/admin-dashboard';
-}
+        this.isLoading = false;
+        if (destination) {
+          this.router.navigate([destination]);
+        } else {
+          this.errorMessage = 'Your account role could not be recognized. Please contact support.';
+        }
       },
 
       error: (error) => {
-
         console.error('Login error:', error);
-
-        alert('Invalid email or password');
-
+        this.isLoading = false;
+        this.errorMessage = error.error?.message
+          || error.error?.title
+          || (typeof error.error === 'string' ? error.error : '')
+          || 'Unable to sign in. Check your email and password, then try again.';
       }
 
     });

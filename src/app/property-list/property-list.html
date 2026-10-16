@@ -4,33 +4,33 @@
   <!-- Page Header -->
   <!-- ========================================== -->
 
-  <div class="d-flex justify-content-between align-items-center mb-4">
+  <header class="d-flex justify-content-between align-items-center mb-4">
 
     <div>
-      <h2 class="fw-bold">Available Properties</h2>
+      <span class="page-eyebrow">Find your next address</span>
+      <h1 class="page-heading">Explore properties</h1>
 
-      <p class="text-muted mb-0">
-        Find your perfect property with Prime Homes.
+      <p class="page-intro mb-0">
+        Discover homes and spaces that fit the way you want to live and work.
       </p>
     </div>
 
-  </div>
+  </header>
 
 
   <!-- ========================================== -->
   <!-- Search and Filters -->
   <!-- ========================================== -->
 
-  <div class="card shadow-sm border-0 mb-4 advanced-filter-card">
+  <section class="card shadow-sm border-0 mb-4 advanced-filter-card" aria-labelledby="filters-heading">
 
   <div class="card-body">
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="filter-card-heading">
+      <span class="filter-icon" aria-hidden="true">⌕</span>
       <div>
-        <h5 class="mb-1 fw-bold">🔎 Advanced Property Search</h5>
-        <small class="text-muted">
-          Refine your search using price, area, BHK and property type.
-        </small>
+        <h2 id="filters-heading">Refine your search</h2>
+        <p>Filter by location, property features, price, and area.</p>
       </div>
     </div>
 
@@ -38,11 +38,12 @@
 
       <!-- Search -->
       <div class="col-lg-4">
-        <label class="form-label fw-semibold">
+        <label class="form-label fw-semibold" for="property-search">
           Search
         </label>
 
         <input
+          id="property-search"
           type="text"
           class="form-control"
           placeholder="Search title, location or city"
@@ -52,11 +53,12 @@
 
       <!-- Property Type -->
       <div class="col-lg-2">
-        <label class="form-label fw-semibold">
+        <label class="form-label fw-semibold" for="property-type-filter">
           Property Type
         </label>
 
         <select
+          id="property-type-filter"
           class="form-select"
           [(ngModel)]="selectedPropertyType"
           (change)="applyFilters()">
@@ -66,17 +68,19 @@
           <option value="Villa">Villa</option>
           <option value="House">House</option>
           <option value="Plot">Plot</option>
+          <option value="Commercial">Commercial</option>
 
         </select>
       </div>
 
       <!-- BHK -->
       <div class="col-lg-2">
-        <label class="form-label fw-semibold">
+        <label class="form-label fw-semibold" for="property-bhk-filter">
           BHK
         </label>
 
         <select
+          id="property-bhk-filter"
           class="form-select"
           [(ngModel)]="selectedBhk"
           (change)="applyFilters()">
@@ -93,12 +97,14 @@
 
       <!-- Minimum Price -->
       <div class="col-lg-2">
-        <label class="form-label fw-semibold">
+        <label class="form-label fw-semibold" for="minimum-price">
           Min Price
         </label>
 
         <input
+          id="minimum-price"
           type="number"
+          min="0"
           class="form-control"
           placeholder="Minimum price"
           [(ngModel)]="minPrice"
@@ -107,12 +113,14 @@
 
       <!-- Maximum Price -->
       <div class="col-lg-2">
-        <label class="form-label fw-semibold">
+        <label class="form-label fw-semibold" for="maximum-price">
           Max Price
         </label>
 
         <input
+          id="maximum-price"
           type="number"
+          min="0"
           class="form-control"
           placeholder="Maximum price"
           [(ngModel)]="maxPrice"
@@ -121,12 +129,14 @@
 
       <!-- Minimum Area -->
       <div class="col-lg-2">
-        <label class="form-label fw-semibold">
+        <label class="form-label fw-semibold" for="minimum-area">
           Min Area (Sq.ft)
         </label>
 
         <input
+          id="minimum-area"
           type="number"
+          min="0"
           class="form-control"
           placeholder="Minimum area"
           [(ngModel)]="minArea"
@@ -135,12 +145,14 @@
 
       <!-- Maximum Area -->
       <div class="col-lg-2">
-        <label class="form-label fw-semibold">
+        <label class="form-label fw-semibold" for="maximum-area">
           Max Area (Sq.ft)
         </label>
 
         <input
+          id="maximum-area"
           type="number"
+          min="0"
           class="form-control"
           placeholder="Maximum area"
           [(ngModel)]="maxArea"
@@ -149,11 +161,12 @@
 
       <!-- Sort -->
       <div class="col-lg-3">
-        <label class="form-label fw-semibold">
+        <label class="form-label fw-semibold" for="sort-properties">
           Sort By
         </label>
 
         <select
+          id="sort-properties"
           class="form-select"
           [(ngModel)]="selectedSort"
           (change)="applyFilters()">
@@ -173,10 +186,10 @@
 
         <button
           type="button"
-          class="btn btn-outline-secondary w-100"
+          class="btn btn-outline-secondary w-100 filter-clear-button"
           (click)="clearFilters()">
 
-          ✕ Clear All Filters
+          Clear filters
 
         </button>
 
@@ -186,22 +199,27 @@
 
   </div>
 
-</div>
+  </section>
 
   <!-- ========================================== -->
   <!-- Results Count -->
   <!-- ========================================== -->
 
-  <div class="mb-3">
+  <div *ngIf="isLoadingProperties" class="text-center py-5" role="status" aria-live="polite">
+    <span class="spinner-border text-primary" aria-hidden="true"></span>
+    <p class="text-muted mt-3 mb-0">Loading properties…</p>
+  </div>
 
-    <span class="text-muted">
+  <div *ngIf="propertiesError" class="alert alert-warning" role="alert">
+    {{ propertiesError }}
+    <button type="button" class="btn btn-sm btn-outline-primary ms-2" (click)="loadProperties()">Try again</button>
+  </div>
 
-      Showing
+  <div class="results-toolbar" *ngIf="!isLoadingProperties && !propertiesError">
+    <p class="property-result-count" role="status" aria-live="polite">
       <strong>{{ filteredProperties.length }}</strong>
-      properties
-
-    </span>
-
+      {{ filteredProperties.length === 1 ? 'property' : 'properties' }} found
+    </p>
   </div>
 
 
@@ -209,7 +227,7 @@
   <!-- Property Cards -->
   <!-- ========================================== -->
 
-  <div class="row g-4">
+  <div class="row g-4" *ngIf="!isLoadingProperties && !propertiesError">
 
     <div
       class="col-lg-4 col-md-6"
@@ -222,9 +240,12 @@
         <div class="property-image-container">
 
           <img
-            [src]="property.imageUrl || 'https://via.placeholder.com/600x400?text=Prime+Homes'"
+            *ngIf="property.imageUrl"
+            [src]="property.imageUrl"
             class="card-img-top property-image"
-            alt="Property Image">
+            [alt]="property.title"
+            (error)="property.imageUrl = ''">
+          <span *ngIf="!property.imageUrl" class="image-fallback">Property photo unavailable</span>
 
 
           <!-- Status -->
@@ -250,11 +271,14 @@
   class="favorite-button"
   [class.favorite-active]="isFavorite(property.propertyId)"
   (click)="toggleFavorite(property.propertyId)"
+  [attr.aria-label]="isFavorite(property.propertyId)
+    ? 'Remove ' + property.title + ' from favorites'
+    : 'Add ' + property.title + ' to favorites'"
   [title]="isFavorite(property.propertyId)
     ? 'Remove from Favorites'
     : 'Add to Favorites'">
 
-  {{ isFavorite(property.propertyId) ? '❤️' : '♡' }}
+  <span aria-hidden="true">{{ isFavorite(property.propertyId) ? '♥' : '♡' }}</span>
 
 </button>
 
@@ -272,18 +296,16 @@
           </h5>
 
 
-          <p class="text-muted mb-2">
-
-            📍 {{ property.location }}, {{ property.city }}
-
+          <p class="property-location" [title]="property.location + ', ' + property.city">
+            {{ property.location }}, {{ property.city }}
           </p>
 
 
-          <h4 class="text-primary fw-bold mb-3">
+          <h2 class="property-price">
 
             ₹{{ property.price | number }}
 
-          </h4>
+          </h2>
 
 
           <!-- Property Features -->
@@ -291,15 +313,15 @@
           <div class="property-features mb-3">
 
             <span>
-              🛏 {{ property.bhk }} BHK
+              {{ property.bhk }} BHK
             </span>
 
             <span>
-              📐 {{ property.area }} Sq.ft
+              {{ property.area | number }} sq.ft
             </span>
 
             <span>
-              🏠 {{ property.propertyType }}
+              {{ property.propertyType }}
             </span>
 
           </div>
@@ -362,10 +384,13 @@
   <!-- ========================================== -->
 
   <div
-    *ngIf="filteredProperties.length === 0"
-    class="alert alert-info text-center mt-4">
+    *ngIf="!isLoadingProperties && !propertiesError && filteredProperties.length === 0"
+    class="card empty-results"
+    role="status">
 
-    No properties found matching your search.
+    <span class="empty-results-mark" aria-hidden="true">⌕</span>
+    <h3>No matching properties</h3>
+    <p>Try adjusting your filters or clearing them to see more listings.</p>
 
   </div>
 

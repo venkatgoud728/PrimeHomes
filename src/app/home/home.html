@@ -1,47 +1,56 @@
-<div class="container mt-5">
+<div class="home-page">
+<div class="container home-content">
 
   <!-- =========================================================
        HERO BANNER SECTION
        ========================================================= -->
 
-  <div class="hero-banner text-center text-white">
+  <section class="hero-banner text-center text-white" aria-labelledby="home-title">
 
     <div class="hero-overlay">
 
-      <h1 class="display-4 fw-bold">
-        Find Your Dream Home
+      <span class="hero-eyebrow">A better way to find your place</span>
+      <h1 id="home-title" class="display-4 fw-bold">
+        Find a home that feels like yours.
       </h1>
 
       <p class="lead">
-        Buy, sell and discover properties with Prime Homes
+        Explore thoughtful spaces, exceptional locations, and a simpler way to move forward.
       </p>
 
+      <a routerLink="/properties" class="hero-browse-link">Explore properties <span aria-hidden="true">→</span></a>
     </div>
 
-  </div>
+  </section>
 
 
   <!-- =========================================================
        SEARCH SECTION
        ========================================================= -->
 
-  <div class="card shadow p-4 mt-4">
+  <section class="card shadow p-4 mt-4 home-search-card" aria-labelledby="search-heading">
 
-    <h4 class="mb-3">
-      Search Properties
-    </h4>
+    <div class="search-heading">
+      <span class="search-eyebrow">Start your search</span>
+      <h2 id="search-heading" class="mb-0">
+        Find your next address
+      </h2>
+    </div>
 
     <div class="row g-3">
 
       <!-- Location -->
 
       <div class="col-md-4">
-
+        <label class="form-label" for="home-location">Location</label>
         <input
+          id="home-location"
           type="text"
           class="form-control"
           [(ngModel)]="searchLocation"
-          placeholder="Enter location">
+          placeholder="City, neighborhood, or area"
+          autocomplete="address-level2"
+          (keyup.enter)="searchProperties()">
 
       </div>
 
@@ -49,8 +58,9 @@
       <!-- Property Type -->
 
       <div class="col-md-3">
-
+        <label class="form-label" for="home-property-type">Property type</label>
         <select
+          id="home-property-type"
           class="form-select"
           [(ngModel)]="selectedPropertyType">
 
@@ -73,6 +83,9 @@
           <option value="Plot">
             Plot
           </option>
+          <option value="Commercial">
+            Commercial
+          </option>
 
         </select>
 
@@ -82,8 +95,9 @@
       <!-- BHK -->
 
       <div class="col-md-2">
-
+        <label class="form-label" for="home-bhk">Bedrooms</label>
         <select
+          id="home-bhk"
           class="form-select"
           [(ngModel)]="selectedBhk">
 
@@ -124,7 +138,7 @@
           class="btn btn-primary w-100"
           (click)="searchProperties()">
 
-          🔍 Search
+          <span aria-hidden="true">⌕</span> Search homes
 
         </button>
 
@@ -132,20 +146,20 @@
 
     </div>
 
-  </div>
+  </section>
 
 
   <!-- =========================================================
        BROWSE PROPERTIES BUTTON
        ========================================================= -->
 
-  <div class="text-center mt-4">
+  <div class="text-center mt-4 browse-all-row">
 
     <a
       routerLink="/properties"
       class="btn btn-outline-primary">
 
-      Browse All Properties
+      Browse all properties <span aria-hidden="true">→</span>
 
     </a>
 
@@ -156,7 +170,10 @@
        PROPERTY STATISTICS SECTION
        ========================================================= -->
 
-  <div class="row text-center mt-5 mb-5">
+  <div
+    *ngIf="!isLoadingFeatured && !featuredPropertiesError"
+    class="row text-center mt-5 mb-5 home-statistics"
+    aria-label="PrimeHomes property statistics">
 
     <!-- Total Properties -->
 
@@ -167,7 +184,7 @@
         <div class="card-body">
 
           <h2 class="text-primary">
-            {{ totalProperties }}+
+            {{ totalProperties }}
           </h2>
 
           <p class="mb-0 text-muted">
@@ -190,7 +207,7 @@
         <div class="card-body">
 
           <h2 class="text-success">
-            {{ approvedProperties }}+
+            {{ approvedProperties }}
           </h2>
 
           <p class="mb-0 text-muted">
@@ -213,7 +230,7 @@
         <div class="card-body">
 
           <h2 class="text-warning">
-            {{ citiesCovered }}+
+            {{ citiesCovered }}
           </h2>
 
           <p class="mb-0 text-muted">
@@ -233,38 +250,55 @@
        FEATURED PROPERTIES SECTION
        ========================================================= -->
 
-  <div class="mt-5">
+  <section class="mt-5 featured-section" aria-labelledby="featured-heading">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
 
-      <h2>
-        Featured Properties
+      <div>
+      <span class="section-eyebrow">Handpicked for you</span>
+      <h2 id="featured-heading">
+        Discover featured homes
       </h2>
+      </div>
 
       <a
         routerLink="/properties"
         class="btn btn-outline-primary">
 
-        View All
+        View all <span aria-hidden="true">→</span>
 
       </a>
 
     </div>
 
 
-    <div class="row">
+    <div *ngIf="isLoadingFeatured" class="home-loading" role="status" aria-live="polite">
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      <span>Finding featured homes…</span>
+    </div>
+
+    <div *ngIf="featuredPropertiesError" class="alert alert-warning" role="alert">
+      {{ featuredPropertiesError }}
+      <button type="button" class="btn btn-sm btn-outline-primary ms-2" (click)="loadFeaturedProperties()">Try again</button>
+    </div>
+
+    <div class="row g-4" *ngIf="!isLoadingFeatured && !featuredPropertiesError">
 
       <div
-        class="col-md-4 mb-4"
+        class="col-md-6 col-lg-4"
         *ngFor="let property of featuredProperties">
 
         <div class="card h-100 shadow-sm">
 
-          <img
-            [src]="property.imageUrl || 'https://via.placeholder.com/400x250'"
-            class="card-img-top"
-            alt="Property Image"
-            style="height: 220px; object-fit: cover;">
+          <div class="home-property-image">
+            <img
+              *ngIf="property.imageUrl"
+              [src]="property.imageUrl"
+              class="card-img-top"
+              [alt]="property.title"
+              (error)="property.imageUrl = ''">
+            <span *ngIf="!property.imageUrl" class="image-unavailable">Property photo unavailable</span>
+          </div>
 
 
           <div class="card-body">
@@ -276,7 +310,7 @@
 
             <p class="card-text">
 
-              📍 {{ property.location }},
+              {{ property.location }},
               {{ property.city }}
 
             </p>
@@ -284,11 +318,7 @@
 
             <p class="card-text">
 
-              🏠 {{ property.propertyType }}
-
-              &nbsp; | &nbsp;
-
-              🛏️ {{ property.bhk }} BHK
+              {{ property.propertyType }} <span aria-hidden="true">·</span> {{ property.bhk }} BHK
 
             </p>
 
@@ -302,7 +332,7 @@
 
             <p class="card-text">
 
-              {{ property.area }} sq.ft
+              {{ property.area | number }} sq.ft
 
             </p>
 
@@ -327,14 +357,15 @@
     <!-- No Featured Properties -->
 
     <div
-      *ngIf="featuredProperties.length === 0"
+      *ngIf="!isLoadingFeatured && !featuredPropertiesError && featuredProperties.length === 0"
       class="text-center text-muted">
 
       <p>
-        No featured properties available.
+        No featured properties are available right now. Browse all listings to keep exploring.
       </p>
 
     </div>
+    </section>
 
   </div>
 

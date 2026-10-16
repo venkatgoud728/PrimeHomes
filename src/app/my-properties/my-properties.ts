@@ -14,6 +14,8 @@ import { Property as PropertyService } from '../services/property';
 export class MyProperties implements OnInit {
 
   properties: Property[] = [];
+  isLoading = false;
+  loadError = '';
 
   constructor(
     private propertyService: PropertyService,
@@ -28,11 +30,15 @@ export class MyProperties implements OnInit {
 
   loadMyProperties(): void {
 
+    this.isLoading = true;
+    this.loadError = '';
+
     this.propertyService.getMyProperties().subscribe({
 
       next: (data) => {
 
         this.properties = data;
+        this.isLoading = false;
 
         console.log('My Properties:', data);
 
@@ -42,6 +48,9 @@ export class MyProperties implements OnInit {
       error: (error) => {
 
         console.error('Error loading my properties:', error);
+        this.isLoading = false;
+        this.loadError = 'Your properties could not be loaded. Please try again.';
+        this.cdr.detectChanges();
 
       }
 
