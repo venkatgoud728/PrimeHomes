@@ -1,59 +1,82 @@
-# PrimeHomesUI
+# PrimeHomes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.4.
+PrimeHomes is a real estate application organized as a monorepo:
 
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
+```text
+frontend/                 Angular application
+backend/
+  PrimeHomes.API/         ASP.NET Core Web API
+  PrimeHomes.API.slnx     .NET solution
+.editorconfig             Shared editor settings
+.gitignore                Repository ignore rules
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Frontend
 
-## Code scaffolding
+Requirements: Node.js and npm.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+From the repository root:
 
-```bash
-ng generate component component-name
+```powershell
+cd frontend
+npm ci
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The Angular development server uses `http://localhost:4200`.
 
-```bash
-ng generate --help
+Build the frontend:
+
+```powershell
+npm run build
 ```
 
-## Building
+Run the frontend unit tests:
 
-To build the project run:
-
-```bash
-ng build
+```powershell
+npm test -- --watch=false
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Some existing frontend specs currently fail to compile because they import
+service/model symbols that are not exported by the referenced modules. These
+are test-source errors rather than path/configuration errors from the folder
+move; no test source was modified.
 
-## Running unit tests
+## Backend
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Requirements: .NET SDK 8 and a SQL Server instance.
 
-```bash
-ng test
+The default connection string is in `backend/PrimeHomes.API/appsettings.json` and
+uses Windows trusted authentication against a local SQL Server. Override
+`ConnectionStrings__DefaultConnection` in the environment when using a different
+connection string. Apply the existing Entity Framework Core migrations to the
+database before using the API.
+
+From the repository root, restore and build the solution:
+
+```powershell
+dotnet restore .\backend\PrimeHomes.API.slnx
+dotnet build .\backend\PrimeHomes.API.slnx --no-restore
 ```
 
-## Running end-to-end tests
+JWT signing requires a secret of at least 32 bytes. Set it in the environment;
+do not commit the secret or place it in tracked configuration files:
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+```powershell
+$env:Jwt__SigningKey = "<provide-a-secret-at-least-32-bytes-long>"
+dotnet run --project .\backend\PrimeHomes.API\PrimeHomes.API.csproj --launch-profile http
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+The existing HTTP launch profile uses `http://localhost:5085`. The HTTPS profile
+uses `https://localhost:7299` and `http://localhost:5085`. Swagger is enabled in
+the Development environment.
 
-## Additional Resources
+There is currently no backend test project in the solution. Add one before
+expecting `dotnet test` to execute API tests.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Configuration
+
+The API retains its SQL Server connection-string configuration, JWT bearer
+authentication, CORS policy for the Angular development origin, Swagger setup,
+launch profiles, and existing endpoints. The Angular app continues to use its
+existing API URLs and development port.
